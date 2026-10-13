@@ -777,7 +777,7 @@
   };
 
   // "Report a mistake" opens a pre-filled GitHub issue in a new tab.
-  S.REPO = 'Arbin848/Arbin';
+  S.REPO = 'Arbin848/polish';
   S.reportLink = (what, where) => {
     const title = `Mistake: ${what}`.slice(0, 120);
     const body = `**Where:** ${where}\n**Text:** ${what}\n\n**What is wrong / what it should be:**\n\n`;

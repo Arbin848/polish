@@ -11,7 +11,7 @@
 
   // Routes are bare tokens so they survive in a link's #anchor: "a1-03", "talk.rp-a1-cafe", "review".
   S.route = { name: 'home' };
-  const PAGES = ['sos', 'sim', 'commute', 'guide', 'pronstudio', 'turn', 'mywords', 'numbers', 'listen', 'revise', 'cert', 'report', 'course', 'practice', 'learn', 'review', 'alphabet', 'dictionary', 'settings', 'talk', 'read', 'exam', 'placement', 'mistakes', 'progress', 'verbs', 'cases', 'sounds', 'check'];
+  const PAGES = ['feedback', 'sos', 'sim', 'commute', 'guide', 'pronstudio', 'turn', 'mywords', 'numbers', 'listen', 'revise', 'cert', 'report', 'course', 'practice', 'learn', 'review', 'alphabet', 'dictionary', 'settings', 'talk', 'read', 'exam', 'placement', 'mistakes', 'progress', 'verbs', 'cases', 'sounds', 'check'];
 
   let currentHash = null;
   S.go = (to, opts = {}) => {
@@ -58,6 +58,7 @@
     else if (r.name === 'review') renderReview();
     else if (r.name === 'alphabet') renderAlphabet();
     else if (r.name === 'dictionary') renderDictionary();
+    else if (r.name === 'feedback') renderFeedback();
     else if (r.name === 'settings') renderSettings();
     else if (r.name === 'talk') r.arg ? S.Extras.talk(view, r.arg) : S.Extras.talkList(view);
     else if (r.name === 'read') r.arg ? S.Extras.read(view, r.arg) : S.Extras.readList(view);
@@ -78,7 +79,7 @@
             ${ids.length ? `<div class="chip-row">${ids.map((l) => `<button class="chip-btn" data-action="go" data-to="cert.${esc(l)}">🎓 ${esc(l)} · ${Number(certs[l].score) || 0}%</button>`).join('')}</div>`
               : '<p class="hint">Pass a level test (at the end of each level in the Course) to earn a certificate. · हरेक स्तरको अन्त्यमा परीक्षा पास गरेर प्रमाणपत्र पाउनुहोस्।</p>'}`;
         })()}
-        <div class="row start"><button class="btn" data-action="go" data-to="settings">⚙ Settings · सेटिङ</button><button class="btn" data-action="go" data-to="check">Review mode for native speakers</button></div>`);
+        <div class="row start"><button class="btn" data-action="go" data-to="settings">⚙ Settings · सेटिङ</button><button class="btn" data-action="go" data-to="feedback">📢 Report / Feedback · समस्या तथा सुझाव</button><button class="btn" data-action="go" data-to="check">Review mode for native speakers</button></div>`);
       checkProgressMilestones();
     }
     else if (r.name === 'sos') S.SOS ? S.SOS.render(view, r.arg) : null;
@@ -847,7 +848,84 @@
       ${first ? `<div class="row start"><button class="btn primary" data-action="go" data-to="${first.id}">Start the first lesson →</button></div>` : ''}`;
   }
 
-  // ---------- dictionary ----------
+  
+  // =====================================================================
+  // Feedback & Problem Reporting Mega Section (समस्या तथा सुझाव रिपोर्ट)
+  // =====================================================================
+  function renderFeedback() {
+    view.innerHTML = `
+      ${S.backLink()}
+      <header class="unit-head">
+        <span class="eyebrow">Help & Feedback · समस्या तथा सुझाव</span>
+        <h2>Report an issue or give feedback</h2>
+        <p class="unit-head-ne" lang="ne">समस्या रिपोर्ट गर्नुहोस् वा सुझाव दिनुहोस्</p>
+        <p class="hint">Found a mistake, broken audio, confusing explanation, or want to suggest a new feature? Select your issue below. Your feedback helps thousands of Nepali learners in Poland!<br>
+        <span lang="ne">अनुवादमा गल्ती, नबजेको आवाज, नबुझिएको नियम वा नयाँ सुझाव भए यहाँ छान्नुहोस्। तपाईंको सुझावबाट हामी एपलाई अझै राम्रो बनाउनेछौं।</span></p>
+      </header>
+
+      <form class="card feedback-mega-form" data-form="user-feedback" autocomplete="off">
+        <div class="feedback-category-group">
+          <span class="label">What kind of problem are you facing? · समस्याको प्रकार छान्नुहोस्:</span>
+          <div class="fb-chips-grid">
+            <label class="fb-chip-option">
+              <input type="radio" name="fb_cat" value="mistake" checked>
+              <span>❌ Translation or grammar error <small lang="ne">अनुवाद वा व्याकरण गल्ती</small></span>
+            </label>
+            <label class="fb-chip-option">
+              <input type="radio" name="fb_cat" value="audio">
+              <span>🔇 Audio / Sound issue <small lang="ne">आवाज नबजेको वा अस्पष्ट</small></span>
+            </label>
+            <label class="fb-chip-option">
+              <input type="radio" name="fb_cat" value="confusing">
+              <span>🤔 Confusing explanation <small lang="ne">नियम बुझ्न गाह्रो भएको</small></span>
+            </label>
+            <label class="fb-chip-option">
+              <input type="radio" name="fb_cat" value="bug">
+              <span>📱 App button or screen stuck <small lang="ne">बटन नथिचिएको वा अड्किएको</small></span>
+            </label>
+            <label class="fb-chip-option">
+              <input type="radio" name="fb_cat" value="feature">
+              <span>💡 Suggest a new word/topic <small lang="ne">नयाँ शब्द वा विषय थप्ने सुझाव</small></span>
+            </label>
+            <label class="fb-chip-option">
+              <input type="radio" name="fb_cat" value="other">
+              <span>💬 Other feedback <small lang="ne">अन्य प्रतिक्रिया</small></span>
+            </label>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>Which lesson, word, or screen? · कुन पाठ, शब्द वा स्क्रिनमा?</span>
+          <input class="type-input wide" name="fb_location" id="fb-location" placeholder="e.g. Unit A1-02, Verb table, Żabka simulator, etc.">
+        </label>
+
+        <label class="field">
+          <span>Describe the problem or what it should be · समस्या वा सही रूप लेख्नुहोस्:</span>
+          <textarea class="type-input wide" name="fb_details" id="fb-details" rows="4" required placeholder="Explain what happened or what needs to be improved... (तपाईंले नेपाली वा अंग्रेजीमा लेख्न सक्नुहुन्छ)"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Your contact email (optional for replies) · तपाईंको इमेल (ऐच्छिक):</span>
+          <input class="type-input wide" type="email" name="fb_email" id="fb-email" placeholder="name@example.com">
+        </label>
+
+        <div class="row start" style="margin-top: 14px; gap: 10px;">
+          <button type="submit" class="btn primary">🚀 Submit Report · पठाउनुहोस्</button>
+          <button type="button" class="btn" data-action="fb-github-issue">Open GitHub Issue →</button>
+        </div>
+
+        <div id="fb-status-msg" class="feedback-status-box" style="display:none;" role="status"></div>
+      </form>
+
+      <section class="card compact" style="margin-top: 24px; text-align: left; background: var(--sunk);">
+        <span class="label">Direct contact · सिधै सम्पर्क</span>
+        <p style="margin: 6px 0; font-size: 0.95rem;">You can also email directly: <b>info.poljobhub@gmail.com</b></p>
+        <p class="hint">All feedback reports are saved locally and forwarded to GitHub Issues to keep improving the app.</p>
+      </section>
+    `;
+  }
+
+// ---------- dictionary ----------
 
   function renderDictionary() {
     view.innerHTML = `
@@ -1205,6 +1283,16 @@
         break;
       }
       case 'audio-offline': startAudioDownload(); break;
+      case 'fb-github-issue': {
+        const cat = document.querySelector('input[name="fb_cat"]:checked')?.value || 'general';
+        const loc = document.querySelector('#fb-location')?.value || '';
+        const details = document.querySelector('#fb-details')?.value || '';
+        const title = `Feedback [${cat}]: ${loc || 'General app report'}`;
+        const body = `### Problem / Feedback Report\n- **Category:** ${cat}\n- **Location in App:** ${loc || 'Not specified'}\n- **Details:**\n${details || 'No details provided'}\n\n*Submitted via Słówka in-app feedback mega section*`;
+        const url = `https://github.com/${S.REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+        window.open(url, '_blank', 'noopener');
+        return true;
+      }
       case 'backup-copy': {
         const out = $('#backup-out');
         const fallback = () => { out.focus(); out.select(); el.textContent = 'Selected: copy it now'; };
