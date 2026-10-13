@@ -1342,9 +1342,8 @@
           window.deferredPrompt.prompt();
           window.deferredPrompt.userChoice.then(() => { window.deferredPrompt = null; });
         } else {
-          alert('iPhone मा: तलको Share बटन थिचेर "Add to Home Screen" छान्नुहोस्।
-
-Android मा: माथिको ३-डट थिचेर "Install App" छान्नुहोस्।');
+          const msg = 'iPhone: Tap Share -> "Add to Home Screen"\nAndroid: Tap 3-dots -> "Install App"';
+          alert(msg);
         }
         return true;
       }
