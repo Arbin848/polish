@@ -1,0 +1,5 @@
+__pycache__/
+texts.json
+node_modules/
+bun.lock
+*.patch

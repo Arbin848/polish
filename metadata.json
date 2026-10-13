@@ -1,0 +1,8 @@
+{
+  "name": "Słówka - Polish Language Course",
+  "description": "A complete Polish course for Nepali and English speakers, from the alphabet to B2, with pronunciation in English letters and Devanagari.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

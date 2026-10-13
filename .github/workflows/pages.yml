@@ -1,0 +1,40 @@
+# Publishes the app to GitHub Pages on every push to main.
+# One-time setup: repository Settings → Pages → Source: "GitHub Actions".
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Wait for a running deploy (or the long "Generate speech" run) instead of cancelling it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # Always publish the newest main, so a queued deploy never puts back older files.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Check course content
+        run: node tools/validate.js
+      - name: Stamp the offline cache with the app's content
+        run: node tools/stamp-sw.js
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

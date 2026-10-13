@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Słówka - Polish Language Course</title>
+<meta name="description" content="A complete Polish course for Nepali and English speakers, from the alphabet to B2, with pronunciation in English letters and Devanagari.">
+<meta property="og:title" content="Słówka - Polish Language Course">
+<meta property="og:description" content="A complete Polish course for Nepali and English speakers, from the alphabet to B2, with pronunciation in English letters and Devanagari.">
+<meta name="theme-color" content="#c8102e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="styles.css?v=20">
+</head>
+<body>
+<div class="app-layout">
+  <!-- Desktop Sidebar -->
+  <aside class="sidebar" aria-label="Main Navigation">
+    <div class="sidebar-top">
+      <button class="brand" data-action="go" data-to="home" aria-label="Słówka Home">
+        <span class="brand-crest" aria-hidden="true">🇵🇱</span>
+        <div class="brand-text">
+          <span class="wordmark" lang="pl">S<span class="dia">ł</span><span class="dia">ó</span>wka</span>
+          <span class="tagline">Polish from zero · <span lang="ne">सुरुदेखि पोलिश</span></span>
+        </div>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button data-action="go" data-to="home" class="sidebar-nav-btn">
+        <span class="sidebar-icon" aria-hidden="true">🏠</span>
+        <div class="sidebar-labels">
+          <span class="sidebar-title">Home</span>
+          <small lang="ne">गृहपृष्ठ</small>
+        </div>
+      </button>
+      <button class="sidebar-nav-btn search-nav-btn" data-action="open-search" title="Quick Search (Press / or Ctrl+K)">
+        <span class="sidebar-icon" aria-hidden="true">🔍</span>
+        <div class="sidebar-labels">
+          <span class="sidebar-title">Search</span>
+          <small lang="ne">खोज्नुहोस्</small>
+        </div>
+        <kbd class="sidebar-kbd">/</kbd>
+      </button>
+      <button data-action="go" data-to="course" class="sidebar-nav-btn">
+        <span class="sidebar-icon" aria-hidden="true">📚</span>
+        <div class="sidebar-labels">
+          <span class="sidebar-title">Course</span>
+          <small lang="ne">पाठ्यक्रम</small>
+        </div>
+      </button>
+      <button data-action="go" data-to="practice" class="sidebar-nav-btn">
+        <span class="sidebar-icon" aria-hidden="true">🎯</span>
+        <div class="sidebar-labels">
+          <span class="sidebar-title">Practice</span>
+          <small lang="ne">अभ्यास</small>
+        </div>
+        <span class="nav-badge" id="nav-practice-badge" hidden></span>
+      </button>
+      <button data-action="go" data-to="progress" class="sidebar-nav-btn">
+        <span class="sidebar-icon" aria-hidden="true">📊</span>
+        <div class="sidebar-labels">
+          <span class="sidebar-title">Progress</span>
+          <small lang="ne">प्रगति</small>
+        </div>
+      </button>
+      <button data-action="go" data-to="dictionary" class="sidebar-nav-btn">
+        <span class="sidebar-icon" aria-hidden="true">📖</span>
+        <div class="sidebar-labels">
+          <span class="sidebar-title">Dictionary</span>
+          <small lang="ne">शब्दकोश</small>
+        </div>
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="lang-switcher">
+        <span class="lang-switch-label">Explanations · व्याख्या</span>
+        <div class="lang-switch-group" role="group" aria-label="Language Mode">
+          <button class="lang-btn" data-action="set-lang" data-lang="both" title="English and Nepali">Both</button>
+          <button class="lang-btn" data-action="set-lang" data-lang="en" title="English only">EN</button>
+          <button class="lang-btn" data-action="set-lang" data-lang="ne" title="Nepali only">नेपाली</button>
+        </div>
+      </div>
+      <div class="theme-switcher">
+        <span class="lang-switch-label">Theme · थिम</span>
+        <div class="theme-switch-group" role="group" aria-label="Color Theme">
+          <button class="theme-btn" data-action="set-theme" data-theme="light" title="Light theme">☀️ Light</button>
+          <button class="theme-btn" data-action="set-theme" data-theme="dark" title="Dark theme">🌙 Dark</button>
+          <button class="theme-btn" data-action="set-theme" data-theme="auto" title="System theme">💻 Auto</button>
+        </div>
+      </div>
+      <button class="sidebar-sub-btn" data-action="clear-cache" title="Clear offline cache and fetch newest version">
+        <span aria-hidden="true">🔄</span>
+        <span>Clear cache & update</span>
+      </button>
+      <button class="sidebar-nav-btn settings-btn" data-action="go" data-to="settings">
+        <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+        <div class="sidebar-labels">
+          <span class="sidebar-title">Settings</span>
+          <small lang="ne">सेटिङ</small>
+        </div>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Stage -->
+  <div class="main-stage">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <!-- Mobile brand lockup -->
+      <button class="brand mobile-brand" data-action="go" data-to="home" aria-label="Słówka Home">
+        <span class="brand-crest" aria-hidden="true">🇵🇱</span>
+        <span class="wordmark" lang="pl">S<span class="dia">ł</span><span class="dia">ó</span>wka</span>
+      </button>
+
+      <!-- Mobile Language Switch Pill -->
+      <button class="mobile-lang-pill" data-action="toggle-lang" title="Switch language explanations">
+        <span class="lang-globe">🌐</span>
+        <span id="mobile-lang-label">EN + NE</span>
+      </button>
+
+      <!-- Quick Search Trigger -->
+      <button class="top-search-btn" data-action="open-search" aria-label="Search words and lessons" title="Search (Press / or Ctrl+K)">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <span class="search-label">Search…</span>
+        <kbd class="search-kbd">/</kbd>
+      </button>
+
+      <!-- Stats Bar (Streak, Words, Learned, Review) -->
+      <div class="header-stats" id="stats"></div>
+
+      <!-- Quick Action Buttons -->
+      <button class="icon-btn theme-toggle" data-action="toggle-theme" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+        <span id="mobile-theme-icon">🌙</span>
+      </button>
+      <button class="icon-btn refresh-btn" data-action="clear-cache" aria-label="Clear cache and reload" title="Clear cache & update app">🔄</button>
+      <button class="icon-btn gear mobile-gear" data-action="go" data-to="settings" aria-label="Settings" title="Settings · सेटिङ">⚙️</button>
+    </header>
+
+    <main id="view" class="main-content"></main>
+
+    <footer class="foot">
+      <div class="foot-inner">
+        <span>🇵🇱 Słówka · Complete Polish Course for Nepali & English Speakers</span>
+        <span class="foot-sep">·</span>
+        <span>Offline-ready with Wiktionary & Piper Speech</span>
+        <span class="foot-sep">·</span>
+        <button class="foot-link" data-action="clear-cache">Refresh app & clear cache</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile Bottom Tab Bar -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <button data-action="go" data-to="home"><span aria-hidden="true">🏠</span><span>Home</span><small lang="ne">गृह</small></button>
+    <button data-action="go" data-to="course"><span aria-hidden="true">📚</span><span>Course</span><small lang="ne">पाठ</small></button>
+    <button data-action="go" data-to="practice" class="rel-btn"><span aria-hidden="true">🎯</span><span>Practice</span><small lang="ne">अभ्यास</small><span class="mobile-badge" id="mobile-practice-badge" hidden></span></button>
+    <button data-action="go" data-to="progress"><span aria-hidden="true">📊</span><span>Progress</span><small lang="ne">प्रगति</small></button>
+  </nav>
+</div>
+<script src="data/start.js"></script>
+<script src="data/a1-part1.js"></script>
+<script src="data/a1-part2.js"></script>
+<script src="data/a2-part1.js"></script>
+<script src="data/a2-part2.js"></script>
+<script src="data/b1-part1.js"></script>
+<script src="data/b1-part2.js"></script>
+<script src="data/b2.js"></script>
+<script src="data/work.js"></script>
+<script src="data/drills-1.js"></script>
+<script src="data/drills-2.js"></script>
+<script src="data/drills-3.js"></script>
+<script src="data/drills-4.js"></script>
+<script src="data/roleplays-1.js"></script>
+<script src="data/roleplays-2.js"></script>
+<script src="data/stories-1.js"></script>
+<script src="data/stories-2.js"></script>
+<script src="data/exams.js"></script>
+<script src="data/verbs-1.js"></script>
+<script src="data/verbs-2.js"></script>
+<script src="data/cases.js"></script>
+<script src="data/sounds.js"></script>
+<script src="data/listening.js"></script>
+<script src="data/reading-gloss.js"></script>
+<script src="data/poland-guide.js"></script>
+<script src="data/sos.js"></script>
+<script src="data/simulators.js"></script>
+<script src="audio/manifest.js"></script>
+<script src="audio/tts.js"></script>
+<script src="js/core.js?v=20"></script>
+<script src="js/practice.js?v=20"></script>
+<script src="js/extras.js?v=20"></script>
+<script src="js/trainers.js?v=20"></script>
+<script src="js/guided.js?v=20"></script>
+<script src="js/assess.js?v=20"></script>
+<script src="js/numbers.js?v=20"></script>
+<script src="js/listening.js?v=20"></script>
+<script src="js/pron.js?v=20"></script>
+<script src="js/mywords.js?v=20"></script>
+<script src="js/speaking.js?v=20"></script>
+<script src="js/commute.js?v=20"></script>
+<script src="js/search.js?v=20"></script>
+<script src="js/recorder.js?v=20"></script>
+<script src="js/sos.js?v=20"></script>
+<script src="js/simulators.js?v=20"></script>
+<script src="app.js?v=20"></script>
+</body>
+</html>
