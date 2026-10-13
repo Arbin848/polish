@@ -239,7 +239,7 @@
     if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
     s.flipped = true;
     draw();
-    if (kind === 'recall' && S.settings.autoplay !== false) S.speak(s.cards[s.i].pl);
+    if (S.settings.autoplay !== false) S.speak(s.cards[s.i].pl);
   }
   function rate(kind) {
     const s = session;
@@ -303,6 +303,12 @@
     S.review(s.word, right ? 1 : -1);
     draw();
     if (s.mode === 'quiz' && S.settings.dir !== 'pl' && S.settings.autoplay !== false) S.speak(s.word.pl);
+    // Smooth auto-advance if answer is correct, giving learner a brief moment to celebrate
+    if (right && s.mode === 'quiz') {
+      setTimeout(() => {
+        if (session === s && s.picked !== null) nextQuiz();
+      }, 850);
+    }
   }
 
   // ---------- speaking ----------

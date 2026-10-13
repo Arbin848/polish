@@ -509,6 +509,17 @@
         </button>
       </div>
 
+      <!-- Install to Phone Banner -->
+      <div class="install-app-banner" id="install-banner">
+        <div class="install-banner-text">
+          <b>📱 Add to Home Screen · फोनमा इन्स्टल गर्नुहोस्</b>
+          <small>Use offline anytime without opening the browser · ब्राउजर नखोली सिधै चलाउनुहोस्</small>
+        </div>
+        <button type="button" class="btn install-banner-btn" data-action="install-pwa">
+          Install · राख्नुहोस्
+        </button>
+      </div>
+
       <!-- Big Hero Start Card for Beginners -->
       <section class="hero-start-banner">
         <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
@@ -1326,6 +1337,17 @@
         break;
       }
       case 'audio-offline': startAudioDownload(); break;
+      case 'install-pwa': {
+        if (window.deferredPrompt) {
+          window.deferredPrompt.prompt();
+          window.deferredPrompt.userChoice.then(() => { window.deferredPrompt = null; });
+        } else {
+          alert('iPhone मा: तलको Share बटन थिचेर "Add to Home Screen" छान्नुहोस्।
+
+Android मा: माथिको ३-डट थिचेर "Install App" छान्नुहोस्।');
+        }
+        return true;
+      }
       case 'share-app': {
         const text = 'नमस्ते साथीहरू! पोल्याण्डमा काम गर्न र बस्न चाहिने निःशुल्क पोलिश भाषा एप (नेपाली अर्थ र उच्चारण सहित): https://arbin848.github.io/polish/';
         if (navigator.share) {
@@ -1448,7 +1470,15 @@
     try { navigator.storage.persist().catch(() => {}); } catch (e) { /* not available */ }
   }
 
-  // ---------- start ----------
+  
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    window.deferredPrompt = e;
+    const banner = document.getElementById('install-banner');
+    if (banner) banner.style.display = 'flex';
+  });
+
+// ---------- start ----------
 
   // Back/forward buttons and links to #pages.
   const fromHistory = () => {
