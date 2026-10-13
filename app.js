@@ -495,6 +495,20 @@
     ].filter(Boolean);
 
     view.innerHTML = `
+      <!-- 🔥 Daily Streak & Share Bar -->
+      <div class="streak-counter-bar">
+        <div class="streak-counter-left">
+          <span class="streak-flame-icon">🔥</span>
+          <div class="streak-counter-text">
+            <b>${S.currentStreak() || 1} Day Streak · ${S.currentStreak() || 1} दिन लगातार!</b>
+            <small>Keep studying daily · हरेक दिन ३ मिनेट सिक्नुहोस्</small>
+          </div>
+        </div>
+        <button type="button" class="btn streak-share-btn" data-action="share-app" title="Share with Nepali friends on WhatsApp">
+          📲 Share · साथीलाई पठाउनुहोस्
+        </button>
+      </div>
+
       <!-- Big Hero Start Card for Beginners -->
       <section class="hero-start-banner">
         <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
@@ -1312,6 +1326,15 @@
         break;
       }
       case 'audio-offline': startAudioDownload(); break;
+      case 'share-app': {
+        const text = 'नमस्ते साथीहरू! पोल्याण्डमा काम गर्न र बस्न चाहिने निःशुल्क पोलिश भाषा एप (नेपाली अर्थ र उच्चारण सहित): https://arbin848.github.io/polish/';
+        if (navigator.share) {
+          navigator.share({ title: 'Słówka - Learn Polish in Nepali', text, url: 'https://arbin848.github.io/polish/' }).catch(() => {});
+        } else {
+          window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
+        }
+        return true;
+      }
       case 'fb-github-issue': {
         const cat = document.querySelector('input[name="fb_cat"]:checked')?.value || 'general';
         const loc = document.querySelector('#fb-location')?.value || '';

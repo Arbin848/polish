@@ -4152,3 +4152,87 @@ html, body {
   font-size: 0.72rem;
   color: var(--muted);
 }
+
+/* =====================================================================
+   COMMUNITY ENGAGEMENT & RETENTION (Streak Counter & Share with Friends)
+   ===================================================================== */
+
+/* Fire Streak Counter Bar */
+.streak-counter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px -2px var(--shadow);
+}
+
+.streak-counter-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.streak-flame-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  animation: flameBounce 1.6s infinite ease-in-out alternate;
+}
+
+@keyframes flameBounce {
+  0% { transform: scale(1) rotate(-3deg); }
+  100% { transform: scale(1.15) rotate(4deg); }
+}
+
+.streak-counter-text b {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #ea580c;
+  display: block;
+  line-height: 1.2;
+}
+
+.streak-counter-text small {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.streak-share-btn {
+  background: #25d366 !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  padding: 8px 14px !important;
+  border-radius: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3) !important;
+}
+
+.streak-share-btn:hover {
+  background: #1ebc59 !important;
+}
+
+/* Real-Life Polish Workplace Tip Badge */
+.workplace-tip-box {
+  background: #fefce8;
+  border-left: 4px solid #ca8a04;
+  color: #713f12;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+[data-theme="dark"] .workplace-tip-box {
+  background: #2e2608;
+  border-left-color: #facc15;
+  color: #fef08a;
+}
