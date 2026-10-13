@@ -495,6 +495,35 @@
     ].filter(Boolean);
 
     view.innerHTML = `
+      <!-- Big Hero Start Card for Beginners -->
+      <section class="hero-start-banner">
+        <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
+        <h2 class="hero-start-title">${st.started && !st.done ? 'Continue: ' + esc(next.title) : 'Lesson: ' + esc(next.title)}</h2>
+        <p class="hero-start-sub" lang="ne">${esc(next.titleNe)} — शिक्षिकासँगै एक-एक शब्द सुन्दै, बोल्दै र अभ्यास गर्दै सिक्नुहोस्। (3-5 मिनेट)</p>
+        <button type="button" class="btn hero-start-btn" data-action="g-start" data-unit="${next.id}">
+          ▶ ${st.started && !st.done ? 'Continue Lesson (' + (st.step + 1) + '/' + st.total + ')' : 'Start Lesson Now · पाठ सुरु गर्नुहोस्'}
+        </button>
+      </section>
+
+      <!-- 3 Clear Actions: Learn, Revise, Everyday Phrases -->
+      <div class="beginner-steps-bar" role="group" aria-label="Quick start steps">
+        <button type="button" class="beginner-step-card" data-action="g-start" data-unit="${next.id}">
+          <span class="beginner-step-num">STEP 1</span>
+          <span class="beginner-step-text">📖 Learn</span>
+          <span class="beginner-step-ne" lang="ne">सिक्नुहोस्</span>
+        </button>
+        <button type="button" class="beginner-step-card" data-action="go" data-to="review">
+          <span class="beginner-step-num">STEP 2</span>
+          <span class="beginner-step-text">🔄 Review (${due})</span>
+          <span class="beginner-step-ne" lang="ne">दोहोर्‍याउनुहोस्</span>
+        </button>
+        <button type="button" class="beginner-step-card" data-action="go" data-to="sos">
+          <span class="beginner-step-num">STEP 3</span>
+          <span class="beginner-step-text">🚨 Emergency SOS</span>
+          <span class="beginner-step-ne" lang="ne">आपतकालीन</span>
+        </button>
+      </div>
+
       <div class="home-grid">
         <div class="home-col-main">
           <section class="today">

@@ -3993,3 +3993,162 @@ html[data-fontsize="xlarge"] .unit-head h2 {
   color: var(--good);
   border: 1.5px solid var(--good);
 }
+
+/* =====================================================================
+   CRITICAL VIEWPORT & FULLSCREEN RESPONSIVENESS FIXES
+   ===================================================================== */
+
+/* Ensure the app always fills 100% width and never clips half-screen */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.app-layout {
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Home Grid Responsive Collapse: Single Clean Column on Mobile */
+.home-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 960px) {
+  .home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+
+/* Big Hero "Start Here" Action Card for Beginners */
+.hero-start-banner {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.4);
+  margin-bottom: 8px;
+}
+
+.hero-start-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  align-self: flex-start;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-start-title {
+  font-size: clamp(1.4rem, 5vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.hero-start-sub {
+  font-size: 1rem;
+  line-height: 1.4;
+  opacity: 0.95;
+  margin: 0;
+}
+
+.hero-start-btn {
+  background: #ffffff !important;
+  color: #b91c1c !important;
+  border: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  padding: 14px 24px !important;
+  border-radius: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.hero-start-btn:hover {
+  background: #fef2f2 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Quick 3-Pill Beginner Step Navigator */
+.beginner-steps-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 6px 0 12px;
+}
+
+.beginner-step-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.beginner-step-card:hover {
+  border-color: var(--accent);
+  background: var(--sunk);
+}
+
+.beginner-step-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.beginner-step-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.beginner-step-ne {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
