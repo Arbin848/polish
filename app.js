@@ -545,7 +545,7 @@
               <span class="label">🌟 Phrase of the day · आजको उपयोगी वाक्यांश</span>
               <button class="btn compact listen" data-action="say" data-text="${esc(dp.pl)}">🔊 Listen</button>
             </div>
-            <div class="wotd-pl-row">
+            <div class="wotd-pl-row" style="cursor:pointer; user-select:none;" data-action="say" data-text="${esc(dp.pl)}" title="Tap to listen">
               <span class="wotd-pl" lang="pl">${polish(dp.pl)}</span>
             </div>
             <div class="wotd-meaning">
@@ -1391,6 +1391,13 @@
             setTimeout(() => { if (tip && tip.parentElement) tip.remove(); }, 6000);
           }
         }
+        return true;
+      }
+      case 'star-card': {
+        const pl = el.dataset.pl;
+        const entry = S.LEXICON.get(pl) || { pl };
+        const nowStarred = S.toggleStar(entry);
+        el.classList.toggle('active', nowStarred);
         return true;
       }
       case 'share-app': {
