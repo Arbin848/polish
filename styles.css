@@ -3832,10 +3832,7 @@ html[data-fontsize="xlarge"] .unit-head h2 {
 }
 
 /* Audio Playing State Guard */
-.is-playing-speech {
-  opacity: 0.65;
-  pointer-events: none;
-}
+/* is-playing-speech removed to prevent button freezing */
 
 /* Sound Compare Pair Button */
 .snd-compare-btn {

@@ -1245,6 +1245,7 @@
   document.addEventListener('click', (ev) => {
     const el = ev.target.closest('[data-action]');
     if (!el) return;
+    ev.stopPropagation();
     const a = el.dataset.action;
     if (el.tagName !== 'INPUT') ev.preventDefault();
     keepFocus(el);

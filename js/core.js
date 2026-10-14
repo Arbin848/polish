@@ -574,14 +574,6 @@
     try { if (synth) synth.cancel(); if (current) { fileToken++; current.onended = null; current.pause(); } } catch (e) { /* ignore */ }
   };
   function tts(text, isSlow, pitch, onEnd) {
-    document.querySelectorAll('[data-action="say"]').forEach(b => {
-      if (b.dataset.text === text) b.classList.add('is-playing-speech');
-    });
-    const origOnEnd = onEnd;
-    onEnd = () => {
-      document.querySelectorAll('.is-playing-speech').forEach(b => b.classList.remove('is-playing-speech'));
-      if (origOnEnd) origOnEnd();
-    };
     if (!synth) { if (onEnd) onEnd(); return; }
     try {
       const u = new SpeechSynthesisUtterance(String(text).replace(/…/g, '').replace(/\s\/\s/g, ', ').replace(/___/g, '…'));
