@@ -1342,8 +1342,16 @@
           window.deferredPrompt.prompt();
           window.deferredPrompt.userChoice.then(() => { window.deferredPrompt = null; });
         } else {
-          const msg = 'iPhone: Tap Share -> "Add to Home Screen"\nAndroid: Tap 3-dots -> "Install App"';
-          alert(msg);
+          let tip = document.getElementById('install-tip-toast');
+          if (!tip) {
+            tip = document.createElement('div');
+            tip.id = 'install-tip-toast';
+            tip.className = 'card compact';
+            tip.style.cssText = 'position:fixed; bottom:70px; left:16px; right:16px; z-index:9999; background:var(--surface); border:2px solid var(--accent); box-shadow:0 8px 30px rgba(0,0,0,0.3); padding:16px; text-align:left;';
+            tip.innerHTML = '<div style="display:flex; justify-content:space-between; align-items:center;"><b>📲 How to Install:</b><button class="btn compact" onclick="this.parentElement.parentElement.remove()">✕</button></div><p style="margin:8px 0; font-size:0.9rem;">• <b>iPhone:</b> Tap Safari Share (⬆) -> "Add to Home Screen"<br>• <b>Android:</b> Tap Chrome menu (⋮) -> "Install App"</p>';
+            document.body.appendChild(tip);
+            setTimeout(() => { if (tip && tip.parentElement) tip.remove(); }, 6000);
+          }
         }
         return true;
       }
