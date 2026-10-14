@@ -517,7 +517,7 @@
           <span class="streak-flame-icon">🔥</span>
           <div class="streak-counter-text">
             <b>${S.currentStreak() || 1} Day Streak · ${S.currentStreak() || 1} दिन लगातार!</b>
-            <small>Keep studying daily · हरेक दिन ३ मिनेट सिक्नुहोस्</small>
+            <small>🧠 ${Object.keys(S.progress.items).length} words practiced (${Object.keys(S.progress.items).length} शब्द सिकियो)</small>
           </div>
         </div>
         <button type="button" class="btn streak-share-btn" data-action="share-app" title="Share with Nepali friends on WhatsApp">
