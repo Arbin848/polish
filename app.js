@@ -11,7 +11,7 @@
 
   // Routes are bare tokens so they survive in a link's #anchor: "a1-03", "talk.rp-a1-cafe", "review".
   S.route = { name: 'home' };
-  const PAGES = ['feedback', 'sos', 'sim', 'commute', 'guide', 'pronstudio', 'turn', 'mywords', 'numbers', 'listen', 'revise', 'cert', 'report', 'course', 'practice', 'learn', 'review', 'alphabet', 'dictionary', 'settings', 'talk', 'read', 'exam', 'placement', 'mistakes', 'progress', 'verbs', 'cases', 'sounds', 'check'];
+  const PAGES = ['privacy', 'feedback', 'sos', 'sim', 'commute', 'guide', 'pronstudio', 'turn', 'mywords', 'numbers', 'listen', 'revise', 'cert', 'report', 'course', 'practice', 'learn', 'review', 'alphabet', 'dictionary', 'settings', 'talk', 'read', 'exam', 'placement', 'mistakes', 'progress', 'verbs', 'cases', 'sounds', 'check'];
 
   let currentHash = null;
   S.go = (to, opts = {}) => {
@@ -58,6 +58,7 @@
     else if (r.name === 'review') renderReview();
     else if (r.name === 'alphabet') renderAlphabet();
     else if (r.name === 'dictionary') renderDictionary();
+    else if (r.name === 'privacy') { if (S.Privacy && S.Privacy.render) S.Privacy.render(view); }
     else if (r.name === 'feedback') renderFeedback();
     else if (r.name === 'settings') renderSettings();
     else if (r.name === 'talk') r.arg ? S.Extras.talk(view, r.arg) : S.Extras.talkList(view);

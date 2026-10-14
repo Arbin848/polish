@@ -210,8 +210,11 @@
             <button type="button" class="btn primary" id="auth-sync-now-btn" style="flex:1; justify-content:center;">
               🔄 Sync Now
             </button>
-            <button type="button" class="btn" id="auth-signout-btn" style="color:#b91c1c; border-color:#fecaca;">
+            <button type="button" class="btn" id="auth-signout-btn" style="color:var(--ink);">
               Log Out
+            </button>
+            <button type="button" class="btn compact" id="auth-del-acc-btn" style="color:#b91c1c; border-color:#fecaca; font-size:0.8rem;" title="Delete account and wipe data under GDPR">
+              🗑️ Delete Account (GDPR)
             </button>
           </div>
         </div>
@@ -231,6 +234,23 @@
         A.signOut();
         overlay.remove();
       });
+      const delBtn = document.getElementById('auth-del-acc-btn');
+      if (delBtn) {
+        delBtn.addEventListener('click', async () => {
+          if (confirm('Are you sure you want to delete your account? Under GDPR Art. 17 (Right to Erasure), all your progress and account data will be permanently wiped.')) {
+            delBtn.textContent = 'Deleting...';
+            try {
+              const u = A.getUser();
+              if (u && u.localId && u.idToken) {
+                const url = `https://firestore.googleapis.com/v1/projects/${config.projectId}/databases/(default)/documents/users/${u.localId}?key=${API_KEY}`;
+                await fetch(url, { method: 'DELETE', headers: { 'Authorization': `Bearer ${u.idToken}` } });
+              }
+            } catch (e) {}
+            A.signOut();
+            overlay.remove();
+          }
+        });
+      }
       return;
     }
 
@@ -261,6 +281,15 @@
                   ${authMode === 'login' ? `<a href="#" id="auth-to-forgot" style="font-size:0.8rem; color:var(--accent);">Forgot password?</a>` : ''}
                 </div>
                 <input type="password" id="auth-password" required minlength="6" placeholder="At least 6 characters" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--line); font-size:0.95rem; background:var(--bg); color:var(--ink);">
+              </div>
+            ` : ''}
+
+            ${authMode === 'signup' ? `
+              <div style="display:flex; align-items:flex-start; gap:8px; font-size:0.8rem; line-height:1.35; margin-top:4px;">
+                <input type="checkbox" id="auth-gdpr-agree" required style="margin-top:3px;">
+                <label for="auth-gdpr-agree" style="color:var(--muted);">
+                  I agree to the <a href="#privacy" id="auth-to-privacy" style="color:var(--accent); text-decoration:underline;">Privacy Policy & EU GDPR</a>. My email is stored securely solely for login and progress sync.
+                </label>
               </div>
             ` : ''}
 

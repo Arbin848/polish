@@ -4387,3 +4387,22 @@ html, body {
   border-color: var(--accent) !important;
   font-weight: 700 !important;
 }
+
+/* GDPR and Privacy Policy Layout */
+.privacy-container {
+  line-height: 1.6;
+  color: var(--ink);
+}
+.privacy-container h3 {
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.privacy-container p {
+  font-size: 0.92rem;
+  margin-bottom: 10px;
+}
+.privacy-container ul {
+  font-size: 0.92rem;
+  margin-bottom: 12px;
+}
