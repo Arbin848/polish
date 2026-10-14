@@ -616,7 +616,11 @@
                 <span class="plan-text"><b>${esc(x.en)}</b><span lang="ne">${esc(x.ne)}</span>${x.sub ? `<small>${esc(x.sub)}</small>` : ''}</span>
                 <span class="plan-go" aria-hidden="true">→</span>
               </button></li>`).join('')}</ol>
-            <p class="hint">${today >= goal ? 'Daily goal reached! Everything more is a bonus. · आजको लक्ष्य पूरा!' : `${goal - today} more answers to reach today's goal. · आजको लक्ष्यका लागि ${goal - today} उत्तर बाँकी।`}</p>
+            <p class="hint">${today >= goal ? '🎉 Daily goal reached! · आजको लक्ष्य पूरा भयो!' : `${goal - today} more answers to reach today's goal. · आजको लक्ष्यका लागि ${goal - today} उत्तर बाँकी।`}</p>
+            <div style="display:flex; align-items:center; gap:6px; font-size:0.84rem; color:var(--muted); margin-top:4px;">
+              <span>✨</span>
+              <span><b>${today} answers practiced today</b> (आज ${today} पटक अभ्यास गरियो)</span>
+            </div>
           </section>
           ${S.Recorder ? S.Recorder.renderQuizWidget() : ''}
           ${!S.COURSE.some(S.unitStarted) && !S.progress.placement ? `

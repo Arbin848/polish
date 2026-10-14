@@ -284,7 +284,8 @@
       let cls = 'option';
       if (answered && o === e) cls += ' right';
       else if (answered && o === s.picked) cls += ' wrong';
-      const text = plFirst ? S.meaningHTML(o) : `<span lang="pl" class="opt-pl">${polish(o.pl)}</span>`;
+      const pronHint = (o.proNe || (S.Pron && S.Pron.of ? S.Pron.of(o.pl).proNe : ''));
+      const text = plFirst ? S.meaningHTML(o) : `<span lang="pl" class="opt-pl">${polish(o.pl)}</span>${pronHint ? `<small class="opt-pron" lang="ne" style="display:block; font-size:0.75rem; color:var(--muted); margin-top:2px;">${esc(pronHint)}</small>` : ''}`;
       return `<button class="${cls}" data-action="answer" data-index="${i}" ${answered ? 'disabled' : ''}><kbd>${i + 1}</kbd>${text}</button>`;
     }).join('');
     stage.innerHTML = `
