@@ -511,6 +511,12 @@
     ].filter(Boolean);
 
     view.innerHTML = `
+      <!-- ⚡ Offline Ready Badge -->
+      <div style="display:flex; align-items:center; gap:6px; font-size:0.8rem; color:#15803d; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:20px; padding:4px 12px; margin-bottom:8px; width:fit-content;">
+        <span style="font-size:0.9rem;">⚡</span>
+        <b>100% Offline Ready</b> · <span lang="ne">इन्टरनेट बिना पनि चल्छ</span>
+      </div>
+
       <!-- 🔥 Daily Streak & Share Bar -->
       <div class="streak-counter-bar">
         <div class="streak-counter-left">

@@ -568,6 +568,17 @@
     lastSpokenText = text;
     lastSpokenTime = now;
     const isSlow = slow || S.settings.slow || repeatQuick;
+    if (isSlow) {
+      let badge = document.getElementById('audio-speed-toast');
+      if (!badge) {
+        badge = document.createElement('div');
+        badge.id = 'audio-speed-toast';
+        badge.style.cssText = 'position:fixed; top:70px; right:20px; z-index:99999; background:rgba(0,0,0,0.85); color:#fef08a; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:700; pointer-events:none; transition:opacity 0.2s; box-shadow:0 4px 12px rgba(0,0,0,0.3);';
+        badge.innerHTML = '🐢 Slow Speed · बिस्तारै';
+        document.body.appendChild(badge);
+        setTimeout(() => { if (badge && badge.parentElement) badge.remove(); }, 1800);
+      }
+    }
     clearTimeout(speakTimer);
     S.stopSpeaking();
     // Safety guard to avoid audio overlapping or rapid double-clicks
