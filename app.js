@@ -519,6 +519,11 @@
       </div>
 
       <!-- 🔥 Daily Streak & Share Bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <button type="button" class="btn compact" data-action="habit-modal" style="font-size:0.8rem; background:transparent; border:1px solid var(--line); border-radius:20px; padding:3px 10px;">
+          ⏰ Daily Reminder · सम्झना सेट गर्नुहोस्
+        </button>
+      </div>
       <div class="streak-counter-bar">
         <div class="streak-counter-left">
           <span class="streak-flame-icon">🔥</span>
@@ -1332,6 +1337,10 @@
         const theme = el.dataset.theme || 'auto';
         applyTheme(theme);
         renderNav();
+        break;
+      }
+      case 'habit-modal': {
+        if (S.Habit && S.Habit.showModal) S.Habit.showModal();
         break;
       }
       case 'auth-modal': {

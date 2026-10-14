@@ -4406,3 +4406,81 @@ html, body {
   font-size: 0.92rem;
   margin-bottom: 12px;
 }
+
+/* ==========================================================================
+   POLISH HIGH-TOUCH REFINEMENTS (Tactile Cards, Buttons, and Audio Cues)
+   ========================================================================== */
+
+/* 1. Interactive Button Micro-interactions */
+.btn {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px -4px var(--shadow);
+}
+.btn:active {
+  transform: scale(0.975);
+}
+
+/* 2. Practice Quiz Option Cards */
+.option {
+  cursor: pointer;
+  border: 1.5px solid var(--line);
+  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.option:not(:disabled):hover {
+  border-color: var(--accent);
+  background: var(--sunk);
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px -3px var(--shadow);
+}
+.option:not(:disabled):active {
+  transform: scale(0.985);
+}
+.option.right {
+  border-color: #10b981 !important;
+  background: #ecfdf5 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+}
+.option.wrong {
+  border-color: #ef4444 !important;
+  background: #fef2f2 !important;
+}
+
+/* 3. Flip Card Physical Depth */
+.card.flip-in {
+  box-shadow: 0 4px 20px -6px var(--shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card.flip-in:active {
+  transform: scale(0.99);
+}
+
+/* 4. Audio Play State Waveform Animation */
+@keyframes audioPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.is-speaking {
+  animation: audioPulse 0.8s ease-in-out infinite;
+  color: var(--accent) !important;
+}
+
+/* 5. Habit Reminder Modal */
+.habit-modal-card {
+  max-width: 440px;
+  width: 100%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 16px 48px -8px rgba(0, 0, 0, 0.35);
+  text-align: left;
+}
