@@ -1132,7 +1132,7 @@ textarea.code:not([readonly]), .writing { font-size: 16px; }
 .result-list .bar { width: 100%; }
 .result-list small { color: var(--muted); }
 
-.stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.stat-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
 .stat-tile { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; }
 .stat-tile b { font-family: var(--font-display); font-size: 1.6rem; font-variant-numeric: tabular-nums; }
 .stat-tile span { color: var(--muted); font-size: 0.82rem; }

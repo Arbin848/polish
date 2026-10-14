@@ -19,7 +19,14 @@
       alert('Your browser does not support notifications. Add Słówka to Home Screen to get daily reminders.');
       return false;
     }
-    const perm = await Notification.requestPermission();
+    const perm = await new Promise((resolve) => {
+      try {
+        const p = Notification.requestPermission(resolve);
+        if (p && p.then) p.then(resolve);
+      } catch (e) {
+        resolve('denied');
+      }
+    });
     if (perm === 'granted') {
       localStorage.setItem('slowka-reminder-enabled', 'true');
       H.scheduleNext();
