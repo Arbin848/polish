@@ -564,6 +564,30 @@
         `;
       })()}
 
+      <!-- 🎯 First 7 Days Survival Polish Quick Card -->
+      <section class="card" style="border:1.5px solid var(--accent); background:var(--surface); margin-bottom:14px; padding:16px 18px; border-radius:16px; box-shadow:0 4px 16px -4px var(--shadow);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; color:var(--accent); letter-spacing:0.5px;">⚡ Quick Polish for Work & Life</span>
+          <span style="font-size:0.8rem; background:var(--sunk); padding:2px 8px; border-radius:12px; font-weight:700;">Day 1 Ready</span>
+        </div>
+        <h3 style="margin:0 0 4px; font-size:1.15rem;">First 7 Days Survival · पहिलो ७ दिनमा चाहिने पोलिश</h3>
+        <p style="margin:0 0 12px; font-size:0.88rem; color:var(--muted);" lang="ne">पसल (Żabka/Biedronka), काम (सिफ्ट/सामान) र आपतकालीन कुराकानी सिधै अभ्यास गर्नुहोस्:</p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <button type="button" class="btn compact" data-action="go" data-to="sim.zabka" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
+            🛒 Shopping · किनमेल
+          </button>
+          <button type="button" class="btn compact" data-action="go" data-to="unit.work-intro" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
+            🏭 Work Shifts · काम र सिफ्ट
+          </button>
+          <button type="button" class="btn compact" data-action="go" data-to="sim.paczkomat" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
+            📦 InPost Paczkomat
+          </button>
+          <button type="button" class="btn compact" data-action="go" data-to="sos" style="background:#fee2e2; color:#991b1b; border:1px solid #fecaca; font-size:0.85rem; font-weight:700;">
+            🚨 SOS Pocket Cards
+          </button>
+        </div>
+      </section>
+
       <!-- Big Hero Start Card for Beginners -->
       <section class="hero-start-banner">
         <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
@@ -1045,7 +1069,8 @@
       </header>
       <div class="row start" style="margin-bottom: 8px; gap: 8px;">
         <input class="search" id="dict-q" type="search" placeholder="Search: dom, house, घर…" aria-label="Search the dictionary" value="${esc(S.route.q || '')}" style="flex: 1;">
-        <button type="button" class="dict-filter-chip" id="dict-star-filter" data-action="dict-toggle-stars" title="Show only starred words">⭐ Starred Only</button>
+        <button type="button" class="dict-filter-chip" id="dict-work-filter" data-action="dict-toggle-work" style="border-radius:10px; padding:6px 12px; font-size:0.84rem; cursor:pointer;" title="Show workplace words">🏭 Work Polish</button>
+        <button type="button" class="dict-filter-chip" id="dict-star-filter" data-action="dict-toggle-stars" style="border-radius:10px; padding:6px 12px; font-size:0.84rem; cursor:pointer;" title="Show only starred words">⭐ Starred</button>
       </div>
       <p class="hint" id="dict-count"></p>
       <ul class="entries" id="dict-results"></ul>`;
@@ -1064,6 +1089,7 @@
   }
 
   let dictStarredOnly = false;
+  let dictWorkOnly = false;
   const dictCache = new Map();
   function updateDictionary() {
     const raw = $('#dict-q').value.trim();
@@ -1089,6 +1115,9 @@
 
     if (dictStarredOnly) {
       hits = hits.filter((e) => starredSet.has(e.pl));
+    }
+    if (dictWorkOnly) {
+      hits = hits.filter((e) => e.source && e.source.startsWith('work'));
     }
     const shown = hits.slice(0, 80);
     $('#dict-count').textContent = raw

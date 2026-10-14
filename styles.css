@@ -4379,3 +4379,11 @@ html, body {
 .wotd-pl-row:active {
   transform: scale(0.99);
 }
+
+/* Active State for Dictionary Workplace Filter Chip */
+.dict-filter-chip.active {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  border-color: var(--accent) !important;
+  font-weight: 700 !important;
+}
