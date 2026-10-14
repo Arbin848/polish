@@ -51,7 +51,7 @@
     try { renderPage(); } finally { rendering--; }
   };
   function renderPage() {
-    renderStats();
+    renderStats(); if (S.Auth && S.Auth.renderAuthButton) S.Auth.renderAuthButton();
     renderNav();
     const r = S.route;
     if (r.name === 'unit') renderUnit();
@@ -1331,6 +1331,10 @@
         const theme = el.dataset.theme || 'auto';
         applyTheme(theme);
         renderNav();
+        break;
+      }
+      case 'auth-modal': {
+        if (S.Auth && S.Auth.showModal) S.Auth.showModal();
         break;
       }
       case 'toggle-theme': {
