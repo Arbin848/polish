@@ -87,7 +87,7 @@
               <div class="sos-grid">
                 ${items.map((it) => `
                   <article class="sos-card ${it.urgency === 'critical' ? 'critical' : ''}">
-                    <div class="sos-card-content">
+                    <div class="sos-card-content" style="cursor:pointer;" data-action="sos-fullscreen" data-id="${esc(it.id)}" title="Tap anywhere to show large screen to local speaker">
                       <div class="sos-card-pl" lang="pl">${polish(it.pl)}</div>
                       <div class="sos-card-pron">
                         <span class="pron-latin">${esc(it.pron)}</span>
@@ -173,6 +173,9 @@
       }
       case 'sos-fullscreen': {
         const id = el.dataset.id;
+        const allItems = (window.SLOWKA_SOS || []).flatMap((c) => c.items);
+        const match = allItems.find((x) => x.id === id);
+        if (match && S.speak) S.speak(match.pl, false);
         let found = null;
         for (const cat of (window.SLOWKA_SOS || [])) {
           for (const item of cat.items) {

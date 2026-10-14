@@ -81,6 +81,10 @@
           ${(kind === 'close' && given) ? accentDiffHTML(given, e.pl) : ''}
           ${S.pronHTML(e)}
           ${S.meaningHTML(e)}
+          ${(kind === 'wrong' || kind === 'close') && S.soundHints && S.soundHints(e.pl) ? `
+            <div class="teacher-tip" style="margin-top:8px; font-size:0.85rem; background:rgba(0,0,0,0.06); padding:8px 12px; border-radius:8px; line-height:1.4;">
+              💡 <b>Teacher's note · शिक्षिकाको सुझाव:</b> ${S.soundHints(e.pl)}
+            </div>` : ''}
         </div>
         <div class="row">${S.listenBtn(e.pl, true)}<button class="btn primary" data-action="${next}" data-autofocus><kbd>Enter</kbd> Next</button></div>
       </div>`;
