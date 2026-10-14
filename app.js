@@ -467,6 +467,22 @@
       </li>`;
   }
 
+  
+  const DAILY_PHRASES = [
+    { pl: 'Mogę prosić o pomoc?', en: 'Can I ask for help?', ne: 'म मद्दत माग्न सक्छु?', tip: 'Essential when starting a new job task or looking for something.' },
+    { pl: 'Gdzie to odłożyć?', en: 'Where should I put this?', ne: 'यो कहाँ राख्ने?', tip: 'Most common question in warehouses, shops, and factories.' },
+    { pl: 'Nie ma problemu!', en: 'No problem!', ne: 'केही समस्या छैन!', tip: 'Friendly and polite reply to Polish colleagues and supervisors.' },
+    { pl: 'Zaraz wracam.', en: 'I will be right back.', ne: 'म तुरुन्तै फर्कन्छु।', tip: 'Use when stepping away for a restroom or equipment break.' },
+    { pl: 'Czy to jest gotowe?', en: 'Is this ready?', ne: 'के यो तयार भयो?', tip: 'Useful when checking order status or package sorting.' },
+    { pl: 'Dziękuję bardzo za pomoc!', en: 'Thank you very much for help!', ne: 'मद्दतको लागि धेरै धन्यवाद!', tip: 'Polite phrase that builds great relationships with local staff.' },
+    { pl: 'Miłego dnia!', en: 'Have a nice day!', ne: 'तपाईंको दिन शुभ रहोस्!', tip: 'Standard farewell in shops, buses, and work.' }
+  ];
+
+  function getDailyPhrase() {
+    const day = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+    return DAILY_PHRASES[day % DAILY_PHRASES.length];
+  }
+
   function renderHome() {
     if (!S.COURSE.length) {
       view.innerHTML = '<p class="empty">The course content did not load. Check that the files in the <code>data</code> folder are next to this page.</p>';
@@ -519,6 +535,28 @@
           Install · राख्नुहोस्
         </button>
       </div>
+
+      <!-- 🌟 Today's Essential Polish Phrase -->
+      ${(() => {
+        const dp = getDailyPhrase();
+        return `
+          <div class="wotd-card">
+            <div class="wotd-top">
+              <span class="label">🌟 Phrase of the day · आजको उपयोगी वाक्यांश</span>
+              <button class="btn compact listen" data-action="say" data-text="${esc(dp.pl)}">🔊 Listen</button>
+            </div>
+            <div class="wotd-pl-row">
+              <span class="wotd-pl" lang="pl">${polish(dp.pl)}</span>
+            </div>
+            <div class="wotd-meaning">
+              <b>${esc(dp.en)}</b> · <span lang="ne">${esc(dp.ne)}</span>
+            </div>
+            <div class="wotd-tip">
+              💡 <i>${esc(dp.tip)}</i>
+            </div>
+          </div>
+        `;
+      })()}
 
       <!-- Big Hero Start Card for Beginners -->
       <section class="hero-start-banner">

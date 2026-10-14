@@ -791,6 +791,38 @@
 
   // "Report a mistake" opens a pre-filled GitHub issue in a new tab.
   S.REPO = 'Arbin848/polish';
+  
+  // Star / Bookmark word to 'My words'
+  S.isStarred = (pl) => {
+    if (!pl) return false;
+    const list = Array.isArray(S.progress.mywords) ? S.progress.mywords : [];
+    return list.some(w => S.clean(w.pl) === S.clean(pl));
+  };
+
+  S.toggleStar = (entry) => {
+    if (!entry || !entry.pl) return false;
+    if (!Array.isArray(S.progress.mywords)) S.progress.mywords = [];
+    const k = S.clean(entry.pl);
+    const idx = S.progress.mywords.findIndex(w => S.clean(w.pl) === k);
+    if (idx >= 0) {
+      S.progress.mywords.splice(idx, 1);
+      S.saveProgress();
+      return false; // unstarred
+    } else {
+      S.progress.mywords.push({
+        pl: entry.pl,
+        en: entry.en || '',
+        ne: entry.ne || '',
+        pron: entry.pron || (S.Pron && S.Pron.of ? S.Pron.of(entry.pl).pron : ''),
+        proNe: entry.proNe || (S.Pron && S.Pron.of ? S.Pron.of(entry.pl).proNe : ''),
+        added: Date.now()
+      });
+      S.saveProgress();
+      if (S.MyWords && S.MyWords.register) S.MyWords.register();
+      return true; // starred
+    }
+  };
+
   S.reportLink = (what, where) => {
     const title = `Mistake: ${what}`.slice(0, 120);
     const body = `**Where:** ${where}\n**Text:** ${what}\n\n**What is wrong / what it should be:**\n\n`;

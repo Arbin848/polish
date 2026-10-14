@@ -149,8 +149,9 @@
     if (kind === 'hear') { drawHearCard(e); return; }
     const plFirst = kind === 'see';
     const front = plFirst
-      ? `<span class="label">Polish · पोलिश</span><span class="word" lang="pl">${polish(e.pl)}</span>`
+      ? `<span class="label">Polish · पोलिश</span><span class="word" lang="pl">${polish(e.pl)}</span> ${starBtn}`
       : `<span class="label">Say it in Polish · पोलिशमा भन्नुहोस्</span>${S.meaningHTML(e, 'big')}`;
+    const starBtn = `<button type="button" class="star-card-btn ${S.isStarred(e.pl) ? 'active' : ''}" data-action="star-card" data-pl="${esc(e.pl)}" title="Bookmark to My Words">★</button>`;
     const back = plFirst
       ? `<span class="rule"></span>${S.meaningHTML(e, 'big')}${S.pronHTML(e)}`
       : `<span class="rule"></span><span class="word sm" lang="pl">${polish(e.pl)}</span>${S.pronHTML(e)}`;
@@ -708,6 +709,13 @@
 
   P.action = (a, el) => {
     switch (a) {
+      case 'star-card': {
+        const pl = el.dataset.pl;
+        const entry = ctx.pool.find(x => x.pl === pl) || S.LEXICON.get(pl) || { pl };
+        const nowStarred = S.toggleStar(entry);
+        el.classList.toggle('active', nowStarred);
+        return true;
+      }
       case 'flip': flip(); return true;
       case 'rv-giveup': checkReviewType(true); return true;
       case 'rv-next': nextReviewCard(); return true;
