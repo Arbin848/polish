@@ -98,7 +98,7 @@
                 <div class="sim-options-grid">
                   ${step.options.map((opt, optIdx) => `
                     <button class="sim-option-card" data-action="sim-choose" data-step="${currentStep}" data-opt="${optIdx}">
-                      <div class="sim-opt-pl" lang="pl">${polish(opt.pl)}</div>
+                      <div class="sim-opt-pl-row"><div class="sim-opt-pl" lang="pl">${polish(opt.pl)}</div><span class="sim-copy-icon" data-action="sim-copy" data-text="${esc(opt.pl)}" title="Copy Polish phrase">📋</span></div>
                       <div class="sim-opt-en">${esc(opt.en)}</div>
                       <div class="sim-opt-ne" lang="ne">${esc(opt.ne)}</div>
                     </button>
@@ -174,6 +174,15 @@
             activeTurn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         }, 300);
+        return true;
+      }
+      case 'sim-copy': {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(el.dataset.text || '').then(() => {
+            el.textContent = '✓';
+            setTimeout(() => { el.textContent = '📋'; }, 1500);
+          }).catch(() => {});
+        }
         return true;
       }
       case 'sim-restart': {

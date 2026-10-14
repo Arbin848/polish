@@ -4292,3 +4292,23 @@ html, body {
 .card.flip-in:active {
   transform: scale(0.99);
 }
+
+/* Simulator Option Copy Row */
+.sim-opt-pl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.sim-copy-icon {
+  font-size: 1rem;
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  opacity: 0.6;
+  transition: all 0.15s ease;
+}
+.sim-copy-icon:hover {
+  opacity: 1;
+  background: var(--sunk);
+}

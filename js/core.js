@@ -369,7 +369,13 @@
   // Any practice answer counts toward today's goal and the streak.
   S.logActivity = () => {
     const today = S.dayKey();
-    S.progress.history[today] = (S.progress.history[today] || 0) + 1;
+    const prevCount = S.progress.history[today] || 0;
+    S.progress.history[today] = prevCount + 1;
+    if (prevCount < S.settings.goal && S.progress.history[today] >= S.settings.goal) {
+      if (S.Celebration && S.Celebration.fire) {
+        S.Celebration.fire('goal', { icon: '🎯', title: 'Daily Goal Reached!', titleNe: 'दैनिक लक्ष्य पूरा भयो!' });
+      }
+    }
     if (S.progress.lastDay !== today) {
       if (S.progress.lastDay && S.daysBetween(S.progress.lastDay, today) === 1) {
         S.progress.streak = (S.progress.streak || 0) + 1;
@@ -524,9 +530,16 @@
   }
   // slow: true plays this one item slowly, whatever the Settings say.
   let speakTimer = 0;
+  let lastSpokenText = '';
+  let lastSpokenTime = 0;
   S.speak = (text, slow) => {
     if (!text) return;
-    const isSlow = slow || S.settings.slow;
+    const now = Date.now();
+    // Intelligent auto-slowdown: if tapped again within 3.5s, speak slower so learner catches sounds
+    const repeatQuick = (lastSpokenText === text && (now - lastSpokenTime) < 3500);
+    lastSpokenText = text;
+    lastSpokenTime = now;
+    const isSlow = slow || S.settings.slow || repeatQuick;
     clearTimeout(speakTimer);
     S.stopSpeaking();
     // Safety guard to avoid audio overlapping or rapid double-clicks
