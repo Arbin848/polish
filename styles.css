@@ -408,6 +408,54 @@ h2, h3 { text-wrap: balance; }
   }
 }
 @media (max-width: 899px) {
+  /* Prevent any vertical or horizontal scroll trapping */
+  html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .main-stage {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  /* Fix streak-counter-bar overlapping on narrow mobile screens */
+  .streak-counter-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px 14px !important;
+  }
+  .streak-counter-left {
+    gap: 10px !important;
+  }
+  .streak-share-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  /* Bottom navigation 5-tab balanced fit on narrow phones */
+  .bottom-nav {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    padding: 4px 2px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .bottom-nav button {
+    padding: 4px 1px !important;
+    min-height: 44px !important;
+  }
+  .bottom-nav button span {
+    font-size: 1.15rem !important;
+  }
+  .bottom-nav button small {
+    font-size: 0.62rem !important;
+  }
+
   .sidebar { display: none !important; }
   .top-bar {
     justify-content: space-between;
