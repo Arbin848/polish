@@ -319,6 +319,14 @@
   // Web Audio SFX synthesizer (zero latency, procedural, subtle feedback)
   let audioCtx = null;
   S.playSFX = (type = 'correct') => {
+    // Subtle mobile haptic feedback on physical phone touches
+    try {
+      if (navigator && navigator.vibrate) {
+        if (type === 'correct') navigator.vibrate(18);
+        else if (type === 'wrong') navigator.vibrate([30, 40, 30]);
+        else navigator.vibrate(12);
+      }
+    } catch (e) {}
     if (S.settings.sfx === false) return;
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -532,6 +540,26 @@
   let speakTimer = 0;
   let lastSpokenText = '';
   let lastSpokenTime = 0;
+  
+  // Pre-warm SpeechSynthesis and AudioContext on first user touch to eliminate delay
+  let hasPrewarmed = false;
+  const prewarmAudio = () => {
+    if (hasPrewarmed) return;
+    hasPrewarmed = true;
+    try {
+      if (synth && synth.getVoices) synth.getVoices();
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        if (!audioCtx) audioCtx = new AudioCtx();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+      }
+    } catch (e) {}
+    window.removeEventListener('touchstart', prewarmAudio);
+    window.removeEventListener('pointerdown', prewarmAudio);
+  };
+  window.addEventListener('touchstart', prewarmAudio, { passive: true });
+  window.addEventListener('pointerdown', prewarmAudio, { passive: true });
+
   S.speak = (text, slow) => {
     if (!text) return;
     const now = Date.now();

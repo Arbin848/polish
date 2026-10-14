@@ -563,6 +563,11 @@
         <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
         <h2 class="hero-start-title">${st.started && !st.done ? 'Continue: ' + esc(next.title) : 'Lesson: ' + esc(next.title)}</h2>
         <p class="hero-start-sub" lang="ne">${esc(next.titleNe)} — शिक्षिकासँगै एक-एक शब्द सुन्दै, बोल्दै र अभ्यास गर्दै सिक्नुहोस्। (3-5 मिनेट)</p>
+        ${due > 0 ? `<div class="hero-review-hint" style="background:rgba(0,0,0,0.22); border-radius:10px; padding:8px 12px; font-size:0.88rem; display:flex; align-items:center; gap:8px;">
+          <span>🔄</span>
+          <span><b>${due} ${due === 1 ? 'word' : 'words'} due for review</b> · ${due} शब्द दोहोर्‍याउन बाँकी</span>
+          <button type="button" class="btn compact" data-action="go" data-to="review" style="margin-left:auto; background:#fff; color:#b91c1c; border:0; padding:4px 10px; font-size:0.8rem; font-weight:700;">Review now →</button>
+        </div>` : ''}
         <button type="button" class="btn hero-start-btn" data-action="g-start" data-unit="${next.id}">
           ▶ ${st.started && !st.done ? 'Continue Lesson (' + (st.step + 1) + '/' + st.total + ')' : 'Start Lesson Now · पाठ सुरु गर्नुहोस्'}
         </button>
