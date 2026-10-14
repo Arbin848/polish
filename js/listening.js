@@ -60,7 +60,13 @@
       </header>
       <div class="card compact listen-player">
         <button class="play" data-action="ls-play" aria-label="Play">${S.SPEAKER}</button>
-        <div class="row"><button class="btn" data-action="ls-play" data-slow="1">🐢 Slow · बिस्तारै</button><button class="btn" data-action="ls-stop">■ Stop</button></div>
+        <div class="row">
+          <button class="btn" data-action="ls-play" data-slow="1">🐢 Slow · बिस्तारै</button>
+          <button class="btn" data-action="ls-stop">■ Stop</button>
+          <button class="btn" data-action="ls-loop" style="background:${cur.loop ? 'var(--accent-soft)' : ''}; color:${cur.loop ? 'var(--accent)' : ''}; border-color:${cur.loop ? 'var(--accent)' : ''};">
+            🔁 Continuous · लगातार
+          </button>
+        </div>
         <span class="hint">${cur.plays ? `Played ${cur.plays}×. Listen as many times as you need.` : 'Tap to play. Try to answer after listening once or twice. · एक-दुई पटक सुनेर उत्तर दिनुहोस्।'}</span>
       </div>
       <h3 class="section-h">Questions <span class="ne-sub" lang="ne">प्रश्नहरू</span>${done ? ` <small>${score} / ${t.questions.length}</small>` : ''}</h3>
@@ -96,6 +102,12 @@
 
   L.action = (a, el) => {
     switch (a) {
+      case 'ls-loop': {
+        cur.loop = !cur.loop;
+        if (cur.loop) playAll(cur.t, false);
+        S.render();
+        return true;
+      }
       case 'ls-play': playAll(cur.t, el.dataset.slow === '1'); S.render(); return true;
       case 'ls-stop': S.stopSpeaking(); return true;
       case 'ls-show': cur.show = true; S.render(); return true;
