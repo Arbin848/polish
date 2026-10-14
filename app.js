@@ -1380,18 +1380,44 @@
           window.deferredPrompt.prompt();
           window.deferredPrompt.userChoice.then(() => { window.deferredPrompt = null; });
         } else {
-          let tip = document.getElementById('install-tip-toast');
-          if (!tip) {
-            tip = document.createElement('div');
-            tip.id = 'install-tip-toast';
-            tip.className = 'card compact';
-            tip.style.cssText = 'position:fixed; bottom:70px; left:16px; right:16px; z-index:9999; background:var(--surface); border:2px solid var(--accent); box-shadow:0 8px 30px rgba(0,0,0,0.3); padding:16px; text-align:left;';
-            tip.innerHTML = '<div style="display:flex; justify-content:space-between; align-items:center;"><b>📲 How to Install:</b><button class="btn compact" onclick="this.parentElement.parentElement.remove()">✕</button></div><p style="margin:8px 0; font-size:0.9rem;">• <b>iPhone:</b> Tap Safari Share (⬆) -> "Add to Home Screen"<br>• <b>Android:</b> Tap Chrome menu (⋮) -> "Install App"</p>';
-            document.body.appendChild(tip);
-            setTimeout(() => { if (tip && tip.parentElement) tip.remove(); }, 6000);
+          let modal = document.getElementById('install-modal-overlay');
+          if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'install-modal-overlay';
+            modal.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:99999; display:flex; align-items:center; justify-content:center; padding:16px; backdrop-filter:blur(4px);';
+            modal.innerHTML = `
+              <div class="card" style="max-width:440px; width:100%; text-align:left; padding:24px; background:var(--surface); border:2px solid var(--accent); box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                  <h3 style="margin:0; font-size:1.25rem;">📲 Install Słówka App</h3>
+                  <button type="button" class="btn compact" data-action="close-install-modal" style="font-size:1.1rem; padding:4px 10px;">✕</button>
+                </div>
+                <p style="margin:0 0 14px; font-size:0.92rem; color:var(--muted);" lang="ne">फोनको होम स्क्रिनमा एप जस्तै राख्नुहोस्:</p>
+                <div style="display:flex; flex-direction:column; gap:12px; font-size:0.95rem; line-height:1.4;">
+                  <div style="background:var(--sunk); padding:12px 14px; border-radius:12px;">
+                    <b>🍏 iPhone (Safari):</b><br>
+                    1. तलको <b>Share (शेयर ⬆)</b> आइकन थिच्नुहोस्।<br>
+                    2. थोरै तल सारेर <b>"Add to Home Screen"</b> छान्नुहोस्।
+                  </div>
+                  <div style="background:var(--sunk); padding:12px 14px; border-radius:12px;">
+                    <b>🤖 Android (Chrome):</b><br>
+                    1. माथिको <b>३-डट (⋮)</b> मेनु थिच्नुहोस्।<br>
+                    2. <b>"Install app"</b> वा <b>"Add to Home screen"</b> छान्नुहोस्।
+                  </div>
+                </div>
+                <button type="button" class="btn primary wide" data-action="close-install-modal" style="margin-top:16px; width:100%; justify-content:center;">
+                  बुझें · Got it! ✓
+                </button>
+              </div>
+            `;
+            document.body.appendChild(modal);
           }
         }
-        return true;
+        break;
+      }
+      case 'close-install-modal': {
+        const m = document.getElementById('install-modal-overlay');
+        if (m) m.remove();
+        break;
       }
       case 'star-card': {
         const pl = el.dataset.pl;
