@@ -1,5 +1,7 @@
 // Native-speaker recordings verified.
 window.SLOWKA_AUDIO = {
+  "a": "audio/letter-a-clean.mp3",
+  "mama": "audio/mama-native.mp3",
   "administracja": "audio/administracja-ef7c54.mp3",
   "akord": "audio/akord-8d2379.mp3",
   "alergia": "audio/alergia-9ae3ad.mp3",

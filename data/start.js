@@ -1,7 +1,7 @@
 // Level "Start": alphabet, sounds and reading for absolute beginners.
 
 window.SLOWKA_ALPHABET = [
-  { letter: "A a", name: "a", say: "a", namePron: "a", nameNe: "आ", soundEn: "short 'a' as in 'father'", soundNe: "छोटो 'आ'", example: "auto", exampleEn: "car", exampleNe: "गाडी / कार", pron: "OW-to", proNe: "ˈऔ-तो" },
+  { letter: "A a", name: "a", say: "a", namePron: "a", nameNe: "आ", soundEn: "short 'a' as in 'father'", soundNe: "छोटो 'आ'", example: "mama", exampleEn: "mum / mother", exampleNe: "आमा", pron: "MA-ma", proNe: "ˈमा-मा" },
   { letter: "Ą ą", name: "ą (nasal o)", say: "ą", namePron: "on", nameNe: "ओं", soundEn: "nasal 'on', like French 'bon'", soundNe: "नाकबाट बोलिने 'ओं'", example: "mąż", exampleEn: "husband", exampleNe: "पति", pron: "monsh", proNe: "मोंश्" },
   { letter: "B b", name: "be", say: "be", namePron: "beh", nameNe: "बे", soundEn: "like English b", soundNe: "'ब' जस्तै", example: "brat", exampleEn: "brother", exampleNe: "दाजु / भाइ", pron: "brat", proNe: "ब्रात्" },
   { letter: "C c", name: "ce", say: "ce", namePron: "tseh", nameNe: "त्से", soundEn: "always 'ts' as in 'cats', never k or s", soundNe: "सधैं 'त्स' — 'क' वा 'स' होइन", example: "co", exampleEn: "what", exampleNe: "के", pron: "tso", proNe: "त्सो" },
