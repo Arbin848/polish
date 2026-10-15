@@ -484,7 +484,15 @@
   S.canSpeak = !!synth || Object.keys(S.AUDIO).length > 0 || Object.keys(S.TTS).length > 0;
   let polishVoice = null;
   function findVoice() {
-    try { polishVoice = synth.getVoices().find((v) => /^pl\b/i.test(v.lang)) || null; } catch (e) { polishVoice = null; }
+    try {
+      const voices = synth.getVoices ? synth.getVoices() : [];
+      const plVoices = voices.filter((v) => /^pl\b/i.test(v.lang));
+      if (!plVoices.length) { polishVoice = null; return; }
+      // Prioritize natural neural / Google / premium Polish voices over robotic low-res synthesizers
+      polishVoice = plVoices.find((v) => /natural|premium|neural|google|siri|ewa|zosia|jan|marek/i.test(v.name)) || plVoices[0];
+    } catch (e) {
+      polishVoice = null;
+    }
   }
   if (synth) {
     findVoice();
@@ -516,6 +524,7 @@
       }
       const audio = new Audio(src);
       current = audio;
+      audio.volume = 1.0;
       audio.playbackRate = isSlow ? 0.75 : 1;
       audio.onplay = () => document.body.classList.add('audio-playing');
       audio.onended = () => {
@@ -627,6 +636,8 @@
       const cleanText = String(text).replace(/…/g, '').replace(/\s\/\s/g, ', ').replace(/___/g, '…');
       const u = new SpeechSynthesisUtterance(cleanText);
       u.lang = 'pl-PL';
+      u.volume = 1.0;
+      if (!polishVoice) findVoice();
       if (polishVoice) u.voice = polishVoice;
       u.rate = isSlow ? 0.6 : 0.88;
       if (pitch) u.pitch = pitch;
