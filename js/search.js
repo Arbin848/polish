@@ -202,7 +202,17 @@
       overlay.setAttribute('aria-modal', 'true');
       overlay.setAttribute('aria-label', 'Search dictionary, lessons, and Poland guide');
       overlay.addEventListener('click', (ev) => {
-        if (ev.target === overlay) Search.close();
+        if (ev.target === overlay) {
+          Search.close();
+          return;
+        }
+        const closeBtn = ev.target.closest('[data-action="close-search"]');
+        if (closeBtn) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          Search.close();
+          return;
+        }
       });
       document.body.appendChild(overlay);
     }
@@ -233,7 +243,7 @@
           <div class="search-input-wrap">
             <span class="search-mag-icon" aria-hidden="true">🔍</span>
             <input type="search" id="search-modal-input" class="search-modal-input" placeholder="Search Polish, English, or Nepali (e.g., dzień, contract, काम)..." value="${esc(query)}" autocomplete="off" spellcheck="false">
-            <button type="button" class="search-clear-btn" data-action="search-clear" title="Clear search input">✕</button><kbd class="search-esc-kbd" title="Press Escape to close">ESC</kbd>
+            <button type="button" class="search-clear-btn" data-action="search-clear" title="Clear search input" aria-label="Clear text" style="display:${query ? 'inline-flex' : 'none'};">✕</button><button type="button" class="search-close-btn" data-action="close-search" title="Close search (ESC)" aria-label="Close search" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:var(--surface); border:1px solid var(--line); font-size:1.1rem; line-height:1; color:var(--ink); cursor:pointer; font-weight:700; margin-left:6px; flex-shrink:0;">✕</button>
           </div>
           <div class="search-filters" role="group" aria-label="Search filter">
             <button class="search-filter-chip ${activeFilter === 'all' ? 'active' : ''}" data-action="search-filter" data-filter="all">All</button>
@@ -381,6 +391,8 @@
       case 'search-clear': {
         const inp = document.getElementById('search-modal-input');
         if (inp) { inp.value = ''; inp.focus(); }
+        query = '';
+        el.style.display = 'none';
         doSearch('');
         const listEl = document.getElementById('search-results-list');
         if (listEl) listEl.innerHTML = renderResultsList();
