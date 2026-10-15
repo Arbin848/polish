@@ -509,32 +509,33 @@
   let player = null;
   let fileToken = 0;
   function playFile(src, isSlow, onEnd, onFail) {
-    // Offline and never saved: use the device voice straight away, without a failed request.
-    if (navigator.onLine === false && window.caches && !playFile.checked) {
-      const t = fileToken + 1;
-      caches.match(new URL(src, location.href).href).then((hit) => {
-        if (t !== fileToken + 1) return; // something else started meanwhile
-        if (hit) { playFile.checked = true; try { playFile(src, isSlow, onEnd, onFail); } finally { playFile.checked = false; } } else if (onFail) onFail();
-      }).catch(() => { if (onFail) onFail(); });
-      return;
-    }
-    if (!player) { try { player = new Audio(); } catch (e) { if (onFail) onFail(); return; } }
     const t = ++fileToken;
-    current = player;
-    player.onended = () => {
-      document.body.classList.remove('audio-playing');
-      if (t === fileToken && onEnd) onEnd();
-    };
-    player.src = src;
-    player.defaultPlaybackRate = isSlow ? 0.75 : 1;
-    player.playbackRate = isSlow ? 0.75 : 1;
-    player.preservesPitch = true;
-    player.play().then(() => {
-      document.body.classList.add('audio-playing');
-    }).catch((err) => {
-      document.body.classList.remove('audio-playing');
-      if (err.name !== 'AbortError' && t === fileToken && onFail) onFail();
-    });
+    try {
+      if (current) {
+        try { current.pause(); current.currentTime = 0; } catch (e) {}
+      }
+      const audio = new Audio(src);
+      current = audio;
+      audio.playbackRate = isSlow ? 0.75 : 1;
+      audio.onplay = () => document.body.classList.add('audio-playing');
+      audio.onended = () => {
+        document.body.classList.remove('audio-playing');
+        if (t === fileToken && onEnd) onEnd();
+      };
+      audio.onerror = () => {
+        document.body.classList.remove('audio-playing');
+        if (t === fileToken && onFail) onFail();
+      };
+      const p = audio.play();
+      if (p && p.catch) {
+        p.catch((err) => {
+          document.body.classList.remove('audio-playing');
+          if (t === fileToken && onFail) onFail();
+        });
+      }
+    } catch (e) {
+      if (onFail) onFail();
+    }
   }
   // slow: true plays this one item slowly, whatever the Settings say.
   let speakTimer = 0;
