@@ -1,7 +1,7 @@
 // Offline support: keeps the whole course on the device after the first visit.
 // Pages and data come from the cache at once and are refreshed in the background.
 // Native recordings live in their own cache, kept across app updates.
-const CACHE = 'slowka-v26-clean-audio-manifest';
+const CACHE = 'slowka-v27-alphabet-clarity';
 const AUDIO_CACHE = 'slowka-audio-v1';
 const FONT_CACHE = 'slowka-fonts-v1'; // kept across updates, like recordings
 const SHELL = [

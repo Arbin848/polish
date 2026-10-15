@@ -21,7 +21,7 @@ window.SLOWKA_ALPHABET = [
   { letter: "N n", name: "en", say: "en", namePron: "en", nameNe: "एन्", soundEn: "like English n", soundNe: "'न' जस्तै", example: "nos", exampleEn: "nose", exampleNe: "नाक", pron: "nos", proNe: "नोस्" },
   { letter: "Ń ń", name: "eń", say: "eń", namePron: "eny", nameNe: "एन्य्", soundEn: "soft 'ny' as in 'canyon'", soundNe: "'न्य' (नरम न)", example: "koń", exampleEn: "horse", exampleNe: "घोडा", pron: "kony", proNe: "कोन्य्" },
   { letter: "O o", name: "o", say: "o", namePron: "o", nameNe: "ओ", soundEn: "short 'o' as in British 'hot'", soundNe: "छोटो 'ओ'", example: "okno", exampleEn: "window", exampleNe: "झ्याल", pron: "OK-no", proNe: "ˈओक्-नो" },
-  { letter: "Ó ó", name: "o kreskowane", say: "o kreskowane", namePron: "o kres-ko-VA-neh", nameNe: "ओ क्रेस्-को-ˈभा-ने", soundEn: "exactly like u: 'oo' as in 'book'", soundNe: "'उ' — u सँग ठ्याक्कै उस्तै", example: "mój", exampleEn: "my (m)", exampleNe: "मेरो", pron: "mooy", proNe: "मुय्" },
+  { letter: "Ó ó", name: "o kreskowane", say: "ó", namePron: "o kres-ko-VA-neh", nameNe: "ओ क्रेस्-को-ˈभा-ने", soundEn: "exactly like u: 'oo' as in 'book'", soundNe: "'उ' — u सँग ठ्याक्कै उस्तै", example: "mój", exampleEn: "my (m)", exampleNe: "मेरो", pron: "mooy", proNe: "मुय्" },
   { letter: "P p", name: "pe", say: "pe", namePron: "peh", nameNe: "पे", soundEn: "like English p, without a puff of air", soundNe: "'प' जस्तै ('फ' होइन)", example: "pies", exampleEn: "dog", exampleNe: "कुकुर", pron: "pyes", proNe: "प्येस्" },
   { letter: "R r", name: "er", say: "er", namePron: "er", nameNe: "एर्", soundEn: "rolled r, the tongue taps", soundNe: "'र' जस्तै (जिब्रो थर्काएर)", example: "ryba", exampleEn: "fish", exampleNe: "माछा", pron: "RI-ba", proNe: "ˈरि-बा" },
   { letter: "S s", name: "es", say: "es", namePron: "es", nameNe: "एस्", soundEn: "always 's' as in 'sun', never z", soundNe: "सधैं 'स'", example: "syn", exampleEn: "son", exampleNe: "छोरा", pron: "sin", proNe: "सिन्" },
@@ -31,7 +31,7 @@ window.SLOWKA_ALPHABET = [
   { letter: "W w", name: "wu", say: "wu", namePron: "voo", nameNe: "भु", soundEn: "like English v", soundNe: "'भ/व' (अंग्रेजी v जस्तै)", example: "woda", exampleEn: "water", exampleNe: "पानी", pron: "VO-da", proNe: "ˈभो-दा" },
   { letter: "Y y", name: "igrek", say: "igrek", namePron: "EE-grek", nameNe: "ˈइ-ग्रेक्", soundEn: "like 'i' in 'bit', between i and u", soundNe: "'इ' र 'उ' को बीचको आवाज", example: "my", exampleEn: "we", exampleNe: "हामी", pron: "mi", proNe: "मि" },
   { letter: "Z z", name: "zet", say: "zet", namePron: "zet", nameNe: "ज़ेत्", soundEn: "'z' as in 'zoo'", soundNe: "'ज़' (अंग्रेजी z जस्तै)", example: "zupa", exampleEn: "soup", exampleNe: "सुप", pron: "ZOO-pa", proNe: "ˈज़ु-पा" },
-  { letter: "Ź ź", name: "ziet", say: "ziet", namePron: "zhyet", nameNe: "झ्येत्", soundEn: "soft 'zh': smile, middle of the tongue up", soundNe: "नरम 'झ' (ज़्य जस्तो)", example: "źle", exampleEn: "badly", exampleNe: "नराम्रो गरी", pron: "zhleh", proNe: "झ्ले" },
+  { letter: "Ź ź", name: "ziet", say: "źet", namePron: "zhyet", nameNe: "झ्येत्", soundEn: "soft 'zh': smile, middle of the tongue up", soundNe: "नरम 'झ' (ज़्य जस्तो)", example: "źle", exampleEn: "badly", exampleNe: "नराम्रो गरी", pron: "zhleh", proNe: "झ्ले" },
   { letter: "Ż ż", name: "żet", say: "żet", namePron: "zhet", nameNe: "झेत्", soundEn: "'s' in 'pleasure' (same as rz)", soundNe: "'झ' (अंग्रेजी pleasure को s जस्तै; rz सँग उस्तै)", example: "żona", exampleEn: "wife", exampleNe: "श्रीमती", pron: "ZHO-na", proNe: "ˈझो-ना" }
 ];
 
