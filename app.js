@@ -1404,7 +1404,16 @@
         renderUnit();
         $('.tabs').scrollIntoView({ block: 'nearest' });
         break;
-      case 'say': S.speak(el.dataset.text, el.dataset.slow === '1'); break;
+      case 'say': {
+        const now = Date.now();
+        if (S._lastSayTime && (now - S._lastSayTime) < 300) {
+          // ignore accidental double click / touch bounce
+          break;
+        }
+        S._lastSayTime = now;
+        S.speak(el.dataset.text, el.dataset.slow === '1');
+        break;
+      }
       case 'abc-play': {
         // Each letter: its name, then the example word.
         const lines = [];
