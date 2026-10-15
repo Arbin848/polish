@@ -1416,12 +1416,6 @@
         break;
       }
       case 'say': {
-        const now = Date.now();
-        if (S._lastSayTime && (now - S._lastSayTime) < 300) {
-          // ignore accidental double click / touch bounce
-          break;
-        }
-        S._lastSayTime = now;
         S.speak(el.dataset.text, el.dataset.slow === '1');
         break;
       }
