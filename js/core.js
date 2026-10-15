@@ -547,7 +547,10 @@
     if (hasPrewarmed) return;
     hasPrewarmed = true;
     try {
-      if (synth && synth.getVoices) synth.getVoices();
+      if (synth) {
+        if (synth.resume) synth.resume();
+        if (synth.getVoices) { synth.getVoices(); findVoice(); }
+      }
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (AudioCtx) {
         if (!audioCtx) audioCtx = new AudioCtx();
@@ -581,12 +584,13 @@
     }
     clearTimeout(speakTimer);
     S.stopSpeaking();
-    // Safety guard to avoid audio overlapping or rapid double-clicks
-    speakTimer = setTimeout(() => {
-      const src = S.audioFile(text);
-      if (src) { playFile(src, isSlow, null, () => tts(text, isSlow)); return; }
+    // Execute synchronously to preserve mobile touch gesture autoplay permission
+    const src = S.audioFile(text);
+    if (src) {
+      playFile(src, isSlow, null, () => tts(text, isSlow));
+    } else {
       tts(text, isSlow);
-    }, 20);
+    }
   };
   // Read several lines in a row: recorded files where they exist, the device voice for the rest
   // (each speaker then gets a slightly different pitch).
@@ -634,6 +638,7 @@
       u.onend = finish;
       u.onerror = finish;
       speaking = u; // keep a reference, or Chrome may forget the utterance and never call onend
+      if (synth.paused && synth.resume) synth.resume();
       synth.speak(u);
     } catch (e) { if (onEnd) onEnd(); }
   }
