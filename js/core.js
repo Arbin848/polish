@@ -484,15 +484,7 @@
   S.canSpeak = !!synth || Object.keys(S.AUDIO).length > 0 || Object.keys(S.TTS).length > 0;
   let polishVoice = null;
   function findVoice() {
-    try {
-      const voices = synth.getVoices ? synth.getVoices() : [];
-      const plVoices = voices.filter((v) => /^pl\b/i.test(v.lang));
-      if (!plVoices.length) { polishVoice = null; return; }
-      // Prioritize natural neural / Google / premium Polish voices over robotic low-res synthesizers
-      polishVoice = plVoices.find((v) => /natural|premium|neural|google|siri|ewa|zosia|jan|marek/i.test(v.name)) || plVoices[0];
-    } catch (e) {
-      polishVoice = null;
-    }
+    try { polishVoice = synth.getVoices().find((v) => /^pl\b/i.test(v.lang)) || null; } catch (e) { polishVoice = null; }
   }
   if (synth) {
     findVoice();
@@ -524,7 +516,6 @@
       }
       const audio = new Audio(src);
       current = audio;
-      audio.volume = 1.0;
       audio.playbackRate = isSlow ? 0.75 : 1;
       audio.onplay = () => document.body.classList.add('audio-playing');
       audio.onended = () => {
@@ -636,8 +627,6 @@
       const cleanText = String(text).replace(/…/g, '').replace(/\s\/\s/g, ', ').replace(/___/g, '…');
       const u = new SpeechSynthesisUtterance(cleanText);
       u.lang = 'pl-PL';
-      u.volume = 1.0;
-      if (!polishVoice) findVoice();
       if (polishVoice) u.voice = polishVoice;
       u.rate = isSlow ? 0.6 : 0.88;
       if (pitch) u.pitch = pitch;
@@ -815,10 +804,9 @@
   S.slowBtn = (text) => (S.canSpeak ? `<button type="button" class="btn listen slow" data-action="say" data-slow="1" data-text="${esc(text)}" title="Play slowly at 0.75× speed with preserved pitch">${S.SPEAKER} Slow (0.75×) <span lang="ne">बिस्तारै</span></button>` : '');
   S.listenBtn = (text, big) => {
     if (!S.canSpeak) return '';
-    if (big) {
-      return `<button type="button" class="btn listen" data-action="say" data-text="${esc(text)}">${S.SPEAKER} Listen <span lang="ne">सुन्नुहोस्</span></button><button type="button" class="btn listen slow" data-action="say" data-slow="1" data-text="${esc(text)}" title="Slow speed (0.7x)">🐢 Slow <span lang="ne">बिस्तारै</span></button>`;
-    }
-    return `<div class="listen-btn-group" style="display:inline-flex; align-items:center; gap:2px;"><button type="button" class="icon-btn" data-action="say" data-text="${esc(text)}" aria-label="Listen to ${esc(text)}" title="Normal speed">${S.SPEAKER}</button><button type="button" class="icon-btn slow-icon-btn" data-action="say" data-slow="1" data-text="${esc(text)}" aria-label="Slow pronunciation of ${esc(text)}" title="Slow speed · बिस्तारै" style="font-size:0.95rem; padding:4px 6px;">🐢</button></div>`;
+    return big
+      ? `<button type="button" class="btn listen" data-action="say" data-text="${esc(text)}">${S.SPEAKER} Listen <span lang="ne">सुन्नुहोस्</span></button>${S.slowBtn(text)}`
+      : `<button type="button" class="icon-btn" data-action="say" data-text="${esc(text)}" aria-label="Listen to ${esc(text)}">${S.SPEAKER}</button>`;
   };
   S.boxMeter = (e) => {
     const b = S.boxOf(e);
