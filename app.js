@@ -887,7 +887,12 @@
         ${paragraphs}
         ${tables}
         ${alphabet}
-        <h3>Words <span class="ne-sub" lang="ne">शब्दहरू</span> <small>${words.length}</small></h3>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:20px; margin-bottom:12px;">
+          <h3 style="margin:0;">Words <span class="ne-sub" lang="ne">शब्दहरू</span> <small>${words.length}</small></h3>
+          <button type="button" class="btn compact" data-action="toggle-mask-meanings" style="font-size:0.82rem; border-radius:16px; padding:4px 12px; background:${S.settings.maskMeanings ? 'var(--accent)' : 'var(--surface)'}; color:${S.settings.maskMeanings ? '#fff' : 'inherit'}; border:1px solid var(--line);">
+            ${S.settings.maskMeanings ? '👁️ Show All Translations · सबै देखाउनुहोस्' : '🙈 Test Yourself (Flashcard) · परीक्षण मोड'}
+          </button>
+        </div>
         <ul class="entries">${words.map(S.entryRow).join('')}</ul>
         ${phrases.length ? `<h3>Sentences <span class="ne-sub" lang="ne">वाक्यहरू</span> <small>${phrases.length}</small></h3><ul class="entries">${phrases.map(S.entryRow).join('')}</ul>` : ''}
         ${dialogue}
@@ -1404,6 +1409,12 @@
         renderUnit();
         $('.tabs').scrollIntoView({ block: 'nearest' });
         break;
+      case 'toggle-mask-meanings': {
+        S.settings.maskMeanings = !S.settings.maskMeanings;
+        S.saveSettings();
+        renderUnit();
+        break;
+      }
       case 'say': {
         const now = Date.now();
         if (S._lastSayTime && (now - S._lastSayTime) < 300) {

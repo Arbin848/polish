@@ -804,9 +804,10 @@
   S.slowBtn = (text) => (S.canSpeak ? `<button type="button" class="btn listen slow" data-action="say" data-slow="1" data-text="${esc(text)}" title="Play slowly at 0.75× speed with preserved pitch">${S.SPEAKER} Slow (0.75×) <span lang="ne">बिस्तारै</span></button>` : '');
   S.listenBtn = (text, big) => {
     if (!S.canSpeak) return '';
-    return big
-      ? `<button type="button" class="btn listen" data-action="say" data-text="${esc(text)}">${S.SPEAKER} Listen <span lang="ne">सुन्नुहोस्</span></button>${S.slowBtn(text)}`
-      : `<button type="button" class="icon-btn" data-action="say" data-text="${esc(text)}" aria-label="Listen to ${esc(text)}">${S.SPEAKER}</button>`;
+    if (big) {
+      return `<button type="button" class="btn listen" data-action="say" data-text="${esc(text)}">${S.SPEAKER} Listen <span lang="ne">सुन्नुहोस्</span></button><button type="button" class="btn listen slow" data-action="say" data-slow="1" data-text="${esc(text)}" title="Slow speed (0.7x)">🐢 Slow <span lang="ne">बिस्तारै</span></button>`;
+    }
+    return `<div class="listen-btn-group" style="display:inline-flex; align-items:center; gap:2px;"><button type="button" class="icon-btn" data-action="say" data-text="${esc(text)}" aria-label="Listen to ${esc(text)}" title="Normal speed">${S.SPEAKER}</button><button type="button" class="icon-btn slow-icon-btn" data-action="say" data-slow="1" data-text="${esc(text)}" aria-label="Slow pronunciation of ${esc(text)}" title="Slow speed · बिस्तारै" style="font-size:0.95rem; padding:4px 6px;">🐢</button></div>`;
   };
   S.boxMeter = (e) => {
     const b = S.boxOf(e);
