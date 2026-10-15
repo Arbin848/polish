@@ -616,49 +616,18 @@
     document.body.classList.remove('audio-playing');
     try { if (synth) synth.cancel(); if (current) { fileToken++; current.onended = null; current.pause(); } } catch (e) { /* ignore */ }
   };
-  // Stream online native Polish audio when mobile device lacks Polish TTS
-  function playOnlineStream(text, isSlow, onEnd) {
-    try {
-      const clean = encodeURIComponent(String(text).trim());
-      const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${clean}&tl=pl&total=1&idx=0&client=tw-ob`;
-      if (!player) { try { player = new Audio(); } catch (e) { if (onEnd) onEnd(); return; } }
-      const t = ++fileToken;
-      current = player;
-      player.onended = () => {
-        document.body.classList.remove('audio-playing');
-        if (t === fileToken && onEnd) onEnd();
-      };
-      player.onerror = () => {
-        document.body.classList.remove('audio-playing');
-        if (t === fileToken && onEnd) onEnd();
-      };
-      player.src = url;
-      player.defaultPlaybackRate = isSlow ? 0.75 : 1;
-      player.playbackRate = isSlow ? 0.75 : 1;
-      player.preservesPitch = true;
-      player.play().then(() => {
-        document.body.classList.add('audio-playing');
-      }).catch(() => {
-        document.body.classList.remove('audio-playing');
-        if (onEnd) onEnd();
-      });
-    } catch (e) {
-      if (onEnd) onEnd();
-    }
-  }
-
   function tts(text, isSlow, pitch, onEnd) {
-    // If device has no speech synthesis OR no Polish voice installed (common on phones outside Poland),
-    // use streaming native Polish audio so alphabet letters and missing words play crystal-clear!
-    if (!synth || (!polishVoice && synth.getVoices && synth.getVoices().length > 0 && !synth.getVoices().some(v => /^pl\b/i.test(v.lang)))) {
-      playOnlineStream(text, isSlow, onEnd);
-      return;
-    }
+    if (!synth) { if (onEnd) onEnd(); return; }
     try {
-      const u = new SpeechSynthesisUtterance(String(text).replace(/…/g, '').replace(/\s\/\s/g, ', ').replace(/___/g, '…'));
+      if (!polishVoice && synth.getVoices) {
+        const voices = synth.getVoices();
+        polishVoice = voices.find((v) => /^pl/i.test(v.lang)) || null;
+      }
+      const cleanText = String(text).replace(/…/g, '').replace(/\s\/\s/g, ', ').replace(/___/g, '…');
+      const u = new SpeechSynthesisUtterance(cleanText);
       u.lang = 'pl-PL';
       if (polishVoice) u.voice = polishVoice;
-      u.rate = isSlow ? 0.55 : 0.85;
+      u.rate = isSlow ? 0.6 : 0.88;
       if (pitch) u.pitch = pitch;
       let done = false;
       const finish = () => {
@@ -669,20 +638,18 @@
           if (onEnd) onEnd();
         }
       };
-      const timer = setTimeout(finish, 2500 + (String(text).length * 110) / u.rate);
+      const timer = setTimeout(finish, 2000 + (cleanText.length * 90) / u.rate);
       u.onstart = () => document.body.classList.add('audio-playing');
       u.onend = finish;
-      u.onerror = () => {
-        // Fallback to online stream if device TTS fails
-        playOnlineStream(text, isSlow, finish);
-      };
+      u.onerror = finish;
       speaking = u;
       if (synth.paused && synth.resume) synth.resume();
       synth.speak(u);
     } catch (e) {
-      playOnlineStream(text, isSlow, onEnd);
+      if (onEnd) onEnd();
     }
   }
+
   let speaking = null;
 
   // Speech recognition (Chrome, Edge, Safari). The browser does the listening; the app only compares text.

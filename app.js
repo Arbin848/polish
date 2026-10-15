@@ -944,7 +944,7 @@
       <div class="letters">${S.ALPHABET.map((a) => `
       <div class="letter">
         <div class="letter-top">
-          <span class="glyph" lang="pl">${polish(a.letter)}</span>
+          <button type="button" class="glyph-btn" data-action="say" data-text="${esc(a.say)}" style="background:none; border:none; padding:0; text-align:left; cursor:pointer;" title="Listen to letter"><span class="glyph" lang="pl">${polish(a.letter)}</span></button>
           ${a.say ? `<button type="button" class="name-chip" data-action="say" data-text="${esc(a.say)}" title="Hear the name of the letter" aria-label="Hear the letter ${esc(a.say)}">${S.SPEAKER}<span class="name-pl" lang="pl">${polish(a.say)}</span></button>` : ''}
         </div>
         ${a.namePron ? `<span class="letter-name"><span class="label">Name · नाम</span>${pronPair(a.namePron, a.nameNe)}</span>` : ''}
@@ -956,7 +956,7 @@
       <p class="hint">These pairs are always read as one sound. · यी जोडी सधैं एउटै आवाजमा पढिन्छन्।</p>
       <div class="letters">${S.LETTER_PAIRS.map((a) => `
       <div class="letter">
-        <div class="letter-top"><span class="glyph" lang="pl">${polish(a.letters)}</span></div>
+        <div class="letter-top"><button type="button" class="glyph-btn" data-action="say" data-text="${esc(a.example)}" style="background:none; border:none; padding:0; text-align:left; cursor:pointer;" title="Listen to sound"><span class="glyph" lang="pl">${polish(a.letters)}</span></button></div>
         ${soundLines(a)}
         ${exampleHTML(a)}
       </div>`).join('')}</div>` : ''}`;
