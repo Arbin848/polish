@@ -512,16 +512,14 @@
     ].filter(Boolean);
 
     view.innerHTML = `
-      <!-- ⚡ Offline Ready Badge -->
-      <div style="display:flex; align-items:center; gap:6px; font-size:0.8rem; color:#15803d; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:20px; padding:4px 12px; margin-bottom:8px; width:fit-content;">
-        <span style="font-size:0.9rem;">⚡</span>
-        <b>100% Offline Ready</b> · <span lang="ne">इन्टरनेट बिना पनि चल्छ</span>
-      </div>
-
-      <!-- 🔥 Daily Streak & Share Bar -->
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <button type="button" class="btn compact" data-action="habit-modal" style="font-size:0.8rem; background:transparent; border:1px solid var(--line); border-radius:20px; padding:3px 10px;">
-          ⏰ Daily Reminder · सम्झना सेट गर्नुहोस्
+      <!-- Quick Status Strip -->
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; font-size:0.82rem;">
+        <div style="display:flex; align-items:center; gap:6px; color:#15803d; background:var(--sunk); border:1px solid var(--line); border-radius:14px; padding:4px 10px;">
+          <span>⚡</span>
+          <span><b>100% Offline</b> · <span lang="ne">इन्टरनेट बिना चल्छ</span></span>
+        </div>
+        <button type="button" class="btn compact" data-action="habit-modal" style="font-size:0.8rem; border-radius:14px; padding:4px 10px;">
+          ⏰ Set Reminder · सम्झना
         </button>
       </div>
       <div class="streak-counter-bar">
