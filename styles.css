@@ -5171,6 +5171,9 @@ button, .btn, .icon-btn, .option, a, input, select {
 }
 
 /* Floating SOS / Workplace Phrasebook Trigger Button */
+.page-sos .floating-sos-btn {
+  display: none !important;
+}
 .floating-sos-btn {
   position: fixed;
   bottom: calc(76px + env(safe-area-inset-bottom, 0px));

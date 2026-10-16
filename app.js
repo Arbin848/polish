@@ -51,6 +51,7 @@
     try { renderPage(); } finally { rendering--; }
   };
   function renderPage() {
+    document.body.className = document.body.className.replace(/\bpage-[\w-]+\b/g, '').trim() + ' page-' + (S.route.name || 'home');
     renderStats(); if (S.Auth && S.Auth.renderAuthButton) S.Auth.renderAuthButton();
     renderNav();
     const r = S.route;
