@@ -24,6 +24,21 @@
     const foldQ = S.fold ? S.fold(query) : cleanQ;
     const list = [];
 
+    // Phonetic normalization for learners searching by approximate sound (e.g., sh -> sz, ch -> cz, w -> v, etc.)
+    const phoneticNorm = (s) => (s || '')
+      .toLowerCase()
+      .replace(/rz|ż/g, 'z')
+      .replace(/sz|ś/g, 's')
+      .replace(/cz|ć/g, 'c')
+      .replace(/dż|dź/g, 'dz')
+      .replace(/ch/g, 'h')
+      .replace(/ł/g, 'w')
+      .replace(/ą/g, 'on')
+      .replace(/ę/g, 'en')
+      .replace(/ó/g, 'u');
+
+    const normQ = phoneticNorm(cleanQ);
+
     // 1. Search vocabulary entries
     if (activeFilter === 'all' || activeFilter === 'vocab') {
       for (const e of S.ENTRIES) {
@@ -34,13 +49,15 @@
         const enMatch = (e.en || '').toLowerCase().includes(cleanQ);
         const neMatch = (e.ne || '').includes(query);
         const pronMatch = (e.pron || '').toLowerCase().includes(cleanQ) || (e.proNe || '').includes(query);
-        if (plMatch || enMatch || neMatch || pronMatch) {
+        const phonMatch = normQ.length >= 3 && phoneticNorm(plLower).includes(normQ);
+
+        if (plMatch || enMatch || neMatch || pronMatch || phonMatch) {
           const unit = e.source ? S.UNIT.get(e.source) : null;
           const level = unit ? unit.level : (e.level || '');
           const unitId = unit ? unit.id : (e.source && !['guide', 'mine', 'reading'].includes(e.source) ? e.source : null);
           const isExact = plLower === cleanQ || plFold === foldQ;
           const isPrefix = plLower.startsWith(cleanQ) || plFold.startsWith(foldQ);
-          const score = isExact ? 100 : isPrefix ? 60 : (plMatch ? 40 : 20);
+          const score = isExact ? 100 : isPrefix ? 60 : (plMatch ? 40 : phonMatch ? 30 : 20);
 
           list.push({
             type: 'word',

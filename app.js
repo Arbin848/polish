@@ -523,16 +523,39 @@
         </button>
       </div>
       <div class="streak-counter-bar">
-        <div class="streak-counter-left">
-          <span class="streak-flame-icon">🔥</span>
-          <div class="streak-counter-text">
-            <b>${S.currentStreak() || 1} Day Streak · ${S.currentStreak() || 1} दिन लगातार!</b>
-            <small>🧠 ${Object.keys(S.progress.items).length} words practiced (${Object.keys(S.progress.items).length} शब्द सिकियो)</small>
+        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:12px;">
+          <div class="streak-counter-left">
+            <span class="streak-flame-icon">🔥</span>
+            <div class="streak-counter-text">
+              <b>${S.currentStreak() || 1} Day Streak · ${S.currentStreak() || 1} दिन लगातार!</b>
+              <small>🧠 ${Object.keys(S.progress.items).length} words practiced (${Object.keys(S.progress.items).length} शब्द सिकियो)</small>
+            </div>
           </div>
+          <button type="button" class="btn streak-share-btn" data-action="share-app" title="Share with Nepali friends on WhatsApp">
+            📲 Share · पठाउनुहोस्
+          </button>
         </div>
-        <button type="button" class="btn streak-share-btn" data-action="share-app" title="Share with Nepali friends on WhatsApp">
-          📲 Share · साथीलाई पठाउनुहोस्
-        </button>
+        <div class="streak-7day-row" aria-label="Last 7 days study consistency">
+          ${(() => {
+            const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const dayNamesNe = ['सोम', 'मङ्गल', 'बुध', 'बिही', 'शुक्र', 'शनि', 'आइत'];
+            const out = [];
+            for (let i = 6; i >= 0; i--) {
+              const k = S.addDays(-i);
+              const count = S.progress.history[k] || 0;
+              const d = new Date(k + 'T12:00:00Z');
+              const dayIdx = (d.getUTCDay() + 6) % 7; // Mon=0 .. Sun=6
+              const isToday = i === 0;
+              out.push(`
+                <div class="streak-day-cell ${count > 0 ? 'active' : ''} ${isToday ? 'today' : ''}" title="${k}: ${count} reviews">
+                  <span class="streak-day-name">${dayNames[dayIdx]}</span>
+                  <span class="streak-day-icon">${count > 0 ? '🔥' : '·'}</span>
+                </div>
+              `);
+            }
+            return out.join('');
+          })()}
+        </div>
       </div>
 
       <!-- Install to Phone Banner -->

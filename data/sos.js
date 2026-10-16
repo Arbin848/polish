@@ -157,5 +157,70 @@ window.SLOWKA_SOS = [
         urgency: "critical"
       }
     ]
+  },
+  {
+    id: "office",
+    category: "Immigration & Urząd (Office)",
+    categoryNe: "अध्यागमन र सरकारी कार्यालय (कागजात)",
+    icon: "📄",
+    items: [
+      {
+        id: "sos-residence-card",
+        pl: "Dzień dobry, przyszedłem odebrać kartę pobytu / decyzję.",
+        en: "Good morning, I came to collect my residence card (karta pobytu) / decision.",
+        ne: "नमस्ते, म मेरो कार्ड (karta pobytu) / निर्णय लिन आएको हुँ।",
+        pron: "DZYEN DOB-ri, pshi-SHE-dwem od-E-brach KAR-teh po-BI-too.",
+        proNe: "ज्येन् ˈदोब्-रि, प्शि-ˈशे-द्वेम् ओद्-ˈए-ब्राच् ˈकार्-तेह् पो-ˈबि-तू।",
+        urgency: "medium",
+        tip: "Show this at the reception desk in Urząd Wojewódzki."
+      },
+      {
+        id: "sos-pesel-number",
+        pl: "Chciałbym złożyć wniosek o nadanie numeru PESEL.",
+        en: "I would like to apply for a PESEL identification number.",
+        ne: "म PESEL नम्बरको लागि आवेदन दिन चाहन्छु।",
+        pron: "KHYA-wem ZWO-zhich VNYO-sek o na-DA-nyeh noo-ME-roo PE-sel.",
+        proNe: "ˈख्या-वेम् ˈझ्वो-झिच् ˈभ्ण्यो-सेक् ओ ना-ˈदा-न्ये नु-ˈमे-रु ˈपे-सेल्।",
+        urgency: "medium",
+        tip: "Show this at the City Hall (Urząd Miasta / Dzielnicy)."
+      },
+      {
+        id: "sos-polish-contract",
+        pl: "Proszę o kopię mojej umowy o pracę i zaświadczenie o zarobkach.",
+        en: "Please provide a copy of my employment contract and earnings certificate.",
+        ne: "कृपया मेरो कामको सम्झौता र तलब प्रमाणपत्रको प्रतिलिपि दिनुहोस्।",
+        pron: "PRO-sheh o KO-pyen MO-yey oo-MO-vi o PRA-tseh.",
+        proNe: "ˈप्रो-शे ओ ˈको-प्यें ˈमो-येइ उ-ˈमो-भी ओ ˈप्रा-चे।",
+        urgency: "medium"
+      }
+    ]
+  },
+  {
+    id: "store",
+    category: "Store, Grocery & Payment",
+    categoryNe: "पसल र भुक्तानी",
+    icon: "🛒",
+    items: [
+      {
+        id: "sos-card-payment",
+        pl: "Czy mogę zapłacić kartą zbliżeniowo / BLIK-iem?",
+        en: "Can I pay contactless by card or BLIK?",
+        ne: "के म कार्ड वा BLIK बाट भुक्तानी गर्न सक्छु?",
+        pron: "Chi MO-geh za-PWA-cheech KAR-ton zblee-zhe-NYO-vo / BLEE-kyem?",
+        proNe: "चि ˈमो-गेह् जा-ˈप्वा-चीच् ˈकार्-तों? ˈब्लीक्-येम्?",
+        urgency: "low",
+        tip: "In Poland BLIK is widely accepted everywhere."
+      },
+      {
+        id: "sos-no-pork",
+        pl: "Czy ta potrawa / wędlina zawiera wieprzowinę? Nie jem wieprzowiny.",
+        en: "Does this food/meat contain pork? I do not eat pork.",
+        ne: "के यसमा सुँगुरको मासु छ? म सुँगुरको मासु खाँदिन।",
+        pron: "Chi ta po-TRA-va za-VYE-ra vye-psho-VEE-neh? Nye yem vye-psho-VEE-ni.",
+        proNe: "चि ता पो-ˈत्रा-भा जा-ˈव्ये-रा व्ये-प्शो-ˈभी-ने? न्ये येम् व्ये-प्शो-ˈभी-नि।",
+        urgency: "medium",
+        tip: "Show this at bakeries, restaurants or deli counters."
+      }
+    ]
   }
 ];
