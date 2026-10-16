@@ -804,8 +804,9 @@
   S.slowBtn = (text) => (S.canSpeak ? `<button type="button" class="btn listen slow" data-action="say" data-slow="1" data-text="${esc(text)}" title="Play slowly at 0.75× speed with preserved pitch">${S.SPEAKER} Slow (0.75×) <span lang="ne">बिस्तारै</span></button>` : '');
   S.listenBtn = (text, big) => {
     if (!S.canSpeak) return '';
+    const coach = (big && S.Coach && S.Coach.coachBtn) ? S.Coach.coachBtn(text) : '';
     return big
-      ? `<button type="button" class="btn listen" data-action="say" data-text="${esc(text)}">${S.SPEAKER} Listen <span lang="ne">सुन्नुहोस्</span></button>${S.slowBtn(text)}`
+      ? `<button type="button" class="btn listen" data-action="say" data-text="${esc(text)}">${S.SPEAKER} Listen <span lang="ne">सुन्नुहोस्</span></button>${S.slowBtn(text)}${coach}`
       : `<button type="button" class="icon-btn" data-action="say" data-text="${esc(text)}" aria-label="Listen to ${esc(text)}">${S.SPEAKER}</button>`;
   };
   S.boxMeter = (e) => {

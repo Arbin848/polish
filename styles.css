@@ -4932,3 +4932,241 @@ button, .btn, .icon-btn, .option, a, input, select {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   PRONUNCIATION COACH & INTERACTIVE SPEECH CHECKER STYLES
+   ========================================================================== */
+.coach-mic-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  font-size: 0.85rem !important;
+  padding: 8px 14px !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+.coach-mic-btn:hover {
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+  background: #fef2f2 !important;
+  transform: translateY(-1px) !important;
+}
+.coach-mic-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+/* Coach Modal Overlay */
+.coach-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: coachFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes coachFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.coach-modal-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: coachSlideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes coachSlideUp {
+  from { transform: translateY(18px) scale(0.96); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.coach-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.coach-modal-badge {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #ef4444;
+  background: #fee2e2;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+[data-theme="dark"] .coach-modal-badge {
+  background: #451a1a;
+  color: #fca5a5;
+}
+.coach-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.coach-modal-close:hover {
+  color: var(--ink);
+  background: var(--sunk);
+}
+
+.coach-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+.coach-target-pl {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.coach-target-meaning {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.coach-audio-helpers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+/* Big Interactive Microphone Tap Target */
+.coach-mic-stage {
+  margin: 14px 0 6px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.coach-big-mic-btn {
+  width: 100%;
+  max-width: 320px;
+  min-height: 72px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px -4px rgba(239, 68, 68, 0.45);
+  transition: all 0.15s ease;
+}
+.coach-big-mic-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(239, 68, 68, 0.55);
+}
+.coach-big-mic-btn:active {
+  transform: scale(0.97);
+}
+.coach-big-mic-btn.recording {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  animation: coachPulseRing 1.2s infinite alternate;
+}
+@keyframes coachPulseRing {
+  from { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  to { box-shadow: 0 0 0 14px rgba(239, 68, 68, 0); }
+}
+.coach-mic-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #ffffff;
+}
+.coach-mic-status {
+  text-align: left;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Speech Feedback Box */
+.coach-feedback-box {
+  width: 100%;
+  background: var(--sunk);
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  animation: coachFadeIn 0.2s ease;
+}
+.coach-score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.coach-score-badge {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+.coach-score-badge.great {
+  background: #dcfce7;
+  color: #15803d;
+}
+.coach-score-badge.good {
+  background: #fef3c7;
+  color: #b45309;
+}
+.coach-score-badge.retry {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.coach-verdict {
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+.coach-heard-row {
+  font-size: 0.88rem;
+  color: var(--muted);
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.coach-heard-text {
+  font-size: 1rem;
+  color: var(--ink);
+}
+.coach-tip-text {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--ink);
+  border-top: 1px dashed var(--line);
+  padding-top: 8px;
+}
+.coach-modal-foot {
+  display: flex;
+  justify-content: flex-end;
+}
+
