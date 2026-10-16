@@ -4656,7 +4656,7 @@ button, .btn, .icon-btn, .option, a, input, select {
 /* ---------- 1. MOBILE SMARTPHONES (<= 640px) ---------- */
 @media (max-width: 640px) {
   .main-content {
-    padding: 16px 14px var(--bottom-bar-height) !important;
+    padding: 16px 14px calc(var(--bottom-bar-height) + 44px) !important;
     gap: 18px !important;
   }
 
