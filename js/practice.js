@@ -119,7 +119,7 @@
   function startCards() {
     const cards = ctx.review ? ctx.pool.slice(0, 20) : S.pickSession(ctx.pool, SESSION_SIZE);
     const kinds = cards.map((e, n) => (ctx.review ? reviewKind(e, n) : null));
-    session = { mode: 'cards', cards, kinds, i: 0, flipped: false, typed: null, tally: { again: 0, good: 0, easy: 0 } };
+    session = { mode: 'cards', cards, kinds, i: 0, flipped: false, typed: null, tally: { again: 0, good: 0, easy: 0 }, missed: [] };
   }
 
   function drawCards() {
@@ -139,6 +139,7 @@
       if (S.Celebration && S.Celebration.fire) {
         S.Celebration.fire('review', { icon: '🏆', title: 'Review Complete!', titleNe: 'समीक्षा पूरा भयो!' });
       }
+      const missed = s.missed || [];
       stage.innerHTML = `
         <div class="card summary">
           <span class="label">Round complete · सकियो</span>
@@ -149,7 +150,17 @@
             <div><b class="t-good">${s.tally.good}</b><span class="label">Good</span></div>
             <div><b>${s.tally.easy}</b><span class="label">Easy</span></div>
           </div>
-          <button class="btn primary" data-action="new-cards" data-autofocus>${ctx.review ? 'Check for more' : 'Another round'}</button>
+          ${missed.length ? `
+            <div style="margin:16px 0; text-align:left; background:var(--sunk); padding:14px 16px; border-radius:14px; border:1px solid var(--line);">
+              <span class="label" style="display:block; margin-bottom:8px; color:var(--muted);">Words to repeat · ध्यान दिनुपर्ने शब्दहरू (${missed.length}):</span>
+              <div class="chip-row">
+                ${missed.map((e) => `<button type="button" class="say-chip" data-action="say" data-text="${esc(e.pl)}" title="Tap to listen">${S.SPEAKER} <span lang="pl"><b>${polish(e.pl)}</b></span> <small>(${esc(e.en)})</small></button>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+          <div class="row" style="justify-content:center; gap:10px; margin-top:14px;">
+            <button class="btn primary" data-action="new-cards" data-autofocus>${ctx.review ? 'Check for more' : 'Another round'}</button>
+          </div>
         </div>`;
       return;
     }
@@ -282,6 +293,10 @@
     const s = session;
     if (!s || s.mode !== 'cards' || !s.flipped) return;
     if (navigator.vibrate) try { navigator.vibrate(kind === 'again' ? 25 : 12); } catch (e) {}
+    if (kind === 'again') {
+      s.missed = s.missed || [];
+      if (!s.missed.some((x) => x.pl === s.cards[s.i].pl)) s.missed.push(s.cards[s.i]);
+    }
     S.review(s.cards[s.i], kind === 'again' ? 'reset' : kind === 'good' ? 1 : 2);
     s.tally[kind] += 1;
     s.i += 1;

@@ -57,7 +57,7 @@
           const unitId = unit ? unit.id : (e.source && !['guide', 'mine', 'reading'].includes(e.source) ? e.source : null);
           const isExact = plLower === cleanQ || plFold === foldQ;
           const isPrefix = plLower.startsWith(cleanQ) || plFold.startsWith(foldQ);
-          const score = isExact ? 100 : isPrefix ? 60 : (plMatch ? 40 : phonMatch ? 30 : 20);
+          const score = isExact ? 120 : isPrefix ? 80 : (plMatch ? 50 : phonMatch ? 35 : 20);
 
           list.push({
             type: 'word',
