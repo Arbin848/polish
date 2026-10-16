@@ -604,7 +604,7 @@
           <button type="button" class="btn compact" data-action="go" data-to="sim.zabka" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
             🛒 Shopping · किनमेल
           </button>
-          <button type="button" class="btn compact" data-action="go" data-to="unit.work-intro" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
+          <button type="button" class="btn compact" data-action="go" data-to="work-01" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
             🏭 Work Shifts · काम र सिफ्ट
           </button>
           <button type="button" class="btn compact" data-action="go" data-to="sim.paczkomat" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
