@@ -1,12 +1,12 @@
 // Offline support: keeps the whole course on the device after the first visit.
 // Pages and data come from the cache at once and are refreshed in the background.
 // Native recordings live in their own cache, kept across app updates.
-const CACHE = 'slowka-v36-complete-audit';
-const AUDIO_CACHE = 'slowka-audio-v36';
+const CACHE = 'slowka-v37-feature-suite';
+const AUDIO_CACHE = 'slowka-audio-v37';
 const FONT_CACHE = 'slowka-fonts-v1'; // kept across updates, like recordings
 const SHELL = [
   './', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest',
-  'js/core.js', 'js/coach.js', 'js/practice.js', 'js/extras.js', 'js/trainers.js', 'js/guided.js', 'js/assess.js', 'js/numbers.js', 'js/listening.js', 'js/pron.js', 'js/mywords.js', 'js/speaking.js', 'js/commute.js', 'js/search.js', 'js/recorder.js', 'js/sos.js', 'js/simulators.js', 'audio/manifest.js', 'audio/tts.js',
+  'js/core.js', 'js/coach.js', 'js/practice.js', 'js/extras.js', 'js/trainers.js', 'js/guided.js', 'js/assess.js', 'js/numbers.js', 'js/listening.js', 'js/pron.js', 'js/mywords.js', 'js/speaking.js', 'js/commute.js', 'js/search.js', 'js/recorder.js', 'js/sos.js', 'js/simulators.js', 'js/match.js', 'audio/manifest.js', 'audio/tts.js',
   'icons/icon-192.png', 'icons/icon-512.png',
   'data/start.js', 'data/a1-part1.js', 'data/a1-part2.js', 'data/a2-part1.js', 'data/a2-part2.js',
   'data/b1-part1.js', 'data/b1-part2.js', 'data/b2.js', 'data/work.js',

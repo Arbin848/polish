@@ -9,6 +9,11 @@
   let session = null;
   let ctx = null;
   let stage = null;
+  let autoPlayTimer = null;
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) { clearTimeout(autoPlayTimer); autoPlayTimer = null; }
+  }
 
   const P = (S.Practice = {});
   // Score of the exercise on screen, for the end-of-lesson report: { mode, score, total }.
@@ -18,6 +23,7 @@
     return { mode: session.mode, score: session.score || 0, total: session.total || 0 };
   };
   P.reset = () => {
+    stopAutoPlay();
     session = null;
     if (S.stopRecognition) S.stopRecognition();
     if (S.stopRecording) S.stopRecording();
@@ -159,8 +165,16 @@
     const back = plFirst
       ? `<span class="rule"></span>${S.meaningHTML(e, 'big')}${S.pronHTML(e)}`
       : `<span class="rule"></span><span class="word sm" lang="pl">${polish(e.pl)}</span>${S.pronHTML(e)}`;
+    const isAuto = !!s.autoPlay;
     stage.innerHTML = `
-      <div class="meta"><span>Card ${s.i + 1} of ${s.cards.length}</span>${ctx.review ? '' : dirToggle()}${S.boxMeter(e)}</div>
+      <div class="meta">
+        <span>Card ${s.i + 1} of ${s.cards.length}</span>
+        <button type="button" class="btn compact ${isAuto ? 'primary' : ''}" data-action="toggle-auto-cards" title="Hands-free auto play mode for bus/walking" style="font-size:0.78rem; padding:4px 10px; border-radius:14px;">
+          ${isAuto ? '⏸ Auto: ON · चल्दैछ' : '▶ Auto-Play · स्वचालित'}
+        </button>
+        ${ctx.review ? '' : dirToggle()}
+        ${S.boxMeter(e)}
+      </div>
       <button class="card flip-in" data-action="flip" ${s.flipped ? '' : 'data-autofocus'}>
         ${front}
         ${s.flipped ? back : '<span class="hint">Tap or press Space to see the answer · उत्तर हेर्न थिच्नुहोस्</span>'}
@@ -173,6 +187,24 @@
              <button class="btn" data-action="rate" data-rate="easy"><kbd>3</kbd> Easy <span lang="ne">सजिलो</span></button>`
           : '<button class="btn primary" data-action="flip"><kbd>Space</kbd> Show answer</button>'}
       </div>`;
+
+    if (isAuto) {
+      stopAutoPlay();
+      if (!s.flipped) {
+        if (plFirst && S.speak) S.speak(e.pl);
+        autoPlayTimer = setTimeout(() => {
+          if (session === s && s.autoPlay && !s.flipped) {
+            flip();
+          }
+        }, 2600);
+      } else {
+        autoPlayTimer = setTimeout(() => {
+          if (session === s && s.autoPlay && s.flipped) {
+            rate('good');
+          }
+        }, 2800);
+      }
+    }
   }
   // Review card: hear the word, then show what it was.
   function drawHearCard(e) {
@@ -722,6 +754,14 @@
         return true;
       }
       case 'flip': flip(); return true;
+      case 'toggle-auto-cards': {
+        if (session && session.mode === 'cards') {
+          session.autoPlay = !session.autoPlay;
+          if (!session.autoPlay) stopAutoPlay();
+          draw();
+        }
+        return true;
+      }
       case 'rv-giveup': checkReviewType(true); return true;
       case 'rv-next': nextReviewCard(); return true;
       case 'rate': rate(el.dataset.rate); return true;

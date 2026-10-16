@@ -11,7 +11,7 @@
 
   // Routes are bare tokens so they survive in a link's #anchor: "a1-03", "talk.rp-a1-cafe", "review".
   S.route = { name: 'home' };
-  const PAGES = ['privacy', 'feedback', 'sos', 'sim', 'commute', 'guide', 'pronstudio', 'turn', 'mywords', 'numbers', 'listen', 'revise', 'cert', 'report', 'course', 'practice', 'learn', 'review', 'alphabet', 'dictionary', 'settings', 'talk', 'read', 'exam', 'placement', 'mistakes', 'progress', 'verbs', 'cases', 'sounds', 'check'];
+  const PAGES = ['match', 'privacy', 'feedback', 'sos', 'sim', 'commute', 'guide', 'pronstudio', 'turn', 'mywords', 'numbers', 'listen', 'revise', 'cert', 'report', 'course', 'practice', 'learn', 'review', 'alphabet', 'dictionary', 'settings', 'talk', 'read', 'exam', 'placement', 'mistakes', 'progress', 'verbs', 'cases', 'sounds', 'check'];
 
   let currentHash = null;
   S.go = (to, opts = {}) => {
@@ -84,6 +84,7 @@
         <div class="row start"><button class="btn" data-action="go" data-to="settings">⚙ Settings · सेटिङ</button><button class="btn" data-action="go" data-to="feedback">📢 Report / Feedback · समस्या तथा सुझाव</button><button class="btn" data-action="go" data-to="check">Review mode for native speakers</button></div>`);
       checkProgressMilestones();
     }
+    else if (r.name === 'match') S.Match ? S.Match.start(view) : null;
     else if (r.name === 'sos') S.SOS ? S.SOS.render(view, r.arg) : null;
     else if (r.name === 'sim') S.Simulator ? S.Simulator.render(view, r.arg) : null;
     else if (r.name === 'commute') S.Commute ? S.Commute.render(view) : null;
@@ -719,6 +720,14 @@
                 <span class="qt-icon">⚡</span>
                 <div class="qt-text"><b>Verb trainer</b><small lang="ne">क्रियापद</small></div>
               </button>
+              <button class="quick-tool-btn" data-action="go" data-to="match" style="border:1px solid #f59e0b; background:#fffbeb;">
+                <span class="qt-icon">⚡</span>
+                <div class="qt-text"><b style="color:#b45309;">Speed Match</b><small lang="ne" style="color:#92400e;">६० सेकेन्ड खेल</small></div>
+              </button>
+              <button class="quick-tool-btn" data-action="go" data-to="guide">
+                <span class="qt-icon">📘</span>
+                <div class="qt-text"><b>Living in Poland</b><small lang="ne">बस, तलब, कानुनी जानकारी</small></div>
+              </button>
               <button class="quick-tool-btn" data-action="go" data-to="numbers">
                 <span class="qt-icon">123</span>
                 <div class="qt-text"><b>Numbers</b><small lang="ne">अङ्क र मूल्य</small></div>
@@ -1326,6 +1335,7 @@
     if (S.Assess.action(a, el, view)) return;
     if (S.Numbers.action(a, el, view)) return;
     if (S.SOS && S.SOS.action && S.SOS.action(a, el, view)) return;
+    if (S.Match && S.Match.action && S.Match.action(a, el, view)) return;
     if (S.Simulator && S.Simulator.action && S.Simulator.action(a, el, view)) return;
     if (S.Commute && S.Commute.action && S.Commute.action(a, el, view)) return;
     if (S.Search && S.Search.action && S.Search.action(a, el, view)) return;

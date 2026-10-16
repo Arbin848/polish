@@ -314,6 +314,134 @@
           tipNe: 'कार्यस्थलमा केही समस्या वा कुरा बुझ्न नसक्दा सोध्ने स्वाभाविक प्रश्न।'
         }
       ]
+    },
+    {
+      id: 'contracts',
+      title: 'Contract & Payslip Decrypter',
+      titleNe: 'तलब र सम्झौता व्याख्या (Brutto vs Netto, Pasek płacowy)',
+      desc: 'Understand what your Polish payslip means, how taxes and ZUS health contributions work, and gross vs net salary.',
+      descNe: 'पोल्यान्डमा तलबको रसिद (पासेक), ग्रस र नेट (हात पर्ने रकम), र कर कट्टी बुझ्ने तरिका।',
+      icon: '🧾',
+      items: [
+        {
+          pl: 'Wynagrodzenie brutto',
+          en: 'Gross salary (amount before tax and ZUS deductions)',
+          ne: 'ग्रस तलब (कर र बिमा नकाटी तोकिएको कूल रकम)',
+          pron: 'vi-na-grod-ZE-nye BROOT-to',
+          proNe: 'भि-ना-ग्रोद्-जे-न्ये ˈब्रुत्-तो',
+          tip: 'The number written in your employment contract. It is NOT what lands in your bank account.',
+          tipNe: 'सम्झौता पत्रमा लेखिएको रकम। यो खातामा आउने रकम होइन, यसबाट कर र बिमा काटिन्छ।'
+        },
+        {
+          pl: 'Wynagrodzenie netto ("na rękę")',
+          en: 'Net take-home salary ("in hand")',
+          ne: 'हात पर्ने खुद तलब (नेट / "ना रेन्के")',
+          pron: 'vi-na-grod-ZE-nye NET-to (na REN-ke)',
+          proNe: 'भि-ना-ग्रोद्-जे-न्ये ˈनेत्-तो (ना ˈरेङ्-के)',
+          tip: 'Actual money transferred to your Polish bank account. Usually ~70-78% of gross on standard Umowa.',
+          tipNe: 'सबै कर र ZUS कट्टी गरेर तपाईंको बैंक खातामा आउने वास्तविक पैसा।'
+        },
+        {
+          pl: 'Pasek wynagrodzenia / płacowy',
+          en: 'Monthly payslip summary sheet',
+          ne: 'मासिक तलबको विस्तृत रसिद (पासेक)',
+          pron: 'PA-sek vi-na-grod-ZE-nya',
+          proNe: 'ˈपा-सेक भि-ना-ग्रोद्-जे-न्या',
+          tip: 'Your employer must provide this every month. It lists exact hours worked, overtime, and insurance deductions.',
+          tipNe: 'कम्पनीले हरेक महिना दिने रसिद जसमा कति घण्टा काम भयो, ओभरटाइम र करको हिसाब हुन्छ।'
+        },
+        {
+          pl: 'Składka na ubezpieczenie zdrowotne (ZUS)',
+          en: 'Mandatory health insurance contribution (9%)',
+          ne: 'अनिवार्य स्वास्थ्य बिमा कट्टी (NFZ क्लिनिकका लागि)',
+          pron: 'SKWAD-ka na u-bez-pye-TCHE-nye zdro-VOT-ne',
+          proNe: 'ˈस्क्वाद-का ना उ-बेज्-प्ये-ˈचे-न्ये स्रो-ˈभोत्-ने',
+          tip: 'Funds your free public hospital (SOR) and clinic (POZ) visits anywhere in Poland.',
+          tipNe: 'यो कट्टी भएपछि पोल्यान्डभरि सरकारी अस्पताल र क्लिनिकमा निःशुल्क उपचार पाइन्छ।'
+        },
+        {
+          pl: 'Zaliczka na podatek dochodowy (PIT)',
+          en: 'Advance personal income tax (PIT deduction)',
+          ne: 'आयकर कट्टी (PIT कर)',
+          pron: 'za-LEETCH-ka na po-DA-tek do-ho-DO-vi',
+          proNe: 'ज़ा-ˈलीच-का ना पो-ˈदा-तेक दो-खो-ˈदो-भि',
+          tip: 'Income tax deducted each month. In April each year, you file PIT-37 and often get a refund.',
+          tipNe: 'मासिक काटिने आयकर। हरेक वर्ष अप्रिलमा PIT-37 भरेर धेरैजसो रकम फिर्ता पाउन सकिन्छ।'
+        },
+        {
+          pl: 'Gdzie jest mój pasek wypłaty?',
+          en: 'Where is my payslip? (Ask HR / accounting)',
+          ne: 'मेरो तलबको रसिद (पासेक) कहाँ छ?',
+          pron: 'GDZYE yest mooy PA-sek vi-PWA-ti',
+          proNe: 'ग्द्ज्ये येस्त मूय ˈपा-सेक भि-ˈप्वा-ति',
+          tip: 'Polite sentence to ask the HR coordinator or accountant if you have not received your slip.',
+          tipNe: 'तलब रसिद नपाउँदा कम्पनीको कोअर्डिनेटर वा अकाउन्टलाई सोध्ने वाक्य।'
+        }
+      ]
+    },
+    {
+      id: 'transport',
+      title: 'City Transport & Bus Guide',
+      titleNe: 'सार्वजनिक यातायात (बस, ट्राम, कासोनिक र जक्दोजादे)',
+      desc: 'How to use buses, trams, metros, ticket stamp machines (kasownik), and mobile apps like Jakdojade in Poland.',
+      descNe: 'पोल्यान्डका सहरहरू (वार्सा, क्राकोभ, भ्रोत्स्वाफ) मा बस, ट्राम, टिकट प्रमाणीकरण र मोबाइल एप।',
+      icon: '🚌',
+      items: [
+        {
+          pl: 'Bilet czasowy (20 / 75 minut)',
+          en: 'Time-limited transit ticket (valid for 20 or 75 minutes)',
+          ne: 'समय अवधिको टिकट (२० वा ७५ मिनेटको टिकट)',
+          pron: 'BEE-let cha-SO-vi',
+          proNe: 'ˈबी-लेत चा-ˈसो-भि',
+          tip: 'Allows unlimited transfers between buses and trams within the time window after validation.',
+          tipNe: 'कासोनिकमा पन्च गरेपछि तोकिएको समयभित्र जति वटा पनि बस वा ट्राम फेर्न मिल्छ।'
+        },
+        {
+          pl: 'Kasownik / Skasować bilet',
+          en: 'Ticket validator machine / To validate the ticket',
+          ne: 'टिकट प्रमाणीकरण मेसिन (कासोनिक) / टिकट पन्च गर्नु',
+          pron: 'ka-SOV-nik / ska-SO-vatsh BEE-let',
+          proNe: 'का-ˈसोभ्-निक / स्का-ˈसो-भाच ˈबी-लेत',
+          tip: 'CRITICAL: You MUST insert/tap your paper ticket into the yellow kasownik IMMEDIATELY upon entering the vehicle, or face a ~300 PLN fine (kara).',
+          tipNe: 'अति महत्त्वपूर्ण: बस वा ट्राम चढ्नेबित्तिकै पहेंलो कासोनिक मेसिनमा टिकट छिराएर छाप लगाउनैपर्छ, नत्र ३०० जुओती जरिवाना हुन्छ।'
+        },
+        {
+          pl: 'Kontrola biletów! Proszę bilety do kontroli.',
+          en: 'Ticket inspection! Tickets for inspection, please.',
+          ne: 'टिकट जाँच! कृपया आफ्नो टिकट देखाउनुहोस्।',
+          pron: 'kon-TRO-la bee-LE-toof',
+          proNe: 'कोन्-ˈत्रो-ला बी-ˈले-तुफ',
+          tip: 'Plain-clothes inspectors will block validators and show badges. Show your validated ticket or QR code from Jakdojade.',
+          tipNe: 'सादा पोसाकका टिकट चेकरहरू आएपछि आफ्नो छाप लागेको टिकट वा मोबाइलको QR कोड देखाउनुहोस्।'
+        },
+        {
+          pl: 'Aplikacja Jakdojade',
+          en: 'Jakdojade navigation and ticket app',
+          ne: 'जक्दोजादे एप (बस/ट्राम खोज्ने र अनलाइन टिकट काट्ने)',
+          pron: 'ap-lee-KAT-sya yak-do-YA-deh',
+          proNe: 'आप्-ली-ˈकात्-स्या याक-दो-ˈया-दे',
+          tip: 'The #1 essential travel app in Poland. Tells you exact platform, transfer route, and lets you buy tickets with BLIK.',
+          tipNe: 'पोल्यान्डको मुख्य एप जसले कुन बस कति मिनेटमा आउँछ देखाउँछ र BLIK बाट सीधै टिकट किन्न दिन्छ।'
+        },
+        {
+          pl: 'Bilet miesięczny',
+          en: 'Monthly transit travel pass',
+          ne: 'मासिक बस पास (सस्तो र ढुक्क)',
+          pron: 'BEE-let mye-SHYENTCH-ni',
+          proNe: 'ˈबी-लेत म्ये-ˈश्येन्च-नि',
+          tip: 'Saves 50%+ if you commute daily to your warehouse or factory. Encoded onto a plastic city card.',
+          tipNe: 'दैनिक काममा आउजाउ गर्नेहरूका लागि मासिक पास लिनु निकै सस्तो पर्छ।'
+        },
+        {
+          pl: 'Przystanek na żądanie',
+          en: 'Request stop (press STOP button on bus to alight)',
+          ne: 'अनुरोध स्टप (बस रोक्न STOP बटन थिच्नुपर्ने)',
+          pron: 'pshi-STA-nek na zhon-DA-nye',
+          proNe: 'प्शि-ˈस्ता-नेक ना झोन्-ˈदा-न्ये',
+          tip: 'The bus will not stop unless you press the red STOP button or stand visibly at the shelter.',
+          tipNe: 'यो लेखिएको स्टपमा झर्नुअघि बसभित्रको रातो STOP बटन नथिचेमा बस रोकिँदैन।'
+        }
+      ]
     }
   ];
 })();
