@@ -214,6 +214,7 @@
             rate('good');
           }
         }, 2800);
+      }
     }
     // Pre-fetch audio for upcoming card in the background for 0ms delay
     const nextCard = s.cards[s.i + 1];
