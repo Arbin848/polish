@@ -352,7 +352,12 @@
     s.picked = s.options[index];
     s.total += 1;
     const right = s.picked === s.word;
-    if (right) s.score += 1;
+    if (right) {
+      s.score += 1;
+      if (navigator.vibrate) try { navigator.vibrate(15); } catch (err) {}
+    } else {
+      if (navigator.vibrate) try { navigator.vibrate([35, 45, 35]); } catch (err) {}
+    }
     S.review(s.word, right ? 1 : -1);
     draw();
     if (s.mode === 'quiz' && S.settings.dir !== 'pl' && S.settings.autoplay !== false) S.speak(s.word.pl);
@@ -676,8 +681,12 @@
     const s = session;
     const it = s.items[s.i];
     s.answered = Object.assign({ result, why }, extra);
-    if (result === 'right') { s.score += 1; delete S.progress.mistakes[mistakeKey(it)]; }
-    else if (result === 'wrong') {
+    if (result === 'right') {
+      s.score += 1;
+      if (navigator.vibrate) try { navigator.vibrate(15); } catch (err) {}
+      delete S.progress.mistakes[mistakeKey(it)];
+    } else if (result === 'wrong') {
+      if (navigator.vibrate) try { navigator.vibrate([35, 45, 35]); } catch (err) {}
       const m = S.progress.mistakes[mistakeKey(it)];
       S.progress.mistakes[mistakeKey(it)] = { unit: it.unit, idx: it.idx, count: (m ? m.count : 0) + 1, last: S.dayKey() };
     }
@@ -835,10 +844,12 @@
       if (s.typed && (ev.key === 'Enter' || ev.key === ' ') && !onButton) { ev.preventDefault(); nextReviewCard(); return true; }
       if ((ev.key === ' ' || ev.key === 'Enter') && !s.flipped && !onButton) { ev.preventDefault(); flip(); return true; }
       if (s.flipped && ['1', '2', '3'].includes(ev.key)) { ev.preventDefault(); rate(['again', 'good', 'easy'][Number(ev.key) - 1]); return true; }
-    } else if ((s.mode === 'quiz' || s.mode === 'listen') && s.picked === null && /^[1-4]$/.test(ev.key)) {
-      answer(Number(ev.key) - 1); return true;
-    } else if (s.mode === 'drill' && !s.answered && s.items[s.i] && s.items[s.i].d.type === 'choose' && /^[1-4]$/.test(ev.key)) {
-      drillChoose(Number(ev.key) - 1); return true;
+    } else if ((s.mode === 'quiz' || s.mode === 'listen')) {
+      if (s.picked === null && /^[1-4]$/.test(ev.key)) { answer(Number(ev.key) - 1); return true; }
+      if (s.picked !== null && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); newChoice(s.mode); draw(); return true; }
+    } else if (s.mode === 'drill') {
+      if (!s.answered && s.items[s.i] && s.items[s.i].d.type === 'choose' && /^[1-4]$/.test(ev.key)) { drillChoose(Number(ev.key) - 1); return true; }
+      if (s.answered && ev.key === 'Enter') { ev.preventDefault(); drillNext(); return true; }
     }
     return false;
   };
