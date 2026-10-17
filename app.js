@@ -372,6 +372,9 @@
         mpBadge.hidden = true;
       }
     }
+    // Update browser title bar with due review count to remind desktop / browser tab users
+    const baseTitle = 'Słówka - Learn Polish in Nepali';
+    document.title = due > 0 ? `(${due}) ${baseTitle}` : baseTitle;
   }
 
   function updateLangUI() {
@@ -1444,7 +1447,13 @@
         S.Celebration.close();
         break;
       }
-      case 'go': S.go(el.dataset.to, { q: el.dataset.q }); break;
+      case 'go': {
+        if (el.dataset.to === 'sos' || el.dataset.to.startsWith('sos.')) {
+          if (navigator.vibrate) try { navigator.vibrate(15); } catch (e) {}
+        }
+        S.go(el.dataset.to, { q: el.dataset.q });
+        break;
+      }
       case 'tab':
         S.stopSpeaking();
         S.route.tab = el.dataset.tab;
