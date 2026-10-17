@@ -623,9 +623,12 @@
 
       <!-- Big Hero Start Card for Beginners -->
       <section class="hero-start-banner">
-        <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
+          <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
+          <span style="font-size:0.8rem; background:rgba(255,255,255,0.22); color:#ffffff; padding:3px 10px; border-radius:12px; font-weight:700;">⏱️ 3 min · ३ मिनेटको पाठ</span>
+        </div>
         <h2 class="hero-start-title">${st.started && !st.done ? 'Continue: ' + esc(next.title) : 'Lesson: ' + esc(next.title)}</h2>
-        <p class="hero-start-sub" lang="ne">${esc(next.titleNe)} — शिक्षिकासँगै एक-एक शब्द सुन्दै, बोल्दै र अभ्यास गर्दै सिक्नुहोस्। (3-5 मिनेट)</p>
+        <p class="hero-start-sub" lang="ne">${esc(next.titleNe)} — शिक्षिकासँगै एक-एक शब्द सुन्दै, बोल्दै र अभ्यास गर्दै सिक्नुहोस्। (३ मिनेट मात्र)</p>
         ${due > 0 ? `<div class="hero-review-hint" style="background:rgba(0,0,0,0.22); border-radius:10px; padding:8px 12px; font-size:0.88rem; display:flex; align-items:center; gap:8px;">
           <span>🔄</span>
           <span><b>${due} ${due === 1 ? 'word' : 'words'} due for review</b> · ${due} शब्द दोहोर्‍याउन बाँकी</span>
