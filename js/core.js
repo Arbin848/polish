@@ -595,16 +595,19 @@
   };
   // Read several lines in a row: recorded files where they exist, the device voice for the rest
   // (each speaker then gets a slightly different pitch).
-  S.speakLines = (lines, slow) => {
+  S.speakLines = (lines, slow, onStep) => {
     S.stopSpeaking();
     const token = ++playToken;
     let i = 0;
     const next = () => {
       if (token !== playToken || i >= lines.length) {
         document.body.classList.remove('audio-playing');
+        if (onStep) onStep(null);
         return;
       }
-      const { text, pitch } = lines[i++];
+      const item = lines[i++];
+      const { text, pitch } = item;
+      if (onStep) onStep(item, i - 1);
       const src = S.audioFile(text);
       const device = () => tts(text, slow, pitch, () => setTimeout(next, 250));
       if (src) { try { if (synth) synth.cancel(); } catch (e) { /* ignore */ } playFile(src, slow, () => setTimeout(next, 350), device); }

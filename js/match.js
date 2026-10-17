@@ -167,6 +167,7 @@
         // Correct pair!
         const pair = roundPairs.find((p) => p.id === selectedPl);
         if (pair && S.speak) S.speak(pair.pl);
+        if (navigator.vibrate) try { navigator.vibrate(15); } catch (e) {}
         solvedIds.add(selectedPl);
         score += 10;
         matchesFound += 1;
@@ -182,7 +183,7 @@
         score = Math.max(0, score - 2);
         selectedPl = null;
         selectedNe = null;
-        if (navigator.vibrate) try { navigator.vibrate(30); } catch (e) {}
+        if (navigator.vibrate) try { navigator.vibrate([35, 45, 35]); } catch (e) {}
       }
     }
     Match.render(view);

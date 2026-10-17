@@ -975,7 +975,7 @@
     return `
       ${S.canSpeak ? `<div class="row start abc-play"><button type="button" class="btn primary" data-action="abc-play">${S.SPEAKER} Listen to the whole alphabet <span lang="ne">पूरा वर्णमाला सुन्नुहोस्</span></button><button type="button" class="btn" data-action="abc-stop">■ Stop</button></div>` : ''}
       <div class="letters">${S.ALPHABET.map((a) => `
-      <div class="letter">
+      <div class="letter" data-letter-glyph="${esc(a.letter)}">
         <div class="letter-top">
           <button type="button" class="glyph-btn" data-action="say" data-text="${esc(a.say)}" style="background:none; border:none; padding:0; text-align:left; cursor:pointer;" title="Listen to letter"><span class="glyph" lang="pl">${polish(a.letter)}</span></button>
           ${a.say ? `<button type="button" class="name-chip" data-action="say" data-text="${esc(a.say)}" title="Hear the name of the letter" aria-label="Hear the letter ${esc(a.say)}">${S.SPEAKER}<span class="name-pl" lang="pl">${polish(a.say)}</span></button>` : ''}
@@ -1445,11 +1445,28 @@
       case 'abc-play': {
         // Each letter: its name, then the example word.
         const lines = [];
-        S.ALPHABET.forEach((x) => { if (x.say) lines.push({ text: x.say, pitch: 1 }); lines.push({ text: x.example, pitch: 1 }); });
-        S.speakLines(lines, S.settings.slow);
+        S.ALPHABET.forEach((x) => {
+          if (x.say) lines.push({ text: x.say, pitch: 1, letter: x.letter });
+          lines.push({ text: x.example, pitch: 1, letter: x.letter });
+        });
+        document.querySelectorAll('.letter.speaking-letter').forEach((c) => c.classList.remove('speaking-letter'));
+        S.speakLines(lines, S.settings.slow, (item) => {
+          document.querySelectorAll('.letter.speaking-letter').forEach((c) => c.classList.remove('speaking-letter'));
+          if (item && item.letter) {
+            const card = document.querySelector(`.letter[data-letter-glyph="${item.letter}"]`);
+            if (card) {
+              card.classList.add('speaking-letter');
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        });
         break;
       }
-      case 'abc-stop': S.stopSpeaking(); break;
+      case 'abc-stop': {
+        S.stopSpeaking();
+        document.querySelectorAll('.letter.speaking-letter').forEach((c) => c.classList.remove('speaking-letter'));
+        break;
+      }
       case 'app-reload': location.reload(); break;
       case 'key': S.insertKey(el.dataset.key, el); break;
       case 'unmask-meaning': {
