@@ -1477,7 +1477,9 @@ a.btn { text-decoration: none; }
 .prons { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; }
 .pron { display: inline-flex; flex-wrap: wrap; gap: 2px 8px; align-items: center; }
 .sw { display: inline-flex; gap: 2px; }
-.sy { padding: 0 4px; border-radius: 5px; background: var(--sunk); line-height: 1.5; }
+.sy { padding: 0 4px; border-radius: 5px; background: var(--sunk); line-height: 1.5; cursor: pointer; transition: background 0.15s ease, transform 0.1s ease; user-select: none; }
+.sy:hover { filter: brightness(0.92); transform: scale(1.05); }
+.sy:active { transform: scale(0.96); }
 .sy.st { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
 .card .sy { font-size: 1rem; }
 .hints { display: flex; flex-wrap: wrap; gap: 6px; }

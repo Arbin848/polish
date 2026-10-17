@@ -214,6 +214,15 @@
             rate('good');
           }
         }, 2800);
+    }
+    // Pre-fetch audio for upcoming card in the background for 0ms delay
+    const nextCard = s.cards[s.i + 1];
+    if (nextCard && S.audioFile) {
+      const nextSrc = S.audioFile(nextCard.pl);
+      if (nextSrc) {
+        const pre = new Audio();
+        pre.preload = 'auto';
+        pre.src = nextSrc;
       }
     }
   }
@@ -755,7 +764,11 @@
     const cardEl = ev.target.closest('.card.flip-in');
     if (!cardEl) return;
     const diffX = ev.changedTouches[0].clientX - touchStartX;
-    const diffY = ev.changedTouches[0].clientY - touchStartY;
+    // Vertical swipe up for Easy (at least 60px up)
+    if (diffY < -60 && Math.abs(diffY) > Math.abs(diffX) * 1.5) {
+      rate('easy');
+      return;
+    }
     // Horizontal swipe threshold: at least 60px and more horizontal than vertical
     if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
       if (diffX < 0) {

@@ -732,7 +732,7 @@
   // English letters mark stress with CAPITALS, Devanagari with ˈ before the syllable.
   const sylChips = (text, isStressed, clean) => String(text).split(/\s+/).filter(Boolean).map((word) => {
     const syl = word.split('-');
-    return `<span class="sw">${syl.map((x) => `<span class="sy${syl.length > 1 && isStressed(x) ? ' st' : ''}">${esc(clean(x))}</span>`).join('')}</span>`;
+    return `<span class="sw">${syl.map((x) => `<span class="sy${syl.length > 1 && isStressed(x) ? ' st' : ''}" data-action="say" data-text="${esc(clean(x))}" role="button" tabindex="0" title="Tap to listen: ${esc(clean(x))}">${esc(clean(x))}</span>`).join('')}</span>`;
   }).join(' ');
   S.pronHTML = (e) => {
     if (e && !e.pron && e.pl && S.Pron) Object.assign(e, S.Pron.of(e.say || e.pl));
