@@ -674,7 +674,12 @@
                 <h2 lang="pl">${hello[0]}</h2>
                 <p class="hint">Your level now: <b>${esc(level.name)}</b> · <span lang="ne">${esc(level.ne)}</span></p>
               </div>
-              <div class="goal-ring" title="Today's goal">${ring(today, goal)}<span><b>${today}</b>/${goal}</span></div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                <div class="goal-ring" title="Today's goal">${ring(today, goal)}<span><b>${today}</b>/${goal}</span></div>
+                <small style="font-size:0.75rem; color:var(--muted); text-align:center; white-space:nowrap;">
+                  ${today >= goal ? '✓ Goal done!' : Math.max(0, goal - today) <= 3 ? '🔥 अन्तिम केही शब्द!' : `⏱️ ~${Math.ceil(Math.max(0, goal - today) / 3)} मिनेट बाँकी`}
+                </small>
+              </div>
             </div>
             <h3 class="section-h">Today's plan <span class="ne-sub" lang="ne">आजको योजना</span></h3>
             <ol class="plan">${plan.map((x) => `

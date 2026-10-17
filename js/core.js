@@ -340,13 +340,17 @@
       osc.connect(gain);
       gain.connect(audioCtx.destination);
 
+      const hour = new Date().getHours();
+      const isLateNight = hour >= 22 || hour < 6;
+      const volMultiplier = isLateNight ? 0.55 : 1.0;
+
       if (type === 'correct') {
         // Cheerful major arpeggio chime
         osc.type = 'sine';
         osc.frequency.setValueAtTime(523.25, now); // C5
         osc.frequency.setValueAtTime(659.25, now + 0.07); // E5
         osc.frequency.setValueAtTime(783.99, now + 0.14); // G5
-        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.setValueAtTime(0.12 * volMultiplier, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
         osc.start(now);
         osc.stop(now + 0.36);
