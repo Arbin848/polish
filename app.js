@@ -1104,8 +1104,11 @@
         <p class="unit-head-ne" lang="ne">शब्दकोश</p>
         <p class="hint">Search every word and sentence in Polish, English or Nepali. You can type Polish without accents.</p>
       </header>
-      <div class="row start" style="margin-bottom: 8px; gap: 8px;">
-        <input class="search" id="dict-q" type="search" placeholder="Search: dom, house, घर…" aria-label="Search the dictionary" value="${esc(S.route.q || '')}" style="flex: 1;">
+      <div class="row start" style="margin-bottom: 8px; gap: 8px; align-items:center;">
+        <div style="position:relative; flex:1; display:flex; align-items:center;">
+          <input class="search" id="dict-q" type="search" placeholder="Search: dom, house, घर…" aria-label="Search the dictionary" value="${esc(S.route.q || '')}" style="width:100%; padding-right:32px;">
+          <button type="button" class="dict-clear-btn" data-action="dict-clear" title="Clear input" style="position:absolute; right:8px; background:none; border:none; color:var(--muted); font-size:1.1rem; cursor:pointer; padding:4px;">✕</button>
+        </div>
         <button type="button" class="dict-filter-chip" id="dict-work-filter" data-action="dict-toggle-work" style="border-radius:10px; padding:6px 12px; font-size:0.84rem; cursor:pointer;" title="Show workplace words">🏭 Work Polish</button>
         <button type="button" class="dict-filter-chip" id="dict-star-filter" data-action="dict-toggle-stars" style="border-radius:10px; padding:6px 12px; font-size:0.84rem; cursor:pointer;" title="Show only starred words">⭐ Starred</button>
       </div>
@@ -1518,8 +1521,20 @@
         if (navigator.vibrate) try { navigator.vibrate(12); } catch (e) {}
         return true;
       }
+      case 'dict-clear': {
+        const inp = $('#dict-q');
+        if (inp) {
+          inp.value = '';
+          updateDictionary();
+          inp.focus();
+        }
+        return true;
+      }
       case 'share-app': {
-        const text = 'नमस्ते साथीहरू! पोल्याण्डमा काम गर्न र बस्न चाहिने निःशुल्क पोलिश भाषा एप (नेपाली अर्थ र उच्चारण सहित): https://arbin848.github.io/polish/';
+        const streakDays = (S.progress && S.progress.streak) ? S.progress.streak : 0;
+        const totalItems = Object.keys((S.progress && S.progress.items) || {}).length;
+        const streakMention = streakDays > 0 ? ` (मेरो दैनिक स्ट्रिक: ${streakDays} दिन, अभ्यास: ${totalItems} शब्द)` : '';
+        const text = `नमस्ते साथीहरू! पोल्याण्डमा काम गर्न र बस्न चाहिने निःशुल्क पोलिश भाषा एप${streakMention} (नेपाली अर्थ र उच्चारण सहित): https://arbin848.github.io/polish/`;
         if (navigator.share) {
           navigator.share({ title: 'Słówka - Learn Polish in Nepali', text, url: 'https://arbin848.github.io/polish/' }).catch(() => {});
         } else {

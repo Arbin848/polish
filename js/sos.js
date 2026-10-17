@@ -138,6 +138,9 @@
             <button class="btn listen slow" data-action="say" data-slow="1" data-text="${esc(card.pl)}">
               🐢 Powoli / Slower
             </button>
+            <button class="btn sos-copy-btn" data-action="sos-copy" data-text="${esc(card.pl)}" title="Copy text">
+              📋 Kopiuj / Copy
+            </button>
           </div>
           <hr class="sos-divider">
           <div class="sos-modal-trans">
@@ -162,6 +165,7 @@
         return true;
       }
       case 'sos-copy': {
+        if (navigator.vibrate) try { navigator.vibrate(15); } catch (e) {}
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(el.dataset.text || '').then(() => {
             const original = el.textContent;
