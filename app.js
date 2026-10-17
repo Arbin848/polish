@@ -531,7 +531,7 @@
             <span class="streak-flame-icon">🔥</span>
             <div class="streak-counter-text">
               <b>${S.currentStreak() || 1} Day Streak · ${S.currentStreak() || 1} दिन लगातार!</b>
-              <small>🧠 ${Object.keys(S.progress.items).length} words practiced (${Object.keys(S.progress.items).length} शब्द सिकियो)</small>
+              <small>${today >= goal ? '✅ <span lang="ne" style="color:var(--good); font-weight:700;">आजको लक्ष्य पूरा भयो! स्ट्रिक सुरक्षित छ ✓</span>' : `⚠️ <span lang="ne" style="color:#d97706; font-weight:600;">आज बाँकी: ${Math.max(0, goal - today)} शब्द — स्ट्रिक बचाउनुहोस्!</span>`}</small>
             </div>
           </div>
           <button type="button" class="btn streak-share-btn" data-action="share-app" title="Share with Nepali friends on WhatsApp">
@@ -579,7 +579,10 @@
           <div class="wotd-card">
             <div class="wotd-top">
               <span class="label">🌟 Phrase of the day · आजको उपयोगी वाक्यांश</span>
-              <button class="btn compact listen" data-action="say" data-text="${esc(dp.pl)}">🔊 Listen</button>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <button type="button" class="star-card-btn ${S.isStarred(dp.pl) ? 'active' : ''}" data-action="star-card" data-pl="${esc(dp.pl)}" title="Save to My Words" style="font-size:1.3rem; padding:2px 6px;">★</button>
+                <button class="btn compact listen" data-action="say" data-text="${esc(dp.pl)}">🔊 Listen</button>
+              </div>
             </div>
             <div class="wotd-pl-row" style="cursor:pointer; user-select:none;" data-action="say" data-text="${esc(dp.pl)}" title="Tap to listen">
               <span class="wotd-pl" lang="pl">${polish(dp.pl)}</span>
