@@ -677,7 +677,7 @@
               <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
                 <div class="goal-ring" title="Today's goal">${ring(today, goal)}<span><b>${today}</b>/${goal}</span></div>
                 <small style="font-size:0.75rem; color:var(--muted); text-align:center; white-space:nowrap;">
-                  ${today >= goal ? '✓ Goal done!' : Math.max(0, goal - today) <= 3 ? '🔥 अन्तिम केही शब्द!' : `⏱️ ~${Math.ceil(Math.max(0, goal - today) / 3)} मिनेट बाँकी`}
+                  ${today >= goal ? '✓ Goal done!' : (new Date().getDay() === 0 || new Date().getDay() === 6) ? '☕ हप्ताको अन्त्य: छोटो रिभ्यु' : Math.max(0, goal - today) <= 3 ? '🔥 अन्तिम केही शब्द!' : `⏱️ ~${Math.ceil(Math.max(0, goal - today) / 3)} मिनेट बाँकी`}
                 </small>
               </div>
             </div>

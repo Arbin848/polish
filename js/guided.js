@@ -332,6 +332,7 @@
     const u = id && S.UNIT.get(id);
     switch (a) {
       case 'g-start': {
+        if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
         const target = S.UNIT.get(el.dataset.unit);
         if (!target) return true;
         const g = state()[target.id];
@@ -341,6 +342,7 @@
         return true;
       }
       case 'g-next': {
+        if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
         if (!u) return true;
         const step = buildSteps(u)[gstate(u).step];
         const snap = S.Practice.snapshot();
@@ -348,7 +350,10 @@
         setStep(u, gstate(u).step + 1);
         return true;
       }
-      case 'g-prev': if (u) setStep(u, gstate(u).step - 1); return true;
+      case 'g-prev':
+        if (navigator.vibrate) try { navigator.vibrate(8); } catch (e) {}
+        if (u) setStep(u, gstate(u).step - 1);
+        return true;
       case 'g-restart': if (u) { gstate(u).step = 0; run = null; setStep(u, 0); } return true;
       case 'g-line': local.line = Math.max(1, local.line) + 1; S.render(); { const d = u && u.dialogue[local.line - 1]; if (d) S.speak(d[1]); } return true;
       case 'g-say': if (u) sayCheck(view, u, Number(el.dataset.k)); return true;
