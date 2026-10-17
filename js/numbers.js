@@ -321,6 +321,15 @@
   };
   N.key = (ev) => {
     if (S.route.name !== 'numbers') return false;
+    // Press 'r' / 'R' or Ctrl+Space to replay spoken audio
+    if (st.q && st.q.say && (ev.key === 'r' || ev.key === 'R' || ((ev.ctrlKey || ev.metaKey) && ev.key === ' '))) {
+      const isInput = ev.target.tagName === 'INPUT' || ev.target.tagName === 'TEXTAREA';
+      if (!isInput || ev.ctrlKey || ev.metaKey) {
+        ev.preventDefault();
+        S.speak(st.q.say);
+        return true;
+      }
+    }
     if (!st.a && st.q && st.q.options && /^[1-4]$/.test(ev.key)) {
       const b = document.querySelector(`[data-action="nm-pick"][data-index="${Number(ev.key) - 1}"]`);
       if (b) { b.click(); return true; }

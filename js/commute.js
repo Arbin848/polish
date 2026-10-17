@@ -163,6 +163,7 @@
   }
 
   function toggle() {
+    if (navigator.vibrate) try { navigator.vibrate(15); } catch (e) {}
     if (state.running) stop();
     else start();
   }
