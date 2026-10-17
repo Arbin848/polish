@@ -829,6 +829,7 @@
     const input = (near && near.querySelector('[data-keys-target]'))
       || (document.activeElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) ? document.activeElement : document.querySelector('[data-keys-target]'));
     if (!input || input.readOnly) return null;
+    if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
     const start = input.selectionStart ?? input.value.length;
     const end = input.selectionEnd ?? input.value.length;
     input.value = input.value.slice(0, start) + ch + input.value.slice(end);

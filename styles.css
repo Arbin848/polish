@@ -4427,6 +4427,12 @@ html, body {
 .star-card-btn.active {
   color: #f59e0b;
   text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+  animation: starPop 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes starPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.35) rotate(15deg); }
+  100% { transform: scale(1); }
 }
 
 /* Today's Phrase of the Day Card */

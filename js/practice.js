@@ -856,9 +856,27 @@
       case 'drill-choose': drillChoose(Number(el.dataset.index)); return true;
       case 'drill-next': drillNext(); return true;
       case 'drill-restart': if (ctx.key === 'mistakes') { session = null; S.render(); } else { startDrill(); draw(); } return true;
-      case 'order-add': if (!session.answered) { session.picked.push(Number(el.dataset.k)); draw(); } return true;
-      case 'order-remove': if (!session.answered) { session.picked.splice(Number(el.dataset.pos), 1); draw(); } return true;
-      case 'order-clear': session.picked = []; draw(); return true;
+      case 'order-add':
+        if (!session.answered) {
+          if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
+          session.picked.push(Number(el.dataset.k));
+          draw();
+        }
+        return true;
+      case 'order-remove':
+        if (!session.answered) {
+          if (navigator.vibrate) try { navigator.vibrate(8); } catch (e) {}
+          session.picked.splice(Number(el.dataset.pos), 1);
+          draw();
+        }
+        return true;
+      case 'order-clear':
+        if (!session.answered) {
+          if (navigator.vibrate) try { navigator.vibrate(15); } catch (e) {}
+          session.picked = [];
+          draw();
+        }
+        return true;
       case 'order-check': orderCheck(); return true;
       default: return false;
     }
