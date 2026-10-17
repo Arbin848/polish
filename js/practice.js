@@ -759,11 +759,33 @@
     touchStartY = ev.touches[0].clientY;
   }, { passive: true });
 
+  document.addEventListener('touchmove', (ev) => {
+    if (!session || session.mode !== 'cards' || !session.flipped) return;
+    const cardEl = ev.target.closest('.card.flip-in');
+    if (!cardEl) return;
+    const currentX = ev.touches[0].clientX;
+    const diffX = currentX - touchStartX;
+    if (Math.abs(diffX) > 15) {
+      const rot = Math.max(-10, Math.min(10, diffX * 0.08));
+      cardEl.style.transform = `translateX(${diffX * 0.6}px) rotate(${rot}deg)`;
+      cardEl.style.transition = 'none';
+      if (diffX > 40) {
+        cardEl.style.borderColor = 'var(--good, #22c55e)';
+      } else if (diffX < -40) {
+        cardEl.style.borderColor = 'var(--again, #ef4444)';
+      }
+    }
+  }, { passive: true });
+
   document.addEventListener('touchend', (ev) => {
     if (!session || session.mode !== 'cards' || !session.flipped) return;
     const cardEl = ev.target.closest('.card.flip-in');
     if (!cardEl) return;
     const diffX = ev.changedTouches[0].clientX - touchStartX;
+    const diffY = ev.changedTouches[0].clientY - touchStartY;
+    cardEl.style.transform = '';
+    cardEl.style.transition = 'transform 0.2s ease, border-color 0.2s ease';
+    cardEl.style.borderColor = '';
     // Vertical swipe up for Easy (at least 60px up)
     if (diffY < -60 && Math.abs(diffY) > Math.abs(diffX) * 1.5) {
       rate('easy');

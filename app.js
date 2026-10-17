@@ -1515,6 +1515,7 @@
         const entry = S.LEXICON.get(pl) || { pl };
         const nowStarred = S.toggleStar(entry);
         el.classList.toggle('active', nowStarred);
+        if (navigator.vibrate) try { navigator.vibrate(12); } catch (e) {}
         return true;
       }
       case 'share-app': {

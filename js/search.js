@@ -35,9 +35,20 @@
       .replace(/ł/g, 'w')
       .replace(/ą/g, 'on')
       .replace(/ę/g, 'en')
-      .replace(/ó/g, 'u');
-
     const normQ = phoneticNorm(cleanQ);
+
+    function highlightMatch(text, term) {
+      if (!text || !term) return esc(text || '');
+      const escaped = esc(text);
+      const cleanTerm = esc(term).trim();
+      if (!cleanTerm) return escaped;
+      try {
+        const re = new RegExp('(' + cleanTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        return escaped.replace(re, '<mark class="search-match">$1</mark>');
+      } catch (err) {
+        return escaped;
+      }
+    }
 
     // 1. Search vocabulary entries
     if (activeFilter === 'all' || activeFilter === 'vocab') {
@@ -370,14 +381,14 @@
         <div class="search-item word-item ${isSelected ? 'selected' : ''}" data-action="search-select" data-index="${idx}" role="option" aria-selected="${isSelected}">
           <div class="search-item-left">
             <div class="search-item-headline">
-              <span class="search-pl" lang="pl">${polish(item.pl)}</span>
+              <span class="search-pl" lang="pl">${highlightMatch(item.pl, query)}</span>
               ${item.pron ? `<span class="search-pron">${esc(item.pron)}</span>` : ''}
               ${item.level ? `<span class="search-level-pill">${esc(item.level)}</span>` : ''}
             </div>
             <div class="search-trans">
-              <span class="search-en">${esc(item.en)}</span>
+              <span class="search-en">${highlightMatch(item.en, query)}</span>
               <span class="search-sep">·</span>
-              <span class="search-ne" lang="ne">${esc(item.ne)}</span>
+              <span class="search-ne" lang="ne">${highlightMatch(item.ne, query)}</span>
             </div>
           </div>
           <div class="search-item-actions">
