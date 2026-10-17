@@ -39,7 +39,19 @@
   }
   function playAll(t, slow) {
     const pitch = speakers(t);
-    S.speakLines(t.lines.map(([who, pl]) => ({ text: pl, pitch: pitch(who) })), slow);
+    const lines = t.lines.map(([who, pl], idx) => ({ text: pl, pitch: pitch(who), lineIdx: idx }));
+    document.querySelectorAll('.dialogue .line.speaking-line').forEach((el) => el.classList.remove('speaking-line'));
+    S.speakLines(lines, slow, (item) => {
+      document.querySelectorAll('.dialogue .line.speaking-line').forEach((el) => el.classList.remove('speaking-line'));
+      if (item && item.lineIdx != null) {
+        const lineEls = document.querySelectorAll('.dialogue .line');
+        const activeEl = lineEls[item.lineIdx];
+        if (activeEl) {
+          activeEl.classList.add('speaking-line');
+          activeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
     cur.plays += 1;
   }
 

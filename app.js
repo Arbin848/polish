@@ -268,6 +268,7 @@
     fire(type, data) {
       this.playChime();
       this.startConfetti();
+      if (navigator.vibrate) try { navigator.vibrate([20, 60, 40, 80, 60]); } catch (e) {}
       try { S.speak('Super!'); } catch (e) {}
 
       const oldModal = document.getElementById('celebration-overlay');
