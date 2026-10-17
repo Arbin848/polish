@@ -470,8 +470,17 @@
     }
 
     if (ev.key === 'Escape') {
-      Search.close();
       ev.preventDefault();
+      const inp = document.getElementById('search-modal-input');
+      if (inp && inp.value) {
+        inp.value = '';
+        doSearch('');
+        const listEl = document.getElementById('search-results-list');
+        if (listEl) listEl.innerHTML = renderResultsList();
+        inp.focus();
+      } else {
+        Search.close();
+      }
       return;
     }
 

@@ -1442,7 +1442,11 @@
         renderUnit();
         $('.tabs').scrollIntoView({ block: 'nearest' });
         break;
-      case 'say': S.speak(el.dataset.text, el.dataset.slow === '1'); break;
+      case 'say': {
+        if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
+        S.speak(el.dataset.text, el.dataset.slow === '1');
+        break;
+      }
       case 'abc-play': {
         // Each letter: its name, then the example word.
         const lines = [];

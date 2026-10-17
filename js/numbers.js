@@ -246,6 +246,16 @@
           }
         });
       }
+      // Transparently replace '.' with ',' on price inputs to prevent keypad mistypes
+      if (q.input === 'price' && !st.a) {
+        f.addEventListener('input', () => {
+          if (f.value.includes('.')) {
+            const start = f.selectionStart;
+            f.value = f.value.replace(/\./g, ',');
+            f.setSelectionRange(start, start);
+          }
+        });
+      }
     }
   };
 
