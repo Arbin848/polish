@@ -502,7 +502,11 @@
     const rp = S.ROLEPLAYS.find((r) => r.level === next.level && !S.progress.roleplays[r.id]) || S.ROLEPLAYS.find((r) => !S.progress.roleplays[r.id]);
     const story = S.STORIES.find((x) => x.level === next.level && S.progress.stories[x.id] == null);
     const hour = new Date().getHours();
-    const hello = hour < 12 ? ['Dzień dobry!', 'Good morning', 'शुभ प्रभात'] : hour < 18 ? ['Dzień dobry!', 'Good afternoon', 'नमस्ते'] : ['Dobry wieczór!', 'Good evening', 'शुभ सन्ध्या'];
+    const hello = hour < 12
+      ? ['Dzień dobry! Miłego dnia w pracy.', 'Good morning · Have a good day at work', 'शुभ प्रभात · काममा राम्रो दिन बितोस्!']
+      : hour < 18
+      ? ['Dzień dobry! Smacznego obiadu.', 'Good afternoon · Enjoy your break/lunch', 'नमस्ते · खाजा/खाना मिठो होस्!']
+      : ['Dobry wieczór! Odpocznij po pracy.', 'Good evening · Rest well after work', 'शुभ सन्ध्या · कामपछि आराम गर्नुहोस्!'];
 
     const plan = [
       due ? { to: 'review', icon: '↻', en: `Review ${due} ${due === 1 ? 'word' : 'words'}`, ne: 'शब्द दोहोर्‍याउनुहोस्', sub: 'A few minutes · केही मिनेट' } : null,
