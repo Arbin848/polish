@@ -98,8 +98,9 @@
   }));
   // 2000 Core Vocabulary & Practical Polish
   (W.SLOWKA_CORE2000 || []).forEach(([pl, en, ne, pron, proNe, exPl, exEn, exNe]) => {
-    if (!S.LEXICON.has(pl)) {
-      const entry = {
+    let entry = S.LEXICON.get(pl);
+    if (!entry) {
+      entry = {
         pl,
         en,
         ne,
@@ -113,6 +114,12 @@
       };
       S.LEXICON.set(pl, entry);
       S.ENTRIES.push(entry);
+    }
+    entry.isCore2000 = true;
+    if (exPl && !entry.exPl) {
+      entry.exPl = exPl;
+      entry.exEn = exEn;
+      entry.exNe = exNe;
     }
   });
   S.UNIT = new Map(S.COURSE.map((u) => [u.id, u]));

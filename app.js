@@ -1181,7 +1181,7 @@
       hits = hits.filter((e) => e.source && e.source.startsWith('work'));
     }
     if (dictCoreOnly) {
-      hits = hits.filter((e) => e.source === 'core2000');
+      hits = hits.filter((e) => e.isCore2000 || e.source === 'core2000');
     }
     const shown = hits.slice(0, 80);
     $('#dict-count').textContent = raw
