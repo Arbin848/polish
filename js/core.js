@@ -568,11 +568,19 @@
   window.addEventListener('touchstart', prewarmAudio, { passive: true });
   window.addEventListener('pointerdown', prewarmAudio, { passive: true });
 
+  let lastSpokenInvocation = 0;
+
   S.speak = (text, slow) => {
     if (!text) return;
     const now = Date.now();
+    // Guard against double triggers (e.g. pointerup + click or synthetic tap within 180ms)
+    if (now - lastSpokenInvocation < 180 && lastSpokenText === text) {
+      return;
+    }
+    lastSpokenInvocation = now;
+
     // Intelligent auto-slowdown: if tapped again within 3.5s, speak slower so learner catches sounds
-    const repeatQuick = (lastSpokenText === text && (now - lastSpokenTime) < 3500);
+    const repeatQuick = (lastSpokenText === text && (now - lastSpokenTime) > 350 && (now - lastSpokenTime) < 3500);
     lastSpokenText = text;
     lastSpokenTime = now;
     const isSlow = slow || S.settings.slow || repeatQuick;

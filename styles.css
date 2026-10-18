@@ -4688,7 +4688,8 @@ html, body {
 html, body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  touch-action: manipulation;
+  touch-action: pan-y;
+  overscroll-behavior-y: auto;
 }
 
 body, .app-layout, .main-stage, .main-content {
