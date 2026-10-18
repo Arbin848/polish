@@ -165,6 +165,76 @@
     "यहाँलाई भेटेर धेरै खुसी लाग्यो।"
   ],
   [
+    "nie ma za co",
+    "you are welcome",
+    "स्वागत छ / केही छैन",
+    "nyeh ma za tso",
+    "न्ये मा ज़ा त्सो",
+    "Dziękuję. — Nie ma za co.",
+    "Thank you. — You are welcome.",
+    "धन्यवाद। — केही छैन।"
+  ],
+  [
+    "do zobaczenia",
+    "see you later",
+    "पछि भेटौँला",
+    "do zo-ba-CHEH-nya",
+    "दो ज़ो-बा-ˈचे-न्या",
+    "Do zobaczenia jutro rano.",
+    "See you tomorrow morning.",
+    "भोलि बिहान भेटौँला।"
+  ],
+  [
+    "na razie",
+    "bye for now",
+    "अहिलेलाई बाइ",
+    "na RA-zyeh",
+    "ना ˈरा-ज्ये",
+    "Na razie, trzymaj się!",
+    "Bye for now, take care!",
+    "अहिलेलाई बाइ, ख्याल राख्नु!"
+  ],
+  [
+    "jak masz na imię?",
+    "what is your name?",
+    "तिम्रो नाम के हो?",
+    "yak mash na EE-myeh",
+    "याक् माश् ना ˈइ-म्ये",
+    "Jak masz na imię? — Mam na imię Bikash.",
+    "What is your name? — My name is Bikash.",
+    "तिम्रो नाम के हो? — मेरो नाम बिकास हो।"
+  ],
+  [
+    "skąd jesteś?",
+    "where are you from?",
+    "तिमी कहाँबाट हौ?",
+    "skont YES-tesh",
+    "स्कोन्त् ˈयेस्-तेश्",
+    "Skąd jesteś? — Jestem z Nepalu.",
+    "Where are you from? — I am from Nepal.",
+    "तिमी कहाँबाट हौ? — म नेपालबाट हुँ।"
+  ],
+  [
+    "gdzie mieszkasz?",
+    "where do you live?",
+    "तिमी कहाँ बस्छौ?",
+    "GDZYEH MYESH-kash",
+    "ˈग्ज्ये ˈम्येश्-काश्",
+    "Gdzie mieszkasz w Warszawie?",
+    "Where do you live in Warsaw?",
+    "तिमी वार्सामा कहाँ बस्छौ?"
+  ],
+  [
+    "zero",
+    "zero",
+    "शून्य",
+    "ZEH-ro",
+    "ˈज़े-रो",
+    "Temperatura spadła do zera.",
+    "Temperature dropped to zero.",
+    "तापक्रम शून्यमा झर्‍यो।"
+  ],
+  [
     "jeden",
     "one",
     "एक",
@@ -265,6 +335,136 @@
     "दस जुओती फिर्ता।"
   ],
   [
+    "jedenaście",
+    "eleven",
+    "एघार",
+    "yeh-deh-NASH-chyeh",
+    "ये-दे-ˈनाश्-च्ये",
+    "Mam jedenaście paczek.",
+    "I have eleven parcels.",
+    "मसँग एघारवटा पार्सल छन्।"
+  ],
+  [
+    "dwanaście",
+    "twelve",
+    "बाह्र",
+    "dva-NASH-chyeh",
+    "द्भा-ˈनाश्-च्ये",
+    "Godzina dwunasta w południe.",
+    "Twelve o clock noon.",
+    "दिउँसो बाह्र बजे।"
+  ],
+  [
+    "trzynaście",
+    "thirteen",
+    "तेह्र",
+    "tshi-NASH-chyeh",
+    "त्शि-ˈनाश्-च्ये",
+    "Tramwaj numer trzynaście.",
+    "Tram number thirteen.",
+    "तेह्र नम्बरको ट्राम।"
+  ],
+  [
+    "czternaście",
+    "fourteen",
+    "चौध",
+    "chter-NASH-chyeh",
+    "च्तेर्-ˈनाश्-च्ये",
+    "Czternaście dni urlopu.",
+    "Fourteen days of leave.",
+    "चौध दिनको बिदा।"
+  ],
+  [
+    "piętnaście",
+    "fifteen",
+    "पन्ध्र",
+    "pyent-NASH-chyeh",
+    "प्येन्त्-ˈनाश्-च्ये",
+    "Za piętnaście minut.",
+    "In fifteen minutes.",
+    "पन्ध्र मिनेटमा।"
+  ],
+  [
+    "szesnaście",
+    "sixteen",
+    "सोध्र",
+    "shes-NASH-chyeh",
+    "शेस्-ˈनाश्-च्ये",
+    "Mam szesnaście lat.",
+    "I am sixteen years old.",
+    "म सोह्र वर्षको भएँ।"
+  ],
+  [
+    "siedemnaście",
+    "seventeen",
+    "सत्र",
+    "shyeh-dem-NASH-chyeh",
+    "श्ये-देम्-ˈनाश्-च्ये",
+    "Siedemnaście kilometrów.",
+    "Seventeen kilometers.",
+    "सत्र किलोमिटर।"
+  ],
+  [
+    "osiemnaście",
+    "eighteen",
+    "अठार",
+    "o-shyem-NASH-chyeh",
+    "ओ-श्येम्-ˈनाश्-च्ये",
+    "Mam już osiemnaście lat.",
+    "I am already eighteen.",
+    "म अठार वर्ष पुगिसकेँ।"
+  ],
+  [
+    "dziewiętnaście",
+    "nineteen",
+    "उन्नाइस",
+    "jeh-vyent-NASH-chyeh",
+    "जे-व्येन्त्-ˈनाश्-च्ये",
+    "Dziewiętnaście stopni ciepła.",
+    "Nineteen degrees warm.",
+    "उन्नाइस डिग्री न्यानो।"
+  ],
+  [
+    "dwadzieścia",
+    "twenty",
+    "बीस",
+    "dva-JEE-shchya",
+    "द्भा-ˈजि-श्च्या",
+    "Dwadzieścia złotych.",
+    "Twenty zloty.",
+    "बीस जुओती।"
+  ],
+  [
+    "trzydzieści",
+    "thirty",
+    "तीस",
+    "tshi-JYEH-shchee",
+    "त्शि-ˈज्ये-श्चि",
+    "Trzydzieści minut.",
+    "Thirty minutes.",
+    "तीस मिनेट।"
+  ],
+  [
+    "czterdzieści",
+    "forty",
+    "चालीस",
+    "chter-JYEH-shchee",
+    "च्तेर्-ˈज्ये-श्चि",
+    "Czterdzieści godzin tygodniowo.",
+    "Forty hours a week.",
+    "हप्तामा चालीस घण्टा।"
+  ],
+  [
+    "pięćdziesiąt",
+    "fifty",
+    "पचास",
+    "pyench-JEH-shyont",
+    "प्येन्च्-ˈजे-श्योन्त्",
+    "Pięćdziesiąt procent zniżki.",
+    "Fifty percent discount.",
+    "पचास प्रतिशत छुट।"
+  ],
+  [
     "sto",
     "one hundred",
     "एक सय",
@@ -275,694 +475,44 @@
     "एक सय जुओती।"
   ],
   [
+    "dwieście",
+    "two hundred",
+    "दुई सय",
+    "DVYEH-shchyeh",
+    "ˈद्व्ये-श्च्ये",
+    "Dwieście stron książki.",
+    "Two hundred pages of book.",
+    "दुई सय पृष्ठको किताब।"
+  ],
+  [
+    "pięćset",
+    "five hundred",
+    "पाँच सय",
+    "PYENCH-set",
+    "ˈप्येन्च्-सेत्",
+    "Pięćset euro.",
+    "Five hundred euros.",
+    "पाँच सय यूरो।"
+  ],
+  [
     "tysiąc",
     "one thousand",
     "एक हजार",
     "TEE-shyonts",
     "ˈति-श्योन्त्स्",
-    "Tysiąc euro.",
-    "One thousand euros.",
-    "एक हजार यूरो।"
-  ],
-  [
-    "mało",
-    "little / few",
-    "थोरै",
-    "MA-wo",
-    "ˈमा-वो",
-    "Mam mało czasu.",
-    "I have little time.",
-    "मसँग थोरै समय छ।"
-  ],
-  [
-    "dużo",
-    "much / a lot",
-    "धेरै",
-    "DOO-zho",
-    "ˈदु-झो",
-    "Mamy dużo pracy.",
-    "We have a lot of work.",
-    "हाम्रो धेरै काम छ।"
-  ],
-  [
-    "trochę",
-    "a little / somewhat",
-    "अलिअलि / केही",
-    "TRO-heh",
-    "ˈत्रो-हे",
-    "Mówię trochę po polsku.",
-    "I speak a little Polish.",
-    "म अलिअलि पोलिश बोल्छु।"
-  ],
-  [
-    "ile",
-    "how much / how many",
-    "कति",
-    "EE-leh",
-    "ˈइ-ले",
-    "Ile to kosztuje?",
-    "How much does this cost?",
-    "यसको कति पर्छ?"
-  ],
-  [
-    "dziś",
-    "today",
-    "आज",
-    "jeesh",
-    "जीश्",
-    "Dziś jest ciepło.",
-    "Today is warm.",
-    "आज न्यानो छ।"
-  ],
-  [
-    "dzisiaj",
-    "today (full form)",
-    "आज",
-    "JEE-shay",
-    "ˈजि-शाय्",
-    "Dzisiaj pracuję na drugą zmianę.",
-    "Today I work on the second shift.",
-    "आज म दोस्रो सिफ्टमा काम गर्छु।"
-  ],
-  [
-    "wczoraj",
-    "yesterday",
-    "हिजो",
-    "FCHO-ray",
-    "ˈफ्चो-राय्",
-    "Wczoraj padał deszcz.",
-    "Yesterday it rained.",
-    "हिजो पानी परेको थियो।"
-  ],
-  [
-    "jutro",
-    "tomorrow",
-    "भोलि",
-    "YOO-tro",
-    "ˈयु-त्रो",
-    "Jutro mam wolne.",
-    "Tomorrow I have a day off.",
-    "भोलि मेरो बिदा छ।"
-  ],
-  [
-    "pojutrze",
-    "day after tomorrow",
-    "पर्सि",
-    "po-YOO-tsheh",
-    "पो-ˈयु-त्शे",
-    "Spotkamy się pojutrze.",
-    "We will meet the day after tomorrow.",
-    "हामी पर्सि भेट्नेछौँ।"
-  ],
-  [
-    "teraz",
-    "now",
-    "अहिले",
-    "TEH-ras",
-    "ˈते-रास्",
-    "Teraz muszę iść.",
-    "Now I have to go.",
-    "अब म जानुपर्छ।"
-  ],
-  [
-    "później",
-    "later",
-    "पछि",
-    "POOZH-nyey",
-    "ˈपुझ्-न्येय्",
-    "Zadzwonię później.",
-    "I will call later.",
-    "म पछि फोन गर्छु।"
-  ],
-  [
-    "wcześnie",
-    "early",
-    "चाँडै",
-    "FCHESH-nyeh",
-    "ˈफ्चेश्-न्ये",
-    "Wstaję bardzo wcześnie.",
-    "I get up very early.",
-    "म धेरै चाँडै उठ्छु।"
-  ],
-  [
-    "godzina",
-    "hour / o clock",
-    "घण्टा / बजे",
-    "go-JEE-na",
-    "गो-ˈजि-ना",
-    "Za godzinę kończę pracę.",
-    "In an hour I finish work.",
-    "एक घण्टामा म काम सक्छौँ।"
-  ],
-  [
-    "minuta",
-    "minute",
-    "मिनेट",
-    "mee-NOO-ta",
-    "मि-ˈनु-ता",
-    "Poczekaj minutę.",
-    "Wait a minute.",
-    "एक मिनेट पर्खनुहोस्।"
-  ],
-  [
-    "tydzień",
-    "week",
-    "हप्ता",
-    "TEE-jyen",
-    "ˈति-ज्येन्",
-    "W przyszłym tygodniu mam urlop.",
-    "Next week I have leave.",
-    "अर्को हप्ता मेरो बिदा छ।"
-  ],
-  [
-    "miesiąc",
-    "month",
-    "महिना",
-    "MYEH-shyonts",
-    "ˈम्ये-श्योन्त्स्",
-    "Pracuję tu od miesiąca.",
-    "I have been working here for a month.",
-    "म यहाँ एक महिनादेखि काम गर्दैछु।"
-  ],
-  [
-    "rok",
-    "year",
-    "वर्ष",
-    "rok",
-    "रोक्",
-    "Mieszkam w Polsce jeden rok.",
-    "I have lived in Poland for one year.",
-    "म पोल्यान्डमा एक वर्षदेखि बस्दैछु।"
-  ],
-  [
-    "praca",
-    "work / job",
-    "काम / जागिर",
-    "PRA-tsa",
-    "ˈप्रा-त्सा",
-    "Szukam stałej pracy.",
-    "I am looking for permanent work.",
-    "म स्थायी काम खोज्दैछु।"
-  ],
-  [
-    "pracownik",
-    "employee / worker",
-    "कामदार / कर्मचारी",
-    "pra-TSOV-neek",
-    "प्रा-ˈत्सोभ्-निक्",
-    "Jestem nowym pracownikiem.",
-    "I am a new employee.",
-    "म नयाँ कामदार हुँ।"
-  ],
-  [
-    "pracodawca",
-    "employer",
-    "रोजगारदाता / मालिक",
-    "pra-tso-DAF-tsa",
-    "प्रा-त्सो-ˈदाफ्-त्सा",
-    "Pracodawca zapewnia ubranie robocze.",
-    "The employer provides work clothes.",
-    "रोजगारदाताले काम गर्ने लुगा उपलब्ध गराउँछ।"
-  ],
-  [
-    "szef",
-    "boss",
-    "हाकिम",
-    "shef",
-    "शेफ़्",
-    "Mój szef jest w biurze.",
-    "My boss is in the office.",
-    "मेरो हाकिम अफिसमा हुनुहुन्छ।"
-  ],
-  [
-    "kierownik",
-    "manager / supervisor",
-    "म्यानेजर / सुपरभाइजर",
-    "kye-ROV-neek",
-    "क्ये-ˈरोभ्-निक्",
-    "Kierownik magazynu podpisze dokument.",
-    "The warehouse manager will sign the document.",
-    "गोदाम म्यानेजरले कागजातमा हस्ताक्षर गर्नुहुनेछ।"
-  ],
-  [
-    "umowa",
-    "contract",
-    "सम्झौता",
-    "oo-MO-va",
-    "उ-ˈमो-भा",
-    "Mam umowę o pracę na rok.",
-    "I have an employment contract for a year.",
-    "मसँग एक वर्षको रोजगार सम्झौता छ।"
-  ],
-  [
-    "pensja",
-    "salary",
-    "तलब",
-    "PEN-sya",
-    "ˈपेन्-स्या",
-    "Kiedy jest wypłacana pensja?",
-    "When is the salary paid?",
-    "तलब कहिले भुक्तानी हुन्छ?"
-  ],
-  [
-    "wypłata",
-    "paycheck / payout",
-    "तलब / ज्याला भुक्तानी",
-    "vi-PWA-ta",
-    "भि-ˈप्वा-ता",
-    "Wypłata jest na koncie bankowym.",
-    "The pay is in the bank account.",
-    "तलब बैंक खातामा आएको छ।"
-  ],
-  [
-    "stawka",
-    "rate / pay rate",
-    "दर (घण्टाको ज्याला)",
-    "STAF-ka",
-    "ˈस्ताफ्-का",
-    "Jaka jest stawka za godzinę?",
-    "What is the hourly rate?",
-    "प्रति घण्टाको दर कति हो?"
-  ],
-  [
-    "nadgodziny",
-    "overtime",
-    "ओभरटाइम (थप काम)",
-    "nad-go-JEE-ni",
-    "नाद्-गो-ˈजि-नि",
-    "Czy są dostępne nadgodziny?",
-    "Is overtime available?",
-    "के ओभरटाइम काम उपलब्ध छ?"
-  ],
-  [
-    "zmiana",
-    "shift",
-    "सिफ्ट (कामको पालो)",
-    "ZMYA-na",
-    "ˈज़्म्या-ना",
-    "Pracuję na ranną zmianę.",
-    "I work on the morning shift.",
-    "म बिहानी सिफ्टमा काम गर्छु।"
-  ],
-  [
-    "grafik",
-    "roster / schedule",
-    "कामको तालिका (रोस्टर)",
-    "GRA-feek",
-    "ˈग्रा-फिक्",
-    "Gdzie jest grafik na przyszły tydzień?",
-    "Where is the schedule for next week?",
-    "अर्को हप्ताको कार्यतालिका कहाँ छ?"
-  ],
-  [
-    "przerwa",
-    "break",
-    "खाजा खाने समय / ब्रेक",
-    "PZHER-va",
-    "ˈप्झेर्-भा",
-    "Mamy piętnaście minut przerwy.",
-    "We have a fifteen-minute break.",
-    "हाम्रो पन्ध्र मिनेटको ब्रेक छ।"
-  ],
-  [
-    "urlop",
-    "holiday / leave",
-    "बिदा (भ्याकेसन)",
-    "OOR-lop",
-    "ˈउर्-लोप्",
-    "Chciałbym wziąć urlop wypoczynkowy.",
-    "I would like to take paid leave.",
-    "म तलबी बिदा लिन चाहन्छु।"
-  ],
-  [
-    "zwolnienie",
-    "sick leave (L4)",
-    "बिरामी बिदा (L4)",
-    "zvol-NYEH-nyeh",
-    "ज़्भोल्-ˈन्ये-न्ये",
-    "Lekarz wystawił zwolnienie lekarskie L4.",
-    "The doctor issued sick leave L4.",
-    "डाक्टरले L4 बिरामी बिदा बनाइदिनुभयो।"
-  ],
-  [
-    "BHP",
-    "health & safety",
-    "कार्यस्थल सुरक्षा नियम (BHP)",
-    "beh-ha-peh",
-    "बे-हा-पे",
-    "Szkolenie BHP jest obowiązkowe.",
-    "Occupational safety training is mandatory.",
-    "कार्यस्थल सुरक्षा तालिम अनिवार्य छ।"
-  ],
-  [
-    "magazyn",
-    "warehouse",
-    "गोदाम",
-    "ma-GA-zin",
-    "मा-ˈगा-ज़िन्",
-    "Pracuję w dużym magazynie.",
-    "I work in a big warehouse.",
-    "म ठूलो गोदाममा काम गर्छु।"
-  ],
-  [
-    "fabryka",
-    "factory / plant",
-    "कारखाना / फ्याक्ट्री",
-    "fa-BRI-ka",
-    "फा-ˈब्रि-का",
-    "Fabryka produkuje części samochodowe.",
-    "The factory produces car parts.",
-    "कारखानाले गाडीका पार्टपुर्जाहरू बनाउँछ।"
-  ],
-  [
-    "budowa",
-    "construction site",
-    "निर्माण क्षेत्र (कन्सट्रक्सन)",
-    "boo-DO-va",
-    "बु-ˈदो-भा",
-    "Na budowie trzeba nosić kask.",
-    "A helmet must be worn on the construction site.",
-    "निर्माण स्थलमा हेल्मेट लगाउनै पर्छ।"
-  ],
-  [
-    "kask",
-    "helmet",
-    "हेल्मेट",
-    "kask",
-    "कास्क्",
-    "Załóż kask ochronny.",
-    "Put on a protective helmet.",
-    "सुरक्षा हेल्मेट लगाउनुहोस्।"
-  ],
-  [
-    "kamizelka",
-    "high-vis vest",
-    "सुरक्षा भेस्ट (चम्किलो)",
-    "ka-mee-ZEL-ka",
-    "का-मि-ˈज़ेल्-का",
-    "Kamizelka odblaskowa jest wymagana.",
-    "A reflective vest is required.",
-    "चम्किलो सुरक्षा भेस्ट अनिवार्य छ।"
-  ],
-  [
-    "buty robocze",
-    "safety work shoes",
-    "सुरक्षा जुत्ता (स्टिल टो)",
-    "BOO-ti ro-BO-cheh",
-    "ˈबु-ति रो-ˈबो-चे",
-    "Buty robocze z blachą chronią stopy.",
-    "Steel-toe work boots protect feet.",
-    "स्टिल टो भएको सुरक्षा जुत्ताले खुट्टा जोगाउँछ।"
-  ],
-  [
-    "paleta",
-    "pallet",
-    "प्यालेट",
-    "pa-LEH-ta",
-    "पा-ˈले-ता",
-    "Towar leży na palecie.",
-    "Goods are on the pallet.",
-    "सामान प्यालेटमा छ।"
-  ],
-  [
-    "wózek",
-    "trolley / cart",
-    "ट्रली / गाडा",
-    "VOO-zek",
-    "ˈभु-ज़ेक्",
-    "Wózek paletowy ręczny.",
-    "Manual pallet truck.",
-    "हातले तान्ने प्यालेट ट्रली।"
-  ],
-  [
-    "skaner",
-    "scanner",
-    "स्क्यानर",
-    "SKA-ner",
-    "ˈस्का-नेर्",
-    "Zeskanuj kod kreskowy.",
-    "Scan the barcode.",
-    "बारकोड स्क्यान गर्नुहोस्।"
-  ],
-  [
-    "karta pobytu",
-    "residence permit card (TRC)",
-    "आवास कार्ड (TRC)",
-    "KAR-ta po-BI-too",
-    "ˈकार्-ता पो-ˈबि-तु",
-    "Czekam na kartę pobytu.",
-    "I am waiting for my residence card.",
-    "म आवास अनुमति कार्ड पर्खिरहेको छु।"
-  ],
-  [
-    "urząd",
-    "government office",
-    "सरकारी कार्यालय",
-    "OO-zhont",
-    "ˈउ-झोन्त्",
-    "Muszę iść do urzędu wojewódzkiego.",
-    "I must go to the voivodeship office.",
-    "म प्रदेश सरकारी कार्यालय जानुपर्छ।"
-  ],
-  [
-    "wniosek",
-    "application form",
-    "निवेदन फारम",
-    "VNIO-sek",
-    "ˈव्न्यो-सेक्",
-    "Złożyłem wniosek o pobyt czasowy.",
-    "I submitted an application for temporary stay.",
-    "मैले अस्थायी बसोबासको निवेदन बुझाएँ।"
-  ],
-  [
-    "pieczątka",
-    "stamp",
-    "छाप / मोहर",
-    "pye-CHONT-ka",
-    "प्ये-ˈचोन्त्-का",
-    "Mam czerwoną pieczątkę w paszporcie.",
-    "I have a red stamp in my passport.",
-    "मेरो राहदानीमा रातो छाप छ।"
-  ],
-  [
-    "decyzja",
-    "official decision",
-    "निर्णय (सरकारी आदेश)",
-    "deh-TSI-zya",
-    "दे-ˈत्सि-ज्या",
-    "Dostałem pozytywną decyzję.",
-    "I received a positive decision.",
-    "मैले सकारात्मक स्वीकृति निर्णय पाएँ।"
-  ],
-  [
-    "paszport",
-    "passport",
-    "राहदानी (पासपोर्ट)",
-    "PASH-port",
-    "ˈपाश्-पोर्त्",
-    "Mój paszport jest ważny jeszcze dwa lata.",
-    "My passport is valid for two more years.",
-    "मेरो राहदानी अझै दुई वर्ष मान्य छ।"
-  ],
-  [
-    "PESEL",
-    "PESEL national ID number",
-    "व्यक्तिगत परिचय नम्बर (PESEL)",
-    "PEH-sel",
-    "ˈपे-सेल्",
-    "Czy ma pan numer PESEL?",
-    "Do you have a PESEL number?",
-    "के तपाईंसँग PESEL नम्बर छ?"
-  ],
-  [
-    "bankomat",
-    "ATM / cash machine",
-    "एटीएम मेसिन",
-    "ban-KO-mat",
-    "बान्-ˈको-मात्",
-    "Gdzie jest najbliższy bankomat?",
-    "Where is the nearest ATM?",
-    "सबैभन्दा नजिकको एटीएम कहाँ छ?"
-  ],
-  [
-    "konto",
-    "bank account",
-    "बैंक खाता",
-    "KON-to",
-    "ˈकोन्-तो",
-    "Chcę założyć konto bankowe.",
-    "I want to open a bank account.",
-    "म बैंक खाता खोल्न चाहन्छु।"
-  ],
-  [
-    "BLIK",
-    "BLIK mobile payment code",
-    "BLIK मोबाइल भुक्तानी कोड",
-    "bleek",
-    "ब्लिक्",
-    "Płacę kodem BLIK.",
-    "I pay with a BLIK code.",
-    "म BLIK कोडबाट पैसा तिर्छु।"
-  ],
-  [
-    "karta płatnicza",
-    "debit / payment card",
-    "भुक्तानी कार्ड",
-    "KAR-ta pwat-NEE-cha",
-    "ˈकार्-ता प्वात्-ˈनि-चा",
-    "Płatność kartą czy gotówką?",
-    "Payment by card or cash?",
-    "कार्डबाट तिर्ने कि नगद?"
-  ],
-  [
-    "podpis",
-    "signature",
-    "हस्ताक्षर (दस्तखत)",
-    "POT-pees",
-    "ˈपोत्-पिस्",
-    "Proszę złożyć podpis tutaj.",
-    "Please put your signature here.",
-    "कृपया यहाँ हस्ताक्षर गर्नुहोस्।"
-  ],
-  [
-    "szpital",
-    "hospital",
-    "अस्पताल",
-    "SHPEE-tal",
-    "ˈश्पि-ताल्",
-    "Karetka zabrała go do szpitala.",
-    "The ambulance took him to the hospital.",
-    "एम्बुलेन्सले उसलाई अस्पताल पुर्‍यायो।"
-  ],
-  [
-    "przychodnia",
-    "clinic / health center",
-    "क्लिनिक / स्वास्थ्य चौकी",
-    "pshi-HOD-nya",
-    "प्शि-ˈहोद्-न्या",
-    "Przychodnia lekarska NFZ.",
-    "Public NFZ clinic.",
-    "सरकारी NFZ स्वास्थ्य क्लिनिक।"
-  ],
-  [
-    "apteka",
-    "pharmacy",
-    "औषधि पसल",
-    "ap-TEH-ka",
-    "आप्-ˈते-का",
-    "Ta apteka jest czynna całą dobę.",
-    "This pharmacy is open 24/7.",
-    "यो औषधि पसल २४ घण्टा खुल्छ।"
-  ],
-  [
-    "lekarz",
-    "doctor",
-    "डाक्टर",
-    "LEH-kazh",
-    "ˈले-काझ",
-    "Lekarz przepisał antybiotyk.",
-    "The doctor prescribed an antibiotic.",
-    "डाक्टरले एन्टिबायोटिक लेखिदिनुभयो।"
-  ],
-  [
-    "ból",
-    "pain / ache",
-    "दुखाइ",
-    "bool",
-    "बुल्",
-    "Gdzie czuje pan ból?",
-    "Where do you feel pain?",
-    "तपाईंलाई कहाँ दुखेको छ?"
-  ],
-  [
-    "boli",
-    "it hurts",
-    "दुख्छ",
-    "BO-lee",
-    "ˈबो-लि",
-    "Boli mnie głowa i gardło.",
-    "My head and throat hurt.",
-    "मेरो टाउको र घाँटी दुखेको छ।"
-  ],
-  [
-    "recepta",
-    "prescription",
-    "औषधिको पुर्जा (प्रिस्क्रिप्सन)",
-    "reh-TSEP-ta",
-    "रे-ˈत्सेप्-ता",
-    "Mam kod do e-recepty.",
-    "I have an e-prescription code.",
-    "मसँग ई-पुर्जाको कोड छ।"
-  ],
-  [
-    "gorączka",
-    "fever",
-    "ज्वरो",
-    "go-RONCH-ka",
-    "गो-ˈरोन्च्-का",
-    "Mam trzydzieści osiem stopni gorączki.",
-    "I have 38 degrees fever.",
-    "मलाई ३८ डिग्री ज्वरो आएको छ।"
-  ],
-  [
-    "karetka",
-    "ambulance",
-    "एम्बुलेन्स",
-    "ka-RET-ka",
-    "का-ˈरेत्-का",
-    "Proszę wezwać karetkę pogotowia!",
-    "Please call an ambulance!",
-    "कृपया एम्बुलेन्स बोलाइदिनुहोस्!"
-  ],
-  [
-    "pomoc",
-    "help / assistance",
-    "सहयोग / मद्दत",
-    "PO-mots",
-    "ˈपो-मोत्स्",
-    "Potrzebuję pilnej pomocy.",
-    "I need urgent help.",
-    "मलाई तुरुन्त मद्दत चाहिन्छ।"
-  ],
-  [
-    "sklep",
-    "shop / store",
-    "पसल",
-    "sklep",
-    "स्क्लेप्",
-    "Idę do sklepu po zakupy.",
-    "I am going to the shop for groceries.",
-    "म किनमेल गर्न पसल जाँदैछु।"
-  ],
-  [
-    "piekarnia",
-    "bakery",
-    "बेकरी (पाउरोटी पसल)",
-    "pyeh-KAR-nya",
-    "प्येह्-ˈकार्-न्या",
-    "Świeże bułki z piekarni.",
-    "Fresh bread rolls from the bakery.",
-    "बेकरीको ताजा पाउरोटी।"
-  ],
-  [
-    "paragon",
-    "receipt",
-    "रसिद (बिल)",
-    "pa-RA-gon",
-    "पा-ˈरा-गोन्",
-    "Czy chce pan paragon?",
-    "Do you want the receipt?",
-    "के तपाईंलाई रसिद चाहिन्छ?"
-  ],
-  [
-    "reklamówka",
-    "plastic shopping bag",
-    "प्लास्टिकको झोला",
-    "reh-kla-MOOF-ka",
-    "रे-क्ला-ˈमुफ्-का",
-    "Czy potrzebna jest reklamówka?",
-    "Do you need a plastic shopping bag?",
-    "के प्लास्टिकको झोला चाहिन्छ?"
+    "Tysiąc złotych kaucji.",
+    "One thousand zloty deposit.",
+    "एक हजार जुओती धरौटी।"
+  ],
+  [
+    "milion",
+    "one million",
+    "दश लाख (मिलियन)",
+    "MEEL-yon",
+    "ˈमिल्-योन्",
+    "Milion mieszkańców.",
+    "One million inhabitants.",
+    "दश लाख बासिन्दा।"
   ],
   [
     "chleb",
@@ -970,9 +520,9 @@
     "पाउरोटी",
     "hlep",
     "ह्लेप्",
-    "Kup jeden chleb.",
-    "Buy one loaf of bread.",
-    "एउटा पाउरोटी किन्नुहोस्।"
+    "Kup świeży chleb.",
+    "Buy fresh bread.",
+    "ताजा पाउरोटी किन्नुहोस्।"
   ],
   [
     "bułka",
@@ -1000,19 +550,9 @@
     "चिज",
     "ser",
     "सेर्",
-    "Kanapka z serem i szynką.",
-    "Sandwich with cheese and ham.",
-    "चिज र ह्याम हालेको स्यान्डविच।"
-  ],
-  [
-    "jajko",
-    "egg",
-    "अण्डा",
-    "YAY-ko",
-    "ˈयाय्-को",
-    "Wytłaczanka jajek.",
-    "A carton of eggs.",
-    "अण्डाको क्रेट।"
+    "Kanapka z serem.",
+    "Sandwich with cheese.",
+    "चिज हालेको स्यान्डविच।"
   ],
   [
     "mleko",
@@ -1020,9 +560,19 @@
     "दूध",
     "MLEH-ko",
     "ˈम्ले-को",
-    "Karton świeżego mleka.",
-    "A carton of fresh milk.",
-    "ताजा दूधको प्याकेट।"
+    "Karton mleka.",
+    "A carton of milk.",
+    "दूधको प्याकेट।"
+  ],
+  [
+    "jajko",
+    "egg",
+    "अण्डा",
+    "YAY-ko",
+    "ˈयाय्-को",
+    "Dziesięć jajek.",
+    "Ten eggs.",
+    "दस वटा अण्डा।"
   ],
   [
     "woda",
@@ -1031,18 +581,8 @@
     "VO-da",
     "ˈभो-दा",
     "Woda niegazowana.",
-    "Still (non-carbonated) water.",
-    "ग्यास नभएको सादा पानी।"
-  ],
-  [
-    "herbata",
-    "tea",
-    "चिया",
-    "her-BA-ta",
-    "हेर्-ˈबा-ता",
-    "Ciepła herbata z miodem.",
-    "Warm tea with honey.",
-    "मह हालेको तातो चिया।"
+    "Still water.",
+    "सादा पानी।"
   ],
   [
     "kawa",
@@ -1050,9 +590,19 @@
     "कफी",
     "KA-va",
     "ˈका-भा",
-    "Mocna czarna kawa.",
-    "Strong black coffee.",
-    "कडा कालो कफी।"
+    "Czarna kawa bez cukru.",
+    "Black coffee without sugar.",
+    "चिनीबिनाको कालो कफी।"
+  ],
+  [
+    "herbata",
+    "tea",
+    "चिया",
+    "her-BA-ta",
+    "हेर्-ˈबा-ता",
+    "Gorąca herbata z cytryną.",
+    "Hot tea with lemon.",
+    "कागती हालेको तातो चिया।"
   ],
   [
     "cukier",
@@ -1060,8 +610,8 @@
     "चिनी",
     "TSOO-kyer",
     "ˈत्सु-क्येर्",
-    "Jedna łyżeczka cukru.",
-    "One teaspoon of sugar.",
+    "Jedna łyżka cukru.",
+    "One spoon of sugar.",
     "एक चम्चा चिनी।"
   ],
   [
@@ -1070,9 +620,39 @@
     "नुन",
     "sool",
     "सुल्",
-    "Podaj mi sól, proszę.",
-    "Pass me the salt, please.",
-    "कृपया मलाई नुन दिनुहोस्।"
+    "Gdzie jest sól?",
+    "Where is the salt?",
+    "नुन कहाँ छ?"
+  ],
+  [
+    "pieprz",
+    "pepper",
+    "मरिच",
+    "pyepsh",
+    "प्येप्श्",
+    "Czarny pieprz mielony.",
+    "Ground black pepper.",
+    "पिसेको कालो मरिच।"
+  ],
+  [
+    "olej",
+    "cooking oil",
+    "खाना पकाउने तेल",
+    "O-ley",
+    "ˈओ-लेय्",
+    "Butelka oleju rzepakowego.",
+    "A bottle of rapeseed oil.",
+    "तोरीको जस्तै तेलको बोतल।"
+  ],
+  [
+    "mąka",
+    "flour",
+    "पिठो",
+    "MON-ka",
+    "ˈमोन्-का",
+    "Kilogram mąki pszennej.",
+    "A kilogram of wheat flour.",
+    "एक किलो गहुँको पिठो।"
   ],
   [
     "ryż",
@@ -1080,19 +660,19 @@
     "चामल / भात",
     "rish",
     "रिश्",
-    "Worek ryżu basmati.",
-    "A bag of basmati rice.",
-    "बासमती चामलको बोरा।"
+    "Biały ryż gotowany.",
+    "Cooked white rice.",
+    "उसिनेको सेतो भात।"
   ],
   [
-    "ziemniak",
-    "potato",
-    "आलु",
-    "ZHYEM-nyak",
-    "ˈज्येम्-न्याक्",
-    "Ziemniaki gotowane w wodzie.",
-    "Potatoes boiled in water.",
-    "उसिनेको आलु।"
+    "makaron",
+    "pasta / noodles",
+    "पास्ता / चाउचाउ",
+    "ma-KA-ron",
+    "मा-ˈका-रोन्",
+    "Makaron z sosem pomidorowym.",
+    "Pasta with tomato sauce.",
+    "गोलभेडाको सससँग पास्ता।"
   ],
   [
     "mięso",
@@ -1100,9 +680,9 @@
     "मासु",
     "MYEN-so",
     "ˈम्येन्-सो",
-    "Świeże mięso mielone.",
-    "Fresh minced meat.",
-    "ताजा किमा मासु।"
+    "Świeże mięso wołowe.",
+    "Fresh beef meat.",
+    "ताजा गाईको मासु।"
   ],
   [
     "kurczak",
@@ -1110,9 +690,89 @@
     "कुखुराको मासु",
     "KOOR-chak",
     "ˈकुर्-चाक्",
-    "Pieczony kurczak z ryżem.",
-    "Roast chicken with rice.",
-    "भातसँग रोस्ट गरिएको कुखुरा।"
+    "Pieczony kurczak.",
+    "Roast chicken.",
+    "रोस्ट कुखुरा।"
+  ],
+  [
+    "wieprzowina",
+    "pork",
+    "सुँगुरको मासु",
+    "vye-psho-VEE-na",
+    "व्ये-प्शो-ˈभि-ना",
+    "Kotlet ze schabu wieprzowego.",
+    "Pork loin chop.",
+    "सुँगुरको चप।"
+  ],
+  [
+    "wołowina",
+    "beef",
+    "गाईको मासु",
+    "vo-wo-VEE-na",
+    "भो-भो-ˈभि-ना",
+    "Gulasz z wołowiny.",
+    "Beef stew.",
+    "गाईको मासुको झोल।"
+  ],
+  [
+    "ryba",
+    "fish",
+    "माछा",
+    "RI-ba",
+    "ˈरि-बा",
+    "Smażona ryba z frytkami.",
+    "Fried fish with fries.",
+    "तारेको माछा र आलु।"
+  ],
+  [
+    "ziemniak",
+    "potato",
+    "आलु",
+    "ZHYEM-nyak",
+    "ˈज्येम्-न्याक्",
+    "Worek ziemniaków.",
+    "A sack of potatoes.",
+    "आलुको बोरा।"
+  ],
+  [
+    "pomidor",
+    "tomato",
+    "गोलभेडा",
+    "po-MEE-dor",
+    "पो-ˈमि-दोर्",
+    "Czerwone pomidory.",
+    "Red tomatoes.",
+    "रातो गोलभेडा।"
+  ],
+  [
+    "ogórek",
+    "cucumber",
+    "काँक्रा",
+    "o-GOO-rek",
+    "ओ-ˈगु-रेक्",
+    "Ogórki kiszone.",
+    "Pickled cucumbers.",
+    "अचार काँक्रा।"
+  ],
+  [
+    "cebula",
+    "onion",
+    "प्याज",
+    "tseh-BOO-la",
+    "त्से-ˈबु-ला",
+    "Kroję cebulę.",
+    "I am slicing an onion.",
+    "म प्याज काट्दैछु।"
+  ],
+  [
+    "czosnek",
+    "garlic",
+    "लसुन",
+    "CHOS-nek",
+    "ˈचोस्-नेक्",
+    "Ząbek czosnku.",
+    "A clove of garlic.",
+    "लसुनको एक पोटी।"
   ],
   [
     "jabłko",
@@ -1120,29 +780,459 @@
     "स्याउ",
     "YAP-ko",
     "ˈयाप्-को",
-    "Polskie czerwone jabłka.",
-    "Polish red apples.",
-    "पोलिश रातो स्याउ।"
+    "Dwa słodkie jabłka.",
+    "Two sweet apples.",
+    "दुईवटा गुलिया स्याउ।"
   ],
   [
-    "obiad",
-    "lunch / main meal",
-    "दिउँसोको मुख्य खाना",
-    "O-byat",
-    "ˈओ-ब्यात्",
-    "O której jemy obiad?",
-    "What time do we eat lunch?",
-    "हामी कति बजे खाना खान्छौँ?"
+    "banan",
+    "banana",
+    "केरा",
+    "BA-nan",
+    "ˈबा-नान्",
+    "Dojrzały banan.",
+    "Ripe banana.",
+    "पाकेको केरा।"
   ],
   [
-    "kolacja",
-    "dinner / supper",
-    "बेलुकीको खाना",
-    "ko-LA-tsya",
-    "को-ˈला-त्सया",
-    "Jemy kolację o dwudziestej.",
-    "We eat dinner at eight in the evening.",
-    "हामी राति आठ बजे खाना खान्छौँ।"
+    "cytryna",
+    "lemon",
+    "कागती",
+    "tsi-TRI-na",
+    "त्सि-ˈत्रि-ना",
+    "Herbata z cytryną.",
+    "Tea with lemon.",
+    "कागती हालेको चिया।"
+  ],
+  [
+    "pomarańcza",
+    "orange",
+    "सुन्तला",
+    "po-ma-RAN-cha",
+    "पो-मा-ˈरान्-चा",
+    "Świeża pomarańcza.",
+    "Fresh orange.",
+    "ताजा सुन्तला।"
+  ],
+  [
+    "truskawka",
+    "strawberry",
+    "स्ट्रबेरी",
+    "troos-KAF-ka",
+    "त्रुस्-ˈकाफ्-का",
+    "Lody truskawkowe.",
+    "Strawberry ice cream.",
+    "स्ट्रबेरी आइसक्रिम।"
+  ],
+  [
+    "zupa",
+    "soup",
+    "सूप / झोल",
+    "ZOO-pa",
+    "ˈज़ु-पा",
+    "Talerz gorącej zupy.",
+    "A plate of hot soup.",
+    "एक प्लेट तातो सूप।"
+  ],
+  [
+    "pierogi",
+    "dumplings (pierogi)",
+    "पोलिश म:म: (पियरोबी)",
+    "pye-RO-gee",
+    "प्ये-ˈरो-गि",
+    "Pierogi z mięsem i kapustą.",
+    "Pierogi with meat and cabbage.",
+    "मासु र बन्दा हालेको पियरोबी।"
+  ],
+  [
+    "praca",
+    "work / job",
+    "काम / जागिर",
+    "PRA-tsa",
+    "ˈप्रा-त्सा",
+    "Szukam pracy w Polsce.",
+    "I am looking for a job in Poland.",
+    "म पोल्यान्डमा काम खोज्दैछु।"
+  ],
+  [
+    "pracownik",
+    "employee / worker",
+    "कामदार / कर्मचारी",
+    "pra-TSOV-neek",
+    "प्रा-ˈत्सोभ्-निक्",
+    "Jestem nowym pracownikiem.",
+    "I am a new employee.",
+    "म नयाँ कामदार हुँ।"
+  ],
+  [
+    "szef",
+    "boss",
+    "हाकिम / मालिक",
+    "shef",
+    "शेफ़्",
+    "Mój szef jest w biurze.",
+    "My boss is in the office.",
+    "मेरो हाकिम अफिसमा हुनुहुन्छ।"
+  ],
+  [
+    "kierownik",
+    "manager / supervisor",
+    "म्यानेजर / सुपरभाइजर",
+    "kye-ROV-neek",
+    "क्ये-ˈरोभ्-निक्",
+    "Kierownik magazynu.",
+    "Warehouse supervisor.",
+    "गोदाम म्यानेजर।"
+  ],
+  [
+    "umowa",
+    "contract",
+    "सम्झौता",
+    "oo-MO-va",
+    "उ-ˈमो-भा",
+    "Umowa o pracę.",
+    "Employment contract.",
+    "रोजगार सम्झौता।"
+  ],
+  [
+    "pensja",
+    "salary",
+    "तलब",
+    "PEN-sya",
+    "ˈपेन्-स्या",
+    "Kiedy jest wypłacana pensja?",
+    "When is the salary paid?",
+    "तलब कहिले भुक्तानी हुन्छ?"
+  ],
+  [
+    "wypłata",
+    "paycheck / payout",
+    "तलब / ज्याला",
+    "vi-PWA-ta",
+    "भि-ˈप्वा-ता",
+    "Wypłata na konto.",
+    "Payout to account.",
+    "खातामा तलब भुक्तानी।"
+  ],
+  [
+    "stawka",
+    "rate / hourly pay",
+    "प्रति घण्टा ज्याला दर",
+    "STAF-ka",
+    "ˈस्ताफ्-का",
+    "Stawka godzinowa brutto.",
+    "Gross hourly rate.",
+    "कुल प्रति घण्टा दर।"
+  ],
+  [
+    "nadgodziny",
+    "overtime",
+    "ओभरटाइम",
+    "nad-go-JEE-ni",
+    "नाद्-गो-ˈजि-नि",
+    "Praca w nadgodzinach.",
+    "Working overtime.",
+    "थप समय काम।"
+  ],
+  [
+    "zmiana",
+    "shift",
+    "सिफ्ट (कामको पालो)",
+    "ZMYA-na",
+    "ˈज़्म्या-ना",
+    "Zmiana nocna.",
+    "Night shift.",
+    "रात्रिकालीन सिफ्ट।"
+  ],
+  [
+    "grafik",
+    "schedule / roster",
+    "कार्यतालिका (रोस्टर)",
+    "GRA-feek",
+    "ˈग्रा-फिक्",
+    "Sprawdź grafik pracy.",
+    "Check the work schedule.",
+    "कामको तालिका हेर्नुहोस्।"
+  ],
+  [
+    "przerwa",
+    "break",
+    "खाजा खाने समय / ब्रेक",
+    "PZHER-va",
+    "ˈप्झेर्-भा",
+    "Pora na przerwę.",
+    "Time for a break.",
+    "ब्रेकको समय भयो।"
+  ],
+  [
+    "urlop",
+    "holiday / leave",
+    "बिदा",
+    "OOR-lop",
+    "ˈउर्-लोप्",
+    "Urlop wypoczynkowy.",
+    "Annual vacation leave.",
+    "वार्षिक बिदा।"
+  ],
+  [
+    "zwolnienie",
+    "sick leave (L4)",
+    "बिरामी बिदा (L4)",
+    "zvol-NYEH-nyeh",
+    "ज़्भोल्-ˈन्ये-न्ये",
+    "Zwolnienie lekarskie.",
+    "Medical sick leave.",
+    "डाक्टरले दिएको बिरामी बिदा।"
+  ],
+  [
+    "BHP",
+    "health & safety",
+    "कार्यस्थल सुरक्षा (BHP)",
+    "beh-ha-peh",
+    "बे-हा-पे",
+    "Zasady BHP na stanowisku.",
+    "Occupational safety rules.",
+    "कार्यस्थलका सुरक्षा नियम।"
+  ],
+  [
+    "magazyn",
+    "warehouse",
+    "गोदाम",
+    "ma-GA-zin",
+    "मा-ˈगा-ज़िन्",
+    "Praca w magazynie logistycznym.",
+    "Working in a logistics warehouse.",
+    "लजिस्टिक गोदाममा काम।"
+  ],
+  [
+    "paleta",
+    "pallet",
+    "प्यालेट",
+    "pa-LEH-ta",
+    "पा-ˈले-ता",
+    "Foliowanie palety.",
+    "Wrapping a pallet in plastic.",
+    "प्यालेटलाई प्लास्टिकले बेर्ने काम।"
+  ],
+  [
+    "wózek",
+    "forklift / trolley",
+    "फोर्कलिफ्ट / ट्रली",
+    "VOO-zek",
+    "ˈभु-ज़ेक्",
+    "Wózek widłowy.",
+    "Forklift truck.",
+    "सामान उचाल्ने फोर्कलिफ्ट।"
+  ],
+  [
+    "skaner",
+    "scanner",
+    "स्क्यानर मेसिन",
+    "SKA-ner",
+    "ˈस्का-नेर्",
+    "Skaner kodów.",
+    "Barcode scanner.",
+    "बारकोड स्क्यानर।"
+  ],
+  [
+    "kask",
+    "helmet",
+    "हेल्मेट",
+    "kask",
+    "कास्क्",
+    "Kask na głowę.",
+    "Helmet on the head.",
+    "टाउकोमा हेल्मेट।"
+  ],
+  [
+    "rękawice",
+    "gloves",
+    "पञ्जा",
+    "ren-ka-VEE-tseh",
+    "रेन्-का-ˈभि-त्से",
+    "Rękawice robocze.",
+    "Work gloves.",
+    "काम गर्ने पञ्जा।"
+  ],
+  [
+    "buty robocze",
+    "safety work shoes",
+    "सुरक्षा जुत्ता",
+    "BOO-ti ro-BO-cheh",
+    "ˈबु-ति रो-ˈबो-चे",
+    "Buty ze stalowym noskiem.",
+    "Shoes with steel toe-cap.",
+    "स्टिल टो भएको जुत्ता।"
+  ],
+  [
+    "kamizelka",
+    "safety vest",
+    "सुरक्षा भेस्ट",
+    "ka-mee-ZEL-ka",
+    "का-मि-ˈज़ेल्-का",
+    "Kamizelka odblaskowa.",
+    "Reflective safety vest.",
+    "चम्किलो सुरक्षा भेस्ट।"
+  ],
+  [
+    "karta pobytu",
+    "residence card (TRC)",
+    "आवास अनुमति कार्ड (TRC)",
+    "KAR-ta po-BI-too",
+    "ˈकार्-ता पो-ˈबि-तु",
+    "Odbiór karty pobytu.",
+    "Collecting residence card.",
+    "आवास कार्ड बुझ्ने काम।"
+  ],
+  [
+    "urząd",
+    "government office",
+    "सरकारी कार्यालय",
+    "OO-zhont",
+    "ˈउ-झोन्त्",
+    "Urząd Wojewódzki.",
+    "Voivodeship Office.",
+    "प्रदेश सरकारी कार्यालय।"
+  ],
+  [
+    "wniosek",
+    "application",
+    "निवेदन फारम",
+    "VNIO-sek",
+    "ˈव्न्यो-सेक्",
+    "Złożenie wniosku.",
+    "Submitting an application.",
+    "निवेदन बुझाउने काम।"
+  ],
+  [
+    "pieczątka",
+    "stamp",
+    "छाप / मोहर",
+    "pye-CHONT-ka",
+    "प्ये-ˈचोन्त्-का",
+    "Czerwona pieczątka.",
+    "Red stamp.",
+    "रातो छाप।"
+  ],
+  [
+    "decyzja",
+    "decision",
+    "सरकारी निर्णय",
+    "deh-TSI-zya",
+    "दे-ˈत्सि-ज्या",
+    "Oczekiwanie na decyzję.",
+    "Waiting for the decision.",
+    "निर्णयको पर्खाइ।"
+  ],
+  [
+    "paszport",
+    "passport",
+    "राहदानी (पासपोर्ट)",
+    "PASH-port",
+    "ˈपाश्-पोर्त्",
+    "Kopia paszportu.",
+    "Copy of passport.",
+    "पासपोर्टको फोटोकपी।"
+  ],
+  [
+    "PESEL",
+    "PESEL national ID",
+    "व्यक्तिगत परिचय नम्बर (PESEL)",
+    "PEH-sel",
+    "ˈपे-सेल्",
+    "Nadanie numeru PESEL.",
+    "Granting of PESEL number.",
+    "PESEL नम्बर दर्ता।"
+  ],
+  [
+    "załącznik",
+    "annex / attachment",
+    "संलग्न कागजात (Załącznik nr 1)",
+    "za-WONTCH-neek",
+    "ज़ा-ˈवोन्च्-निक्",
+    "Załącznik numer jeden od pracodawcy.",
+    "Annex number 1 from the employer.",
+    "मालिकले भर्ने फारम नम्बर १।"
+  ],
+  [
+    "szpital",
+    "hospital",
+    "अस्पताल",
+    "SHPEE-tal",
+    "ˈश्पि-ताल्",
+    "Ostry dyżur w szpitalu.",
+    "Emergency room at hospital.",
+    "अस्पतालको इमर्जेन्सी वार्ड।"
+  ],
+  [
+    "apteka",
+    "pharmacy",
+    "औषधि पसल",
+    "ap-TEH-ka",
+    "आप्-ˈते-का",
+    "Apteka całodobowa.",
+    "24-hour pharmacy.",
+    "२४ घण्टे औषधि पसल।"
+  ],
+  [
+    "lekarz",
+    "doctor",
+    "डाक्टर",
+    "LEH-kazh",
+    "ˈले-काझ",
+    "Wizyta u lekarza.",
+    "Doctor appointment.",
+    "डाक्टरसँगको भेट।"
+  ],
+  [
+    "ból",
+    "pain",
+    "दुखाइ",
+    "bool",
+    "बुल्",
+    "Tabletki przeciwbólowe.",
+    "Painkiller tablets.",
+    "दुखाइ कम गर्ने औषधि।"
+  ],
+  [
+    "recepta",
+    "prescription",
+    "औषधिको पुर्जा",
+    "reh-TSEP-ta",
+    "रे-ˈत्सेप्-ता",
+    "Lek wydawany na receptę.",
+    "Prescription-only medicine.",
+    "पुर्जा भएपछि मात्र पाइने औषधि।"
+  ],
+  [
+    "gorączka",
+    "fever",
+    "ज्वरो",
+    "go-RONCH-ka",
+    "गो-ˈरोन्च्-का",
+    "Wysoka gorączka.",
+    "High fever.",
+    "चर्को ज्वरो।"
+  ],
+  [
+    "karetka",
+    "ambulance",
+    "एम्बुलेन्स",
+    "ka-RET-ka",
+    "का-ˈरेत्-का",
+    "Numer alarmowy 112.",
+    "Emergency number 112.",
+    "आपत्कालीन नम्बर ११२।"
+  ],
+  [
+    "pomoc",
+    "help",
+    "मद्दत / सहयोग",
+    "PO-mots",
+    "ˈपो-मोत्स्",
+    "Proszę o pomoc!",
+    "Please help!",
+    "कृपया मद्दत गर्नुहोस्!"
   ],
   [
     "autobus",
@@ -1150,9 +1240,9 @@
     "बस",
     "ow-TO-boos",
     "औ-ˈतो-बुस्",
-    "Autobus jedzie na dworzec.",
-    "The bus goes to the station.",
-    "बस स्टेशनतिर जाँदैछ।"
+    "Bilet autobusowy.",
+    "Bus ticket.",
+    "बस टिकट।"
   ],
   [
     "tramwaj",
@@ -1160,9 +1250,9 @@
     "ट्राम",
     "TRAM-vay",
     "ˈत्राम्-भाय्",
-    "Trasa tramwaju jest prosta.",
-    "The tram route is straight.",
-    "ट्रामको बाटो सिधा छ।"
+    "Przystanek tramwajowy.",
+    "Tram stop.",
+    "ट्राम बिसौनी।"
   ],
   [
     "pociąg",
@@ -1170,9 +1260,9 @@
     "रेल",
     "PO-chyong",
     "ˈपो-च्योङ्",
-    "Pociąg dalekobieżny PKP Intercity.",
-    "Long-distance PKP Intercity train.",
-    "लामो दूरीको PKP इन्टरसिटी रेल।"
+    "Rozkład jazdy pociągów.",
+    "Train timetable.",
+    "रेलको समय तालिका।"
   ],
   [
     "dworzec",
@@ -1180,9 +1270,9 @@
     "स्टेशन",
     "DVO-zhets",
     "ˈद्भो-झेत्स्",
-    "Dworzec Centralny w Warszawie.",
-    "Warsaw Central Station.",
-    "वार्सा सेन्ट्रल स्टेशन।"
+    "Dworzec kolejowy.",
+    "Railway station.",
+    "रेलवे स्टेशन।"
   ],
   [
     "lotnisko",
@@ -1190,29 +1280,19 @@
     "विमानस्थल",
     "lot-NEES-ko",
     "लोत्-ˈनिस्-को",
-    "Lotnisko Chopina w Warszawie.",
-    "Chopin Airport in Warsaw.",
-    "वार्साको शोपिन विमानस्थल।"
-  ],
-  [
-    "przystanek",
-    "bus / tram stop",
-    "बस बिसौनी (स्टप)",
-    "pshi-STA-nek",
-    "प्शि-ˈस्ता-नेक्",
-    "Czekam na przystanku autobusowym.",
-    "I am waiting at the bus stop.",
-    "म बस स्टपमा पर्खिरहेको छु।"
+    "Hala odlotów na lotnisku.",
+    "Departures hall at the airport.",
+    "विमानस्थलको प्रस्थान कक्ष।"
   ],
   [
     "mieszkanie",
-    "flat / apartment",
-    "अपार्टमेन्ट / डेरा",
+    "apartment / flat",
+    "अपार्टमेन्ट",
     "myesh-KA-nyeh",
     "म्येश्-ˈका-न्ये",
-    "Wynajmuję małe mieszkanie.",
-    "I rent a small flat.",
-    "म सानो अपार्टमेन्ट भाडामा लिएको छु।"
+    "Wynajem mieszkania.",
+    "Apartment rental.",
+    "अपार्टमेन्ट भाडामा।"
   ],
   [
     "pokój",
@@ -1220,39 +1300,29 @@
     "कोठा",
     "PO-kooy",
     "ˈपो-कुय्",
-    "Mam jednoosobowy pokój.",
-    "I have a single room.",
-    "मेरो एकल कोठा छ।"
+    "Pokój do wynajęcia.",
+    "Room for rent.",
+    "भाडामा दिइने कोठा।"
   ],
   [
     "czynsz",
     "rent",
-    "कोठा भाडा",
+    "भाडा",
     "chinsh",
     "चिन्श्",
-    "Czynsz płacę pierwszego dnia miesiąca.",
-    "I pay the rent on the first day of the month.",
-    "म महिनाको १ गते कोठा भाडा तिर्छु।"
+    "Opłata za czynsz.",
+    "Rent payment.",
+    "कोठा भाडाको भुक्तानी।"
   ],
   [
     "kaucja",
     "deposit",
-    "धरौटी रकम (डिपोजिट)",
+    "धरौटी रकम",
     "KOW-tsya",
     "ˈकाव्-त्सया",
-    "Właściciel wymaga kaucji.",
-    "The landlord requires a deposit.",
-    "घरधनीले धरौटी रकम माग्छ।"
-  ],
-  [
-    "właściciel",
-    "landlord / owner",
-    "घरधनी / मालिक",
-    "vwash-CHEE-chyel",
-    "व्वाश्-ˈचि-च्येल्",
-    "Właściciel mieszkania naprawi pralkę.",
-    "The flat owner will fix the washing machine.",
-    "घरधनीले वासिङ मेसिन मर्मत गरिदिनुहुनेछ।"
+    "Zwrot kaucji.",
+    "Return of deposit.",
+    "धरौटी फिर्ता।"
   ],
   [
     "klucz",
@@ -1260,9 +1330,9 @@
     "चाबी",
     "klooch",
     "क्लुच्",
-    "Zgubiłem klucz do pokoju.",
-    "I lost the room key.",
-    "मैले कोठाको चाबी हराएँ।"
+    "Klucz do drzwi.",
+    "Door key.",
+    "ढोकाको चाबी।"
   ],
   [
     "drzwi",
@@ -1270,9 +1340,9 @@
     "ढोका",
     "dzhee",
     "द्झी",
-    "Proszę zamknąć drzwi na klucz.",
-    "Please lock the door.",
-    "कृपया ढोकामा चाबी लगाउनुहोस्।"
+    "Drzwi wejściowe.",
+    "Entrance door.",
+    "प्रवेश ढोका।"
   ],
   [
     "okno",
@@ -1280,29 +1350,19 @@
     "झ्याल",
     "OK-no",
     "ˈओक्-नो",
-    "Otwórz okno, jest duszno.",
-    "Open the window, it is stuffy.",
-    "झ्याल खोल्नुहोस्, यहाँ गुम्सिएको छ।"
+    "Zamknij okno.",
+    "Close the window.",
+    "झ्याल बन्द गर्नुहोस्।"
   ],
   [
-    "łazienka",
-    "bathroom",
-    "शौचालय / बाथरुम",
-    "wa-ZYEN-ka",
-    "वा-ˈज्येन्-का",
-    "Łazienka jest wspólna.",
-    "The bathroom is shared.",
-    "बाथरुम साझा छ।"
-  ],
-  [
-    "kuchnia",
-    "kitchen",
-    "भान्साकोठा",
-    "KOOH-nya",
-    "ˈकुह्-न्या",
-    "Gotuję obiad w kuchni.",
-    "I cook lunch in the kitchen.",
-    "म भान्सामा खाना पकाउँछु।"
+    "paczkomat",
+    "parcel locker",
+    "पार्सल लकर (प्याचकोमात)",
+    "pach-ko-MAT",
+    "पाच्-को-ˈमात्",
+    "Nadaj paczkę w paczkomacie.",
+    "Send a parcel via locker.",
+    "पार्सल लकरबाट सामान पठाउनुहोस्।"
   ]
 ];
 })();

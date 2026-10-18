@@ -1160,7 +1160,13 @@
 
     const starredSet = (S.MyWords && S.MyWords.getWords) ? new Set(S.MyWords.getWords().map((w) => w.pl)) : new Set();
     if (!raw) {
-      hits = S.ENTRIES.filter((e) => e.kind === 'word');
+      if (dictCoreOnly) {
+        hits = [...S.LEXICON.values()].filter((e) => e.isCore2000 || e.source === 'core2000');
+      } else if (dictWorkOnly) {
+        hits = [...S.LEXICON.values()].filter((e) => e.source && e.source.startsWith('work'));
+      } else {
+        hits = S.ENTRIES.filter((e) => e.kind === 'word');
+      }
     } else if (dictCache.has(rawLow) && !dictStarredOnly && !dictCoreOnly && !dictWorkOnly) {
       hits = dictCache.get(rawLow);
     } else {
