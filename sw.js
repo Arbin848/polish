@@ -12,7 +12,7 @@ const SHELL = [
   'data/b1-part1.js', 'data/b1-part2.js', 'data/b2.js', 'data/work.js',
   'data/drills-1.js', 'data/drills-2.js', 'data/drills-3.js', 'data/drills-4.js',
   'data/roleplays-1.js', 'data/roleplays-2.js', 'data/stories-1.js', 'data/stories-2.js', 'data/exams.js',
-  'data/verbs-1.js', 'data/verbs-2.js', 'data/cases.js', 'data/sounds.js', 'data/listening.js', 'data/reading-gloss.js', 'data/poland-guide.js', 'data/sos.js', 'data/simulators.js',
+  'data/verbs-1.js', 'data/verbs-2.js', 'data/cases.js', 'data/sounds.js', 'data/listening.js', 'data/reading-gloss.js', 'data/poland-guide.js', 'data/sos.js', 'data/simulators.js', 'data/core2000.js',
 ];
 
 self.addEventListener('install', (event) => {

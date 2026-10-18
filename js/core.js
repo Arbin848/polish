@@ -96,6 +96,25 @@
       });
     }
   }));
+  // 2000 Core Vocabulary & Practical Polish
+  (W.SLOWKA_CORE2000 || []).forEach(([pl, en, ne, pron, proNe, exPl, exEn, exNe]) => {
+    if (!S.LEXICON.has(pl)) {
+      const entry = {
+        pl,
+        en,
+        ne,
+        pron,
+        proNe,
+        kind: 'word',
+        source: 'core2000',
+        exPl,
+        exEn,
+        exNe
+      };
+      S.LEXICON.set(pl, entry);
+      S.ENTRIES.push(entry);
+    }
+  });
   S.UNIT = new Map(S.COURSE.map((u) => [u.id, u]));
 
   // ---------- text helpers ----------

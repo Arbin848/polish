@@ -1128,6 +1128,7 @@
           <input class="search" id="dict-q" type="search" placeholder="Search: dom, house, घर…" aria-label="Search the dictionary" value="${esc(S.route.q || '')}" style="width:100%; padding-right:32px;">
           <button type="button" class="dict-clear-btn" data-action="dict-clear" title="Clear input" style="position:absolute; right:8px; background:none; border:none; color:var(--muted); font-size:1.1rem; cursor:pointer; padding:4px;">✕</button>
         </div>
+        <button type="button" class="dict-filter-chip" id="dict-core-filter" data-action="dict-toggle-core" style="border-radius:10px; padding:6px 12px; font-size:0.84rem; cursor:pointer;" title="Show Core 2000 Words">📚 Core 2000</button>
         <button type="button" class="dict-filter-chip" id="dict-work-filter" data-action="dict-toggle-work" style="border-radius:10px; padding:6px 12px; font-size:0.84rem; cursor:pointer;" title="Show workplace words">🏭 Work Polish</button>
         <button type="button" class="dict-filter-chip" id="dict-star-filter" data-action="dict-toggle-stars" style="border-radius:10px; padding:6px 12px; font-size:0.84rem; cursor:pointer;" title="Show only starred words">⭐ Starred</button>
       </div>
@@ -1149,6 +1150,7 @@
 
   let dictStarredOnly = false;
   let dictWorkOnly = false;
+  let dictCoreOnly = false;
   const dictCache = new Map();
   function updateDictionary() {
     const raw = $('#dict-q').value.trim();
@@ -1159,7 +1161,7 @@
     const starredSet = (S.MyWords && S.MyWords.getWords) ? new Set(S.MyWords.getWords().map((w) => w.pl)) : new Set();
     if (!raw) {
       hits = S.ENTRIES.filter((e) => e.kind === 'word');
-    } else if (dictCache.has(rawLow) && !dictStarredOnly) {
+    } else if (dictCache.has(rawLow) && !dictStarredOnly && !dictCoreOnly && !dictWorkOnly) {
       hits = dictCache.get(rawLow);
     } else {
       const all = [...S.LEXICON.values()];
@@ -1177,6 +1179,9 @@
     }
     if (dictWorkOnly) {
       hits = hits.filter((e) => e.source && e.source.startsWith('work'));
+    }
+    if (dictCoreOnly) {
+      hits = hits.filter((e) => e.source === 'core2000');
     }
     const shown = hits.slice(0, 80);
     $('#dict-count').textContent = raw
@@ -1574,6 +1579,30 @@
           updateDictionary();
           inp.focus();
         }
+        return true;
+      }
+      case 'dict-toggle-work': {
+        dictWorkOnly = !dictWorkOnly;
+        if (dictWorkOnly) dictCoreOnly = false;
+        el.classList.toggle('active', dictWorkOnly);
+        const coreBtn = $('#dict-core-filter');
+        if (coreBtn) coreBtn.classList.remove('active');
+        updateDictionary();
+        return true;
+      }
+      case 'dict-toggle-core': {
+        dictCoreOnly = !dictCoreOnly;
+        if (dictCoreOnly) dictWorkOnly = false;
+        el.classList.toggle('active', dictCoreOnly);
+        const workBtn = $('#dict-work-filter');
+        if (workBtn) workBtn.classList.remove('active');
+        updateDictionary();
+        return true;
+      }
+      case 'dict-toggle-stars': {
+        dictStarredOnly = !dictStarredOnly;
+        el.classList.toggle('active', dictStarredOnly);
+        updateDictionary();
         return true;
       }
       case 'share-app': {
