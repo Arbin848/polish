@@ -58,6 +58,7 @@
     if (r.name === 'unit') renderUnit();
     else if (r.name === 'review') renderReview();
     else if (r.name === 'alphabet') renderAlphabet();
+    else if (r.name === 'core2000') renderCore2000();
     else if (r.name === 'dictionary') renderDictionary();
     else if (r.name === 'privacy') { if (S.Privacy && S.Privacy.render) S.Privacy.render(view); }
     else if (r.name === 'feedback') renderFeedback();
@@ -107,7 +108,7 @@
     else renderHome();
   }
   S.onProgress = () => renderStats();
-  const NAV = { sos: 'practice', sim: 'practice', commute: 'practice', guide: 'practice', pronstudio: 'practice', turn: 'practice', mywords: 'practice', numbers: 'practice', listen: 'practice', revise: 'course', cert: 'progress', report: 'progress', home: 'home', course: 'course', unit: 'course', learn: 'course', practice: 'practice', review: 'practice', verbs: 'practice', cases: 'practice', sounds: 'practice', alphabet: 'practice', dictionary: 'dictionary', mistakes: 'practice', talk: 'practice', read: 'practice', exam: 'practice', placement: 'practice', progress: 'progress', settings: 'progress', check: 'progress' };
+  const NAV = { sos: 'practice', sim: 'practice', commute: 'practice', guide: 'practice', pronstudio: 'practice', turn: 'practice', mywords: 'practice', numbers: 'practice', listen: 'practice', revise: 'course', cert: 'progress', report: 'progress', home: 'home', course: 'course', core2000: 'core2000', unit: 'course', learn: 'course', practice: 'practice', review: 'practice', verbs: 'practice', cases: 'practice', sounds: 'practice', alphabet: 'practice', dictionary: 'dictionary', mistakes: 'practice', talk: 'practice', read: 'practice', exam: 'practice', placement: 'practice', progress: 'progress', settings: 'progress', check: 'progress' };
   
   function applyFontSize(size) {
     size = size || 'normal';
@@ -1112,6 +1113,136 @@
     `;
   }
 
+// ---------- 2000 core words viewer (polishpod101 2000 core standard) ----------
+
+  let coreActiveChapter = 1;
+  let coreFilterQuery = '';
+
+  function renderCore2000() {
+    const rawData = window.SLOWKA_CORE2000_DATA || { chapters: [], entries: [] };
+    const chapters = rawData.chapters || [];
+    const entries = rawData.entries || [];
+
+    const filtered = entries.filter((item) => {
+      const chMatch = coreActiveChapter === 'all' || item[1] === Number(coreActiveChapter);
+      if (!chMatch) return false;
+      if (!coreFilterQuery) return true;
+      const q = S.fold(coreFilterQuery);
+      const qLow = coreFilterQuery.toLowerCase();
+      const plFold = S.fold(item[2]);
+      const enLow = String(item[3]).toLowerCase();
+      const neText = String(item[4]);
+      return plFold.includes(q) || enLow.includes(qLow) || neText.includes(coreFilterQuery);
+    });
+
+    view.innerHTML = `
+      ${S.backLink()}
+      <header class="unit-head" style="margin-bottom:16px;">
+        <span class="eyebrow">2000 Core Words & Phrases · २००० मुख्य शब्द</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h2 style="margin:0 0 4px;">2000 Core Polish Words</h2>
+            <p class="unit-head-ne" lang="ne" style="margin:0;">२००० सर्वाधिक बोलिने पोलिश शब्द र वाक्यहरू (नेपाली अर्थ र उच्चारण सहित)</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="btn compact" data-action="core-listen-all" style="font-size:0.88rem;">🔊 Listen All · सबै सुन्नुहोस्</button>
+          </div>
+        </div>
+        <p class="hint" style="margin-top:8px;">
+          Sourced from the <b>2000 Everyday Polish Words and Phrases</b> syllabus. Each word includes accurate Nepali translation, dual syllable stress (Roman & Devanagari), authentic sample sentences, and instant one-tap pronunciation.
+        </p>
+      </header>
+
+      <!-- Chapter Tabs -->
+      <div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; margin-bottom:14px; -webkit-overflow-scrolling:touch;">
+        <button type="button" class="btn ${coreActiveChapter === 'all' ? 'primary' : ''} compact" data-action="core-set-ch" data-ch="all" style="white-space:nowrap; border-radius:20px; font-size:0.85rem;">
+          🌟 All Chapters (${entries.length})
+        </button>
+        ${chapters.map((ch) => `
+          <button type="button" class="btn ${coreActiveChapter === ch.id ? 'primary' : ''} compact" data-action="core-set-ch" data-ch="${ch.id}" style="white-space:nowrap; border-radius:20px; font-size:0.85rem;" title="${esc(ch.title)}">
+            Ch ${ch.id} (${ch.range})
+          </button>
+        `).join('')}
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="row start" style="margin-bottom:14px; gap:8px;">
+        <div style="position:relative; flex:1; display:flex; align-items:center;">
+          <input class="search" id="core-search-input" type="search" placeholder="Search in 2000 words: dzień, water, पानी..." value="${esc(coreFilterQuery)}" style="width:100%; padding-right:32px;">
+          ${coreFilterQuery ? `<button type="button" data-action="core-clear-search" style="position:absolute; right:8px; background:none; border:none; color:var(--muted); font-size:1.1rem; cursor:pointer;">✕</button>` : ''}
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span class="label">Showing ${filtered.length} entries</span>
+        <span class="hint" style="font-size:0.82rem;">Tap 🔊 to hear Polish pronunciation</span>
+      </div>
+
+      <!-- Vocabulary Grid / Cards -->
+      <div class="core2000-list" style="display:flex; flex-direction:column; gap:12px;">
+        ${filtered.map((item) => {
+          const [rank, chId, pl, en, ne, pron, proNe, exPl, exEn, exNe] = item;
+          const isStarred = (S.MyWords && S.MyWords.isStarred) ? S.MyWords.isStarred(pl) : false;
+          return `
+            <article class="card" style="padding:16px 18px; border-radius:14px; border:1px solid var(--line); background:var(--surface); display:flex; flex-direction:column; gap:8px;">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <span style="font-size:0.82rem; font-weight:700; color:var(--muted); background:var(--sunk); padding:2px 8px; border-radius:8px;">#${rank}</span>
+                  <b lang="pl" style="font-size:1.32rem; color:var(--ink);">${polish(pl)}</b>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <button type="button" class="star-card-btn ${isStarred ? 'active' : ''}" data-action="star-card" data-pl="${esc(pl)}" title="Save word" style="font-size:1.3rem; background:none; border:none; cursor:pointer;">
+                    ${isStarred ? '★' : '☆'}
+                  </button>
+                  <button type="button" class="btn compact listen" data-action="say" data-text="${esc(pl)}" style="padding:4px 10px; font-size:0.88rem;">
+                    ${S.SPEAKER} Hear · सुन्नुहोस्
+                  </button>
+                </div>
+              </div>
+
+              <!-- Pronunciation stress -->
+              <div style="display:flex; gap:12px; font-size:0.88rem; color:var(--muted); flex-wrap:wrap;">
+                <span>🗣️ <i>${esc(pron)}</i></span>
+                <span lang="ne">नेपाली उच्चारण: <b>${esc(proNe)}</b></span>
+              </div>
+
+              <!-- Meanings: English & Nepali -->
+              <div style="font-size:1rem; display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:2px;">
+                <span style="font-weight:600; color:var(--ink);">${esc(en)}</span>
+                <span style="color:var(--muted);">·</span>
+                <span lang="ne" style="color:var(--good); font-weight:700;">${esc(ne)}</span>
+              </div>
+
+              <!-- Sample Sentence Section (Identical to 2000 Core Book) -->
+              ${exPl ? `
+                <div style="margin-top:6px; padding:10px 12px; background:var(--sunk); border-radius:10px; font-size:0.92rem; display:flex; flex-direction:column; gap:4px; border-left:3px solid var(--accent);">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span lang="pl" style="font-weight:600; color:var(--ink);">${polish(exPl)}</span>
+                    <button type="button" class="icon-btn" data-action="say" data-text="${esc(exPl)}" title="Listen to sentence" style="font-size:0.85rem; padding:2px 6px;">${S.SPEAKER}</button>
+                  </div>
+                  <div style="font-size:0.86rem; color:var(--muted);">${esc(exEn)}</div>
+                  ${exNe ? `<div style="font-size:0.86rem; color:var(--ink);" lang="ne">${esc(exNe)}</div>` : ''}
+                </div>
+              ` : ''}
+            </article>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    const searchInput = $('#core-search-input');
+    if (searchInput) {
+      let timer = 0;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          coreFilterQuery = searchInput.value.trim();
+          renderCore2000();
+        }, 150);
+      });
+    }
+  }
+
 // ---------- dictionary ----------
 
   function renderDictionary() {
@@ -1603,6 +1734,24 @@
         const workBtn = $('#dict-work-filter');
         if (workBtn) workBtn.classList.remove('active');
         updateDictionary();
+        return true;
+      }
+      case 'core-set-ch': {
+        const ch = el.dataset.ch;
+        coreActiveChapter = ch === 'all' ? 'all' : Number(ch);
+        renderCore2000();
+        return true;
+      }
+      case 'core-clear-search': {
+        coreFilterQuery = '';
+        renderCore2000();
+        return true;
+      }
+      case 'core-listen-all': {
+        const rawData = window.SLOWKA_CORE2000_DATA || { entries: [] };
+        const entries = (rawData.entries || []).filter((item) => coreActiveChapter === 'all' || item[1] === Number(coreActiveChapter));
+        const lines = entries.slice(0, 30).map((item) => ({ text: item[2] }));
+        if (lines.length) S.speakLines(lines, S.settings.slow);
         return true;
       }
       case 'dict-toggle-stars': {
