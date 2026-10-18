@@ -145,6 +145,7 @@
       }
       case 'match-pick-pl': {
         if (gameOver) return true;
+        if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
         const id = el.dataset.id;
         selectedPl = selectedPl === id ? null : id;
         checkPair(view);
@@ -152,6 +153,7 @@
       }
       case 'match-pick-ne': {
         if (gameOver) return true;
+        if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
         const id = el.dataset.id;
         selectedNe = selectedNe === id ? null : id;
         checkPair(view);
