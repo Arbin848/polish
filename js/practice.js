@@ -169,10 +169,10 @@
     if (kind === 'type') { drawTypeCard(e); return; }
     if (kind === 'hear') { drawHearCard(e); return; }
     const plFirst = kind === 'see';
+    const starBtn = `<button type="button" class="star-card-btn ${S.isStarred(e.pl) ? 'active' : ''}" data-action="star-card" data-pl="${esc(e.pl)}" title="Bookmark to My Words">★</button>`;
     const front = plFirst
       ? `<span class="label">Polish · पोलिश</span><span class="word" lang="pl">${polish(e.pl)}</span> ${starBtn}`
       : `<span class="label">Say it in Polish · पोलिशमा भन्नुहोस्</span>${S.meaningHTML(e, 'big')}`;
-    const starBtn = `<button type="button" class="star-card-btn ${S.isStarred(e.pl) ? 'active' : ''}" data-action="star-card" data-pl="${esc(e.pl)}" title="Bookmark to My Words">★</button>`;
     const back = plFirst
       ? `<span class="rule"></span>${S.meaningHTML(e, 'big')}${S.pronHTML(e)}`
       : `<span class="rule"></span><span class="word sm" lang="pl">${polish(e.pl)}</span>${S.pronHTML(e)}`;
