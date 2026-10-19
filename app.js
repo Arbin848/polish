@@ -1409,15 +1409,6 @@
           <button class="btn again" data-action="reset">Clear all progress</button>
         </fieldset>
         <fieldset class="setting">
-          <legend>Nepali Community in Poland <span lang="ne">पोल्याण्डमा नेपाली समुदाय</span></legend>
-          <p class="hint">Connect with other Nepali workers and students learning Polish in Poland. Ask questions about work, visa (karta pobytu), and language practice. · पोलिश सिक्ने अन्य नेपाली साथीहरूसँग जोडिनुहोस्।</p>
-          <div class="row start">
-            <a href="https://chat.whatsapp.com/FpNVWkF7Kyy0mXVjuazBjp" target="_blank" rel="noopener noreferrer" class="btn" style="background:#25d366; color:#ffffff; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-              💬 Join WhatsApp Group · ग्रुपमा जोडिनुहोस्
-            </a>
-          </div>
-        </fieldset>
-        <fieldset class="setting">
           <legend>Native speakers <span lang="ne">मातृभाषी</span></legend>
           <p class="hint">Do you speak Polish or Nepali as your first language? Help check this course. · यो कोर्स जाँच्न सहयोग गर्नुहोस्।</p>
           <button class="btn" data-action="go" data-to="check">Open review mode</button>
