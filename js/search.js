@@ -12,6 +12,19 @@
   let results = [];
   let selectedIdx = 0;
 
+  function highlightMatch(text, term) {
+    if (!text || !term) return esc(text || '');
+    const escaped = esc(text);
+    const cleanTerm = esc(term).trim();
+    if (!cleanTerm) return escaped;
+    try {
+      const re = new RegExp('(' + cleanTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      return escaped.replace(re, '<mark class="search-match">$1</mark>');
+    } catch (err) {
+      return escaped;
+    }
+  }
+
   function doSearch(q) {
     query = (q || '').trim();
     if (!query) {
@@ -34,21 +47,8 @@
       .replace(/ch/g, 'h')
       .replace(/ł/g, 'w')
       .replace(/ą/g, 'on')
-      .replace(/ę/g, 'en')
+      .replace(/ę/g, 'en');
     const normQ = phoneticNorm(cleanQ);
-
-    function highlightMatch(text, term) {
-      if (!text || !term) return esc(text || '');
-      const escaped = esc(text);
-      const cleanTerm = esc(term).trim();
-      if (!cleanTerm) return escaped;
-      try {
-        const re = new RegExp('(' + cleanTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-        return escaped.replace(re, '<mark class="search-match">$1</mark>');
-      } catch (err) {
-        return escaped;
-      }
-    }
 
     // 1. Search vocabulary entries
     if (activeFilter === 'all' || activeFilter === 'vocab') {
