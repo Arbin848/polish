@@ -614,6 +614,9 @@
         <h3 style="margin:0 0 4px; font-size:1.15rem;">First 7 Days Survival · पहिलो ७ दिनमा चाहिने पोलिश</h3>
         <p style="margin:0 0 12px; font-size:0.88rem; color:var(--muted);" lang="ne">पसल (Żabka/Biedronka), काम (सिफ्ट/सामान) र आपतकालीन कुराकानी सिधै अभ्यास गर्नुहोस्:</p>
         <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <button type="button" class="btn compact" data-action="go" data-to="core2000" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:700; color:var(--ink);">
+            📖 2000 Core Words · मुख्य शब्द
+          </button>
           <button type="button" class="btn compact" data-action="go" data-to="sim.zabka" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
             🛒 Shopping · किनमेल
           </button>
