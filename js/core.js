@@ -97,7 +97,20 @@
     }
   }));
   // 2000 Core Vocabulary & Practical Polish
-  (W.SLOWKA_CORE2000 || []).forEach(([pl, en, ne, pron, proNe, exPl, exEn, exNe]) => {
+  const coreEntries = (W.SLOWKA_CORE2000_DATA && W.SLOWKA_CORE2000_DATA.entries) || W.SLOWKA_CORE2000 || [];
+  coreEntries.forEach((raw) => {
+    // If structured as [rank, chId, pl, en, ne, pron, proNe, exPl, exEn, exNe]
+    const hasRank = typeof raw[0] === 'number' && typeof raw[1] === 'number';
+    const pl = hasRank ? raw[2] : raw[0];
+    const en = hasRank ? raw[3] : raw[1];
+    const ne = hasRank ? raw[4] : raw[2];
+    const pron = hasRank ? raw[5] : raw[3];
+    const proNe = hasRank ? raw[6] : raw[4];
+    const exPl = hasRank ? raw[7] : raw[5];
+    const exEn = hasRank ? raw[8] : raw[6];
+    const exNe = hasRank ? raw[9] : raw[7];
+
+    if (!pl) return;
     let entry = S.LEXICON.get(pl);
     if (!entry) {
       entry = {
