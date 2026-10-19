@@ -549,8 +549,11 @@
   function playFile(src, isSlow, onEnd, onFail) {
     const t = ++fileToken;
     try {
+      if (synth) {
+        try { synth.cancel(); } catch (e) {}
+      }
       if (current) {
-        try { current.pause(); current.currentTime = 0; } catch (e) {}
+        try { current.pause(); current.currentTime = 0; current.onended = null; current.onerror = null; } catch (e) {}
       }
       const audio = new Audio(src);
       current = audio;
@@ -665,11 +668,23 @@
   S.stopSpeaking = () => {
     playToken++;
     document.body.classList.remove('audio-playing');
-    try { if (synth) synth.cancel(); if (current) { fileToken++; current.onended = null; current.pause(); } } catch (e) { /* ignore */ }
+    try {
+      if (synth) synth.cancel();
+      if (current) {
+        fileToken++;
+        current.onended = null;
+        current.onerror = null;
+        current.pause();
+        current.currentTime = 0;
+      }
+    } catch (e) { /* ignore */ }
   };
   function tts(text, isSlow, pitch, onEnd) {
     if (!synth) { if (onEnd) onEnd(); return; }
     try {
+      if (current) {
+        try { current.pause(); current.currentTime = 0; current.onended = null; } catch (e) {}
+      }
       if (!polishVoice && synth.getVoices) {
         findVoice();
       }
@@ -678,8 +693,9 @@
       u.lang = 'pl-PL';
       if (polishVoice) u.voice = polishVoice;
       u.volume = 1.0;
-      // Clear, learner-friendly pace: 0.65 for slow mode, 0.82 for standard (not rushed)
-      u.rate = isSlow ? 0.65 : 0.82;
+      // Adaptive pacing: single words 0.80x, full sentences 0.86x, slow mode 0.65x
+      const wordCount = cleanText.trim().split(/\s+/).length;
+      u.rate = isSlow ? 0.65 : (wordCount > 3 ? 0.86 : 0.80);
       if (pitch) u.pitch = pitch;
       let done = false;
       const finish = () => {

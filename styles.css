@@ -442,6 +442,7 @@ h2, h3 { text-wrap: balance; }
   .main-stage {
     min-height: 100vh;
     overflow-x: hidden;
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
   }
   .top-bar {
     position: sticky;
