@@ -1709,6 +1709,7 @@
         const entry = S.LEXICON.get(pl) || { pl };
         const nowStarred = S.toggleStar(entry);
         el.classList.toggle('active', nowStarred);
+        el.textContent = nowStarred ? '★' : '☆';
         if (navigator.vibrate) try { navigator.vibrate(12); } catch (e) {}
         return true;
       }
