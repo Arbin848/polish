@@ -85,6 +85,42 @@
           if (list.length >= 40) break;
         }
       }
+
+      // 1b. Search 2000 Core Words if not already in list
+      if (window.SLOWKA_CORE2000_DATA && window.SLOWKA_CORE2000_DATA.entries) {
+        const seenWords = new Set(list.map(w => w.pl.toLowerCase()));
+        for (const item of window.SLOWKA_CORE2000_DATA.entries) {
+          const [rank, chId, pl, en, ne, pron, proNe] = item;
+          if (!pl) continue;
+          const plLower = pl.toLowerCase();
+          if (seenWords.has(plLower)) continue;
+          const plFold = S.fold ? S.fold(pl) : plLower;
+          const plMatch = plLower.includes(cleanQ) || (foldQ && plFold.includes(foldQ));
+          const enMatch = (en || '').toLowerCase().includes(cleanQ);
+          const neMatch = (ne || '').includes(query);
+          const pronMatch = (pron || '').toLowerCase().includes(cleanQ) || (proNe || '').includes(query);
+
+          if (plMatch || enMatch || neMatch || pronMatch) {
+            seenWords.add(plLower);
+            const isExact = plLower === cleanQ || plFold === foldQ;
+            const isPrefix = plLower.startsWith(cleanQ) || plFold.startsWith(foldQ);
+            const score = isExact ? 115 : isPrefix ? 75 : (plMatch ? 45 : 20);
+
+            list.push({
+              type: 'word',
+              pl,
+              en,
+              ne,
+              pron,
+              proNe,
+              level: `Core #${rank}`,
+              unitId: 'core2000',
+              score
+            });
+            if (list.length >= 60) break;
+          }
+        }
+      }
     }
 
     // 2. Search Poland Guide
