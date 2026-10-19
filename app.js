@@ -1752,10 +1752,22 @@
         return true;
       }
       case 'core-listen-all': {
+        if (document.body.classList.contains('audio-playing')) {
+          S.stopSpeaking();
+          el.textContent = '🔊 Listen All · सबै सुन्नुहोस्';
+          return true;
+        }
         const rawData = window.SLOWKA_CORE2000_DATA || { entries: [] };
         const entries = (rawData.entries || []).filter((item) => coreActiveChapter === 'all' || item[1] === Number(coreActiveChapter));
-        const lines = entries.slice(0, 30).map((item) => ({ text: item[2] }));
-        if (lines.length) S.speakLines(lines, S.settings.slow);
+        const lines = entries.slice(0, 40).map((item) => ({ text: item[2] }));
+        if (lines.length) {
+          el.textContent = '⏹️ Stop · रोक्नुहोस्';
+          S.speakLines(lines, S.settings.slow, (item) => {
+            if (!item) {
+              el.textContent = '🔊 Listen All · सबै सुन्नुहोस्';
+            }
+          });
+        }
         return true;
       }
       case 'dict-toggle-stars': {
