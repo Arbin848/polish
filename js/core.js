@@ -514,7 +514,15 @@
   S.canSpeak = !!synth || Object.keys(S.AUDIO).length > 0 || Object.keys(S.TTS).length > 0;
   let polishVoice = null;
   function findVoice() {
-    try { polishVoice = synth.getVoices().find((v) => /^pl\b/i.test(v.lang)) || null; } catch (e) { polishVoice = null; }
+    try {
+      if (!synth || !synth.getVoices) return;
+      const voices = synth.getVoices() || [];
+      // Prefer high-quality/natural Polish voices (e.g. Google polski, Ewa, Zosia, Maja, Jan, Paulina)
+      const plVoices = voices.filter((v) => /^pl\b/i.test(v.lang));
+      polishVoice = plVoices.find((v) => /natural|premium|online|google|ewa|zosia|maja/i.test(v.name))
+        || plVoices[0]
+        || null;
+    } catch (e) { polishVoice = null; }
   }
   if (synth) {
     findVoice();
@@ -546,7 +554,8 @@
       }
       const audio = new Audio(src);
       current = audio;
-      audio.playbackRate = isSlow ? 0.75 : 1;
+      audio.volume = 1.0;
+      audio.playbackRate = isSlow ? 0.75 : 0.95;
       audio.onplay = () => document.body.classList.add('audio-playing');
       audio.onended = () => {
         document.body.classList.remove('audio-playing');
@@ -599,8 +608,8 @@
   S.speak = (text, slow) => {
     if (!text) return;
     const now = Date.now();
-    // Guard against double triggers (e.g. pointerup + click or synthetic tap within 180ms)
-    if (now - lastSpokenInvocation < 180 && lastSpokenText === text) {
+    // Guard against double triggers (e.g. pointerup + click or synthetic tap within 250ms)
+    if (now - lastSpokenInvocation < 250 && lastSpokenText === text) {
       return;
     }
     lastSpokenInvocation = now;
@@ -662,14 +671,15 @@
     if (!synth) { if (onEnd) onEnd(); return; }
     try {
       if (!polishVoice && synth.getVoices) {
-        const voices = synth.getVoices();
-        polishVoice = voices.find((v) => /^pl/i.test(v.lang)) || null;
+        findVoice();
       }
       const cleanText = String(text).replace(/…/g, '').replace(/\s\/\s/g, ', ').replace(/___/g, '…');
       const u = new SpeechSynthesisUtterance(cleanText);
       u.lang = 'pl-PL';
       if (polishVoice) u.voice = polishVoice;
-      u.rate = isSlow ? 0.6 : 0.88;
+      u.volume = 1.0;
+      // Clear, learner-friendly pace: 0.65 for slow mode, 0.82 for standard (not rushed)
+      u.rate = isSlow ? 0.65 : 0.82;
       if (pitch) u.pitch = pitch;
       let done = false;
       const finish = () => {
