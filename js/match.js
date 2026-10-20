@@ -7,7 +7,8 @@
   const Match = (S.Match = {});
 
   let timer = null;
-  let timeLeft = 60;
+  let matchLimit = Number(localStorage.getItem('slowka-match-limit') || 60);
+  let timeLeft = matchLimit;
   let score = 0;
   let matchesFound = 0;
   let roundPairs = []; // 5 items: [{ id, pl, ne, en, sound }]
@@ -33,7 +34,8 @@
 
   Match.start = (view) => {
     clearInterval(timer);
-    timeLeft = 60;
+    matchLimit = Number(localStorage.getItem('slowka-match-limit') || 60);
+    timeLeft = matchLimit;
     score = 0;
     matchesFound = 0;
     selectedPl = null;
@@ -53,7 +55,7 @@
         clearInterval(timer);
         gameOver = true;
         if (S.Celebration && S.Celebration.fire) {
-          S.Celebration.fire('match', { icon: '⚡', title: `Challenge Finished!`, titleNe: `स्कोर: ${score} अंक!`, desc: `You paired ${matchesFound} words correctly in 60 seconds.` });
+          S.Celebration.fire('match', { icon: '⚡', title: `Challenge Finished!`, titleNe: `स्कोर: ${score} अंक!`, desc: `You paired ${matchesFound} words correctly in ${matchLimit} seconds.` });
         }
         Match.render(view);
       }
@@ -75,7 +77,7 @@
         <p class="unit-head-ne" lang="ne">६० सेकेन्डको जोडा मिलाउने खेल</p>
       </header>
 
-      <div class="card" style="margin-bottom:16px; padding:16px 20px; background:var(--surface); border:1.5px solid var(--accent); border-radius:18px;">
+      <div class="card" style="margin-bottom:16px; padding:14px 20px; background:var(--surface); border:1.5px solid var(--accent); border-radius:18px;">
         <div style="display:flex; justify-content:space-between; align-items:center; font-weight:700;">
           <div style="display:flex; align-items:center; gap:8px;">
             <span style="font-size:1.2rem;">⏱</span>
@@ -84,8 +86,11 @@
           <div>
             Score: <span style="font-size:1.25rem; color:var(--accent); font-family:var(--font-mono);">${score}</span>
           </div>
-          <div class="hint" style="margin:0;">
-            🏆 Best: ${Math.max(score, best)}
+          <div style="display:flex; align-items:center; gap:6px;">
+            <button type="button" class="btn compact" data-action="match-toggle-time" style="font-size:0.72rem; padding:3px 8px; border-radius:10px;">
+              ⚡ Mode: <b>${matchLimit}s</b>
+            </button>
+            <span class="hint" style="margin:0;">🏆 Best: ${Math.max(score, best)}</span>
           </div>
         </div>
       </div>
@@ -159,6 +164,13 @@
         const id = el.dataset.id;
         selectedNe = selectedNe === id ? null : id;
         checkPair(view);
+        return true;
+      }
+      case 'match-toggle-time': {
+        const newLim = matchLimit === 60 ? 45 : matchLimit === 45 ? 90 : 60;
+        matchLimit = newLim;
+        localStorage.setItem('slowka-match-limit', newLim);
+        Match.start(view);
         return true;
       }
       default: return false;

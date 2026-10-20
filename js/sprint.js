@@ -15,7 +15,8 @@
   let options = [];
   let answerState = null; // null | 'correct' | 'wrong' | 'timeout'
   let timer = null;
-  let timeLeft = 5.0; // 5 seconds per question
+  let timeLimit = Number(localStorage.getItem('slowka-sprint-limit') || 5.0); // 5.0s standard | 3.5s pro
+  let timeLeft = timeLimit;
   let timerInterval = null;
   let gameOver = false;
   let answered = false;
@@ -38,7 +39,8 @@
     round += 1;
     answered = false;
     answerState = null;
-    timeLeft = 5.0;
+    timeLimit = Number(localStorage.getItem('slowka-sprint-limit') || 5.0);
+    timeLeft = timeLimit;
 
     // Filter clear words with Nepali translations
     const pool = S.ENTRIES.filter((e) => e.pl && e.ne && e.pl.length < 24 && e.ne.length < 24);
@@ -161,11 +163,16 @@
           </div>
           <!-- Animated Progress Countdown Bar -->
           <div style="width:100%; height:8px; background:var(--sunk); border-radius:4px; overflow:hidden;">
-            <div id="sprint-time-bar" style="width:${(timeLeft / 5.0) * 100}%; height:100%; background:var(--accent); transition:width 0.05s linear;"></div>
+            <div id="sprint-time-bar" style="width:${(timeLeft / timeLimit) * 100}%; height:100%; background:var(--accent); transition:width 0.05s linear;"></div>
           </div>
-          <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--muted); margin-top:4px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--muted); margin-top:6px;">
             <span id="sprint-time-text">${timeLeft.toFixed(1)}s</span>
-            <span>🏆 Best: ${Math.max(score, best)}</span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <button type="button" class="btn compact" data-action="sprint-toggle-limit" style="font-size:0.7rem; padding:2px 8px; border-radius:10px;">
+                ⚡ Pace: <b>${timeLimit === 3.5 ? 'Pro (3.5s)' : 'Standard (5s)'}</b>
+              </button>
+              <span>🏆 Best: ${Math.max(score, best)}</span>
+            </div>
           </div>
         </div>
 
@@ -223,6 +230,13 @@
       case 'sprint-pick': {
         const pl = el.dataset.pl;
         handlePick(pl, view);
+        return true;
+      }
+      case 'sprint-toggle-limit': {
+        const newLim = timeLimit === 5.0 ? 3.5 : 5.0;
+        timeLimit = newLim;
+        localStorage.setItem('slowka-sprint-limit', newLim);
+        Sprint.render(view);
         return true;
       }
       default: return false;

@@ -624,6 +624,8 @@
             <div class="teacher-badge-row">
               <span class="teacher-tag">Pani Anna · तपाईंको शिक्षिका</span>
               <span style="font-size:0.75rem; color:var(--muted);">${hello[1]}</span>
+              ${S.currentStreak() > 0 ? `<span style="font-size:0.75rem; color:#ea580c; font-weight:800;">🔥 ${S.currentStreak()}d streak</span>` : ''}
+              ${today > 0 ? `<span style="font-size:0.75rem; color:var(--good); font-weight:700;">✓ ${today} done</span>` : ''}
             </div>
             <p class="teacher-speech">"${st.started && !st.done ? `Świetnie! Let's continue **${esc(next.title)}**.` : `Cześć! Today's recommended 3-minute lesson: **${esc(next.title)}**.`}"</p>
             <p class="teacher-speech-ne" lang="ne">${st.started && !st.done ? `राम्रो प्रयास! आउनुहोस् **${esc(next.titleNe)}** को बाँकी भाग पूरा गरौँ।` : `नमस्ते! आजको सिफारिस गरिएको ३ मिनेटको पाठ: **${esc(next.titleNe)}**।`}</p>
@@ -728,7 +730,7 @@
         <div class="path-stepper">
           ${(() => {
             const courseUnits = S.COURSE.slice(0, 5);
-            return courseUnits.map((u, i) => {
+            const nodes = courseUnits.map((u, i) => {
               const ust = S.Guided.status(u);
               const isCurrent = u.id === next.id;
               const isDone = ust.done;
@@ -747,7 +749,24 @@
                   </div>
                 </button>
               `;
-            }).join('');
+            });
+            // Add Milestone Checkpoint trophy
+            const all5Done = courseUnits.every((u) => S.Guided.status(u).done);
+            nodes.push(`
+              <div class="card" style="margin-top:4px; padding:12px 16px; border-radius:14px; background:${all5Done ? 'linear-gradient(135deg, #ecfdf5, var(--surface))' : 'var(--sunk)'}; border:1.5px dashed ${all5Done ? 'var(--good)' : 'var(--line)'}; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span style="font-size:1.6rem;">🏆</span>
+                  <div>
+                    <b style="font-size:0.92rem; color:${all5Done ? 'var(--good)' : 'var(--ink)'};">Milestone 1: First 5 Units Mastery</b>
+                    <small style="display:block; color:var(--muted); font-size:0.78rem;" lang="ne">पहिलो ५ पाठ पूरा गरेर आधारभूत पोलिश प्रमाण पत्र पाउनुहोस्</small>
+                  </div>
+                </div>
+                <span class="badge" style="background:${all5Done ? '#d1fae5; color:#065f46' : 'var(--surface); color:var(--muted)'}; font-weight:800;">
+                  ${all5Done ? 'UNLOCKED 🎓' : 'PROGRESSING ⏳'}
+                </span>
+              </div>
+            `);
+            return nodes.join('');
           })()}
         </div>
       </section>
