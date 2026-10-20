@@ -86,6 +86,7 @@
       checkProgressMilestones();
     }
     else if (r.name === 'match') S.Match ? S.Match.start(view) : null;
+    else if (r.name === 'sprint') S.AudioSprint ? S.AudioSprint.start(view) : null;
     else if (r.name === 'sos') S.SOS ? S.SOS.render(view, r.arg) : null;
     else if (r.name === 'sim') S.Simulator ? S.Simulator.render(view, r.arg) : null;
     else if (r.name === 'commute') S.Commute ? S.Commute.render(view) : null;
@@ -825,6 +826,10 @@
                 <span class="qt-icon">⚡</span>
                 <div class="qt-text"><b>Verb trainer</b><small lang="ne">क्रियापद</small></div>
               </button>
+              <button class="quick-tool-btn" data-action="go" data-to="sprint" style="border:1.5px solid var(--accent); background:color-mix(in srgb, var(--accent) 8%, var(--surface));">
+                <span class="qt-icon">🎧</span>
+                <div class="qt-text"><b style="color:var(--accent);">Audio Sprint</b><small lang="ne" style="color:var(--ink);">५-सेकेन्ड सुनाइ खेल</small></div>
+              </button>
               <button class="quick-tool-btn" data-action="go" data-to="match" style="border:1px solid #f59e0b; background:#fffbeb;">
                 <span class="qt-icon">⚡</span>
                 <div class="qt-text"><b style="color:#b45309;">Speed Match</b><small lang="ne" style="color:#92400e;">६० सेकेन्ड खेल</small></div>
@@ -903,6 +908,10 @@
         <h2>Train each skill</h2>
         <p class="hint">Use these any time, next to your lessons. · पाठसँगै जुनसुकै बेला प्रयोग गर्नुहोस्।</p>
       </header>
+      ${group('🎮 Games Arcade', 'माइन्ड खेलहरू', [
+        ['sprint', '🎧', 'Audio Sprint (5s)', 'सुनेर तुरुन्त छान्ने', true],
+        ['match', '⚡', 'Speed Match (60s)', 'शब्द जोडा मिलाउने', true]
+      ])}
       ${group('Vocabulary', 'शब्द', [
         ['commute', '🎧', 'Commute Mode', 'ह्यान्ड्स-फ्री', true],
         ['review', due, 'Daily review', 'दैनिक दोहोर्याइ', due > 0],
@@ -1587,8 +1596,8 @@
     if (S.Match && S.Match.action && S.Match.action(a, el, view)) return;
     if (S.Simulator && S.Simulator.action && S.Simulator.action(a, el, view)) return;
     if (S.Commute && S.Commute.action && S.Commute.action(a, el, view)) return;
-    if (S.Search && S.Search.action && S.Search.action(a, el, view)) return;
-    if (S.Recorder && S.Recorder.action && S.Recorder.action(a, el, view)) return;
+    if (S.Match && S.Match.action && S.Match.action(a, el, view)) return;
+    if (S.AudioSprint && S.AudioSprint.action && S.AudioSprint.action(a, el, view)) return;
     if (S.MyWords.action(a, el, view)) return;
     if (S.Speaking.action(a, el, view)) return;
     if (S.Listening.action(a, el, view)) return;

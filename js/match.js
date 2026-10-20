@@ -11,10 +11,25 @@
   let score = 0;
   let matchesFound = 0;
   let roundPairs = []; // 5 items: [{ id, pl, ne, en, sound }]
+  let roundPairsNe = [];
   let selectedPl = null;
   let selectedNe = null;
   let solvedIds = new Set();
   let gameOver = false;
+
+  function newRound() {
+    selectedPl = null;
+    selectedNe = null;
+    solvedIds = new Set();
+    const pool = S.ENTRIES.filter((e) => e.pl && e.ne && e.pl.length < 24 && e.ne.length < 24);
+    roundPairs = S.shuffle(pool).slice(0, 5).map((e, idx) => ({
+      id: `${idx}-${e.pl}`,
+      pl: e.pl,
+      ne: e.ne,
+      en: e.en
+    }));
+    roundPairsNe = S.shuffle(roundPairs.slice());
+  }
 
   Match.start = (view) => {
     clearInterval(timer);
@@ -46,19 +61,6 @@
 
     Match.render(view);
   };
-
-  function newRound() {
-    selectedPl = null;
-    selectedNe = null;
-    solvedIds = new Set();
-    const pool = S.ENTRIES.filter((e) => e.pl && e.ne && e.pl.length < 24 && e.ne.length < 24);
-    roundPairs = S.shuffle(pool).slice(0, 5).map((e, idx) => ({
-      id: `${idx}-${e.pl}`,
-      pl: e.pl,
-      ne: e.ne,
-      en: e.en
-    }));
-  }
 
   Match.render = (view) => {
     if (!view) return;
@@ -116,10 +118,10 @@
             }).join('')}
           </div>
 
-          <!-- Right: Nepali Column (shuffled) -->
+          <!-- Right: Nepali Column (stable shuffle) -->
           <div style="display:flex; flex-direction:column; gap:10px;">
             <span class="label" style="text-align:center;">Nepali · नेपाली</span>
-            ${S.shuffle(roundPairs).map((p) => {
+            ${roundPairsNe.map((p) => {
               const isSolved = solvedIds.has(p.id);
               const isSelected = selectedNe === p.id;
               return `
