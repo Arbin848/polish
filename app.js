@@ -631,15 +631,14 @@
           <button type="button" class="teacher-primary-btn" data-action="g-start" data-unit="${next.id}">
             ▶ ${st.started && !st.done ? `Continue Lesson (${st.step + 1}/${st.total}) · जारी राख्नुहोस्` : 'Start 3-Min Class · ३ मिनेटको पाठ सुरु'}
           </button>
+          <button type="button" class="teacher-secondary-btn" data-action="say" data-text="${esc(hello[0])} ${esc(dp.pl)}" title="Teacher Anna speaks to you">
+            🔊 Listen to Pani Anna · सुन्नुहोस्
+          </button>
           ${due > 0 ? `
-            <button type="button" class="teacher-secondary-btn" data-action="go" data-to="review" title="Review weak words">
-              🔄 Review ${due} words · दोहोर्‍याउनुहोस्
+            <button type="button" class="teacher-secondary-btn" data-action="go" data-to="review" title="Review weak words" style="color:var(--accent);">
+              🔄 ${due} to review
             </button>
-          ` : `
-            <button type="button" class="teacher-secondary-btn" data-action="say" data-text="${esc(dp.pl)}" title="Listen to phrase of the day">
-              🔊 Hear: "${esc(dp.pl)}"
-            </button>
-          `}
+          ` : ''}
         </div>
       </section>
 
