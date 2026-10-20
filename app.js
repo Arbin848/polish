@@ -437,6 +437,13 @@
     return main.find((u) => !S.Guided.status(u).done && S.unitLearned(u) < u.entries.length * 0.8) || main[main.length - 1];
   }
 
+  let activeGoalTrack = localStorage.getItem('slowka-goal-track') || 'work'; // 'work' | 'life' | 'course'
+  function setGoalTrack(track) {
+    activeGoalTrack = track;
+    localStorage.setItem('slowka-goal-track', track);
+    renderHome();
+  }
+
   const ring = (done, total) => {
     const pct = total ? Math.min(1, done / total) : 0;
     const c = 2 * Math.PI * 26;
@@ -605,69 +612,144 @@
         `;
       })()}
 
-      <!-- 🎯 First 7 Days Survival Polish Quick Card -->
-      <section class="card" style="border:1.5px solid var(--accent); background:var(--surface); margin-bottom:14px; padding:16px 18px; border-radius:16px; box-shadow:0 4px 16px -4px var(--shadow);">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; color:var(--accent); letter-spacing:0.5px;">⚡ Quick Polish for Work & Life</span>
-          <span style="font-size:0.8rem; background:var(--sunk); padding:2px 8px; border-radius:12px; font-weight:700;">Day 1 Ready</span>
+      <!-- 🌟 PILLAR 2: Interactive Personal Teacher Briefing -->
+      <section class="teacher-briefing-card" aria-label="Your Polish Teacher Pani Anna">
+        <div class="teacher-briefing-top">
+          <div class="teacher-avatar-wrap">
+            <span style="font-size:2rem; line-height:1;">👩‍🏫</span>
+          </div>
+          <div class="teacher-dialogue-box">
+            <div class="teacher-badge-row">
+              <span class="teacher-tag">Pani Anna · तपाईंको शिक्षिका</span>
+              <span style="font-size:0.75rem; color:var(--muted);">${hello[1]}</span>
+            </div>
+            <p class="teacher-speech">"${st.started && !st.done ? `Świetnie! Let's continue **${esc(next.title)}**.` : `Cześć! Today's recommended 3-minute lesson: **${esc(next.title)}**.`}"</p>
+            <p class="teacher-speech-ne" lang="ne">${st.started && !st.done ? `राम्रो प्रयास! आउनुहोस् **${esc(next.titleNe)}** को बाँकी भाग पूरा गरौँ।` : `नमस्ते! आजको सिफारिस गरिएको ३ मिनेटको पाठ: **${esc(next.titleNe)}**।`}</p>
+          </div>
         </div>
-        <h3 style="margin:0 0 4px; font-size:1.15rem;">First 7 Days Survival · पहिलो ७ दिनमा चाहिने पोलिश</h3>
-        <p style="margin:0 0 12px; font-size:0.88rem; color:var(--muted);" lang="ne">पसल (Żabka/Biedronka), काम (सिफ्ट/सामान) र आपतकालीन कुराकानी सिधै अभ्यास गर्नुहोस्:</p>
-        <div style="display:flex; flex-wrap:wrap; gap:8px;">
-          <button type="button" class="btn compact" data-action="go" data-to="core2000" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:700; color:var(--ink);">
-            📖 2000 Core Words · मुख्य शब्द
+        <div class="teacher-action-row">
+          <button type="button" class="teacher-primary-btn" data-action="g-start" data-unit="${next.id}">
+            ▶ ${st.started && !st.done ? `Continue Lesson (${st.step + 1}/${st.total}) · जारी राख्नुहोस्` : 'Start 3-Min Class · ३ मिनेटको पाठ सुरु'}
           </button>
-          <button type="button" class="btn compact" data-action="go" data-to="sim.zabka" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
-            🛒 Shopping · किनमेल
-          </button>
-          <button type="button" class="btn compact" data-action="go" data-to="work-01" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
-            🏭 Work Shifts · काम र सिफ्ट
-          </button>
-          <button type="button" class="btn compact" data-action="go" data-to="sim.paczkomat" style="background:var(--sunk); border:1px solid var(--line); font-size:0.85rem; font-weight:600;">
-            📦 InPost Paczkomat
-          </button>
-          <button type="button" class="btn compact" data-action="go" data-to="sos" style="background:#fee2e2; color:#991b1b; border:1px solid #fecaca; font-size:0.85rem; font-weight:700;">
-            🚨 SOS Pocket Cards
-          </button>
+          ${due > 0 ? `
+            <button type="button" class="teacher-secondary-btn" data-action="go" data-to="review" title="Review weak words">
+              🔄 Review ${due} words · दोहोर्‍याउनुहोस्
+            </button>
+          ` : `
+            <button type="button" class="teacher-secondary-btn" data-action="say" data-text="${esc(dp.pl)}" title="Listen to phrase of the day">
+              🔊 Hear: "${esc(dp.pl)}"
+            </button>
+          `}
         </div>
       </section>
 
-      <!-- Big Hero Start Card for Beginners -->
-      <section class="hero-start-banner">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
-          <span class="hero-start-badge">🚀 Start Here · यहाँबाट सुरु गर्नुहोस्</span>
-          <span style="font-size:0.8rem; background:rgba(255,255,255,0.22); color:#ffffff; padding:3px 10px; border-radius:12px; font-weight:700;">⏱️ 3 min · ३ मिनेटको पाठ</span>
-        </div>
-        <h2 class="hero-start-title">${st.started && !st.done ? 'Continue: ' + esc(next.title) : 'Lesson: ' + esc(next.title)}</h2>
-        <p class="hero-start-sub" lang="ne">${esc(next.titleNe)} — शिक्षिकासँगै एक-एक शब्द सुन्दै, बोल्दै र अभ्यास गर्दै सिक्नुहोस्। (३ मिनेट मात्र)</p>
-        ${due > 0 ? `<div class="hero-review-hint" style="background:rgba(0,0,0,0.22); border-radius:10px; padding:8px 12px; font-size:0.88rem; display:flex; align-items:center; gap:8px;">
-          <span>🔄</span>
-          <span><b>${due} ${due === 1 ? 'word' : 'words'} due for review</b> · ${due} शब्द दोहोर्‍याउन बाँकी</span>
-          <button type="button" class="btn compact" data-action="go" data-to="review" style="margin-left:auto; background:#fff; color:#b91c1c; border:0; padding:4px 10px; font-size:0.8rem; font-weight:700;">Review now →</button>
-        </div>` : ''}
-        <button type="button" class="btn hero-start-btn" data-action="g-start" data-unit="${next.id}">
-          ▶ ${st.started && !st.done ? 'Continue Lesson (' + (st.step + 1) + '/' + st.total + ')' : 'Start Lesson Now · पाठ सुरु गर्नुहोस्'}
+      <!-- 🌟 PILLAR 3: Goal Track Selector (Work & Shift vs Legal & Visa vs Course) -->
+      <div class="goal-track-strip" role="tablist" aria-label="Your Primary Study Focus">
+        <button type="button" class="goal-track-tab ${activeGoalTrack === 'work' ? 'active' : ''}" data-action="set-goal-track" data-track="work">
+          <span class="goal-track-icon">🏭</span>
+          <span class="goal-track-title">Work & Shifts</span>
+          <small class="goal-track-ne" lang="ne">काम र सिफ्ट</small>
         </button>
-      </section>
-
-      <!-- 3 Clear Actions: Learn, Revise, Everyday Phrases -->
-      <div class="beginner-steps-bar" role="group" aria-label="Quick start steps">
-        <button type="button" class="beginner-step-card" data-action="g-start" data-unit="${next.id}">
-          <span class="beginner-step-num">STEP 1</span>
-          <span class="beginner-step-text">📖 Learn</span>
-          <span class="beginner-step-ne" lang="ne">सिक्नुहोस्</span>
+        <button type="button" class="goal-track-tab ${activeGoalTrack === 'life' ? 'active' : ''}" data-action="set-goal-track" data-track="life">
+          <span class="goal-track-icon">📋</span>
+          <span class="goal-track-title">Visa & Survival</span>
+          <small class="goal-track-ne" lang="ne">भिसा, पसल र SOS</small>
         </button>
-        <button type="button" class="beginner-step-card" data-action="go" data-to="review">
-          <span class="beginner-step-num">STEP 2</span>
-          <span class="beginner-step-text">🔄 Review (${due})</span>
-          <span class="beginner-step-ne" lang="ne">दोहोर्‍याउनुहोस्</span>
-        </button>
-        <button type="button" class="beginner-step-card" data-action="go" data-to="sos">
-          <span class="beginner-step-num">STEP 3</span>
-          <span class="beginner-step-text">🚨 Emergency SOS</span>
-          <span class="beginner-step-ne" lang="ne">आपतकालीन</span>
+        <button type="button" class="goal-track-tab ${activeGoalTrack === 'course' ? 'active' : ''}" data-action="set-goal-track" data-track="course">
+          <span class="goal-track-icon">🎓</span>
+          <span class="goal-track-title">Full Course</span>
+          <small class="goal-track-ne" lang="ne">A1-B2 पाठ्यक्रम</small>
         </button>
       </div>
+
+      <!-- Goal Track Focus Details -->
+      ${(() => {
+        if (activeGoalTrack === 'work') {
+          return `
+            <div class="card" style="padding:14px 16px; margin-bottom:16px; background:var(--surface); border:1px solid var(--line); border-radius:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <b style="font-size:0.95rem; color:var(--ink);">🏭 Warehouse, Shifts & Factory Polish · काममा बोलिने पोलिश</b>
+                <span class="badge" style="background:#fef3c7; color:#92400e;">Practical Priority</span>
+              </div>
+              <p style="margin:0 0 10px; font-size:0.86rem; color:var(--muted);" lang="ne">सुपरभाइजरलाई सोध्ने, सिफ्ट चेन्ज, सामान लोड/अनलोड र बिदा माग्ने अभ्यास:</p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <button type="button" class="btn compact" data-action="go" data-to="work-01" style="background:var(--sunk); font-size:0.85rem; font-weight:700;">🏭 Warehouse Shift · सिफ्ट</button>
+                <button type="button" class="btn compact" data-action="go" data-to="work-02" style="background:var(--sunk); font-size:0.85rem; font-weight:700;">📦 Orders & Packing · प्याकिङ</button>
+                <button type="button" class="btn compact" data-action="go" data-to="work-03" style="background:var(--sunk); font-size:0.85rem; font-weight:700;">🛠️ Safety & Equipment · औजार</button>
+                <button type="button" class="btn compact" data-action="go" data-to="core2000" style="background:var(--sunk); font-size:0.85rem; font-weight:700;">📖 2000 Core Words · मुख्य शब्द</button>
+              </div>
+            </div>
+          `;
+        } else if (activeGoalTrack === 'life') {
+          return `
+            <div class="card" style="padding:14px 16px; margin-bottom:16px; background:var(--surface); border:1px solid var(--line); border-radius:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <b style="font-size:0.95rem; color:var(--ink);">📋 Poland Survival & Legal Essentials · दैनिक जीवन र भिसा</b>
+                <span class="badge" style="background:#fee2e2; color:#991b1b;">Urgent & Daily</span>
+              </div>
+              <p style="margin:0 0 10px; font-size:0.86rem; color:var(--muted);" lang="ne">झाब्का पसल, इनपोस्ट पार्सल, डाक्टर, प्रहरी र आपतकालीन कुराकानी:</p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <button type="button" class="btn compact" data-action="go" data-to="sim.zabka" style="background:var(--sunk); font-size:0.85rem; font-weight:700;">🛒 Żabka Shop · किनमेल</button>
+                <button type="button" class="btn compact" data-action="go" data-to="sim.paczkomat" style="background:var(--sunk); font-size:0.85rem; font-weight:700;">📦 InPost Paczkomat</button>
+                <button type="button" class="btn compact" data-action="go" data-to="guide" style="background:var(--sunk); font-size:0.85rem; font-weight:700;">🇵🇱 Poland Legal Guide · गाइड</button>
+                <button type="button" class="btn compact" data-action="go" data-to="sos" style="background:#fee2e2; color:#991b1b; font-size:0.85rem; font-weight:800;">🚨 SOS Pocket Cards</button>
+              </div>
+            </div>
+          `;
+        }
+        return '';
+      })()}
+
+      <!-- 🌟 PILLAR 4: Daily 3-Minute Real-Life Conversation Story -->
+      <section class="daily-story-banner" data-action="go" data-to="${rp ? `talk.${rp.id}` : 'talk'}" title="Start 3-minute conversation practice">
+        <div class="daily-story-left">
+          <div class="daily-story-icon">💬</div>
+          <div class="daily-story-meta">
+            <span class="daily-story-tag">Daily 3-Min Conversation · आजको संवाद</span>
+            <h4 class="daily-story-title">${rp ? esc(rp.title) : 'Everyday Polish Talk'}</h4>
+            <p class="daily-story-sub" lang="ne">${rp ? esc(rp.titleNe) : 'दैनिक बोलिने वास्तविक संवाद'} — २ मिनेटमा बोलेर अभ्यास गर्नुहोस् →</p>
+          </div>
+        </div>
+        <span style="font-size:1.3rem; color:var(--good); font-weight:700;">▶</span>
+      </section>
+
+      <!-- 🌟 PILLAR 1: Duolingo-style Visual Roadmap Path -->
+      <section class="card" style="padding:16px 18px; margin-bottom:16px; border-radius:18px; border:1px solid var(--line); background:var(--surface);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <span class="eyebrow" style="margin:0 0 2px;">Your Learning Path · सिकाइ यात्रा</span>
+            <h3 style="margin:0; font-size:1.2rem;">Roadmap to Polish Fluency</h3>
+          </div>
+          <button type="button" class="btn compact" data-action="go" data-to="course" style="font-size:0.85rem;">View Full Map →</button>
+        </div>
+        <p class="hint" style="margin:4px 0 10px;" lang="ne">तपाईं अहिले कहाँ हुनुहुन्छ र अर्को कदम के हो — स्पष्ट यात्रा:</p>
+
+        <div class="path-stepper">
+          ${(() => {
+            const courseUnits = S.COURSE.slice(0, 5);
+            return courseUnits.map((u, i) => {
+              const ust = S.Guided.status(u);
+              const isCurrent = u.id === next.id;
+              const isDone = ust.done;
+              const stateClass = isDone ? 'completed' : isCurrent ? 'unlocked' : 'locked';
+              const icon = isDone ? '✓' : isCurrent ? '▶' : `${i + 1}`;
+              return `
+                <button type="button" class="path-node ${stateClass}" data-action="g-start" data-unit="${u.id}">
+                  <div class="path-circle">${icon}</div>
+                  <div class="path-details">
+                    <span class="path-badge">${isDone ? 'Completed · सकियो' : isCurrent ? 'Current Goal · अहिलेको पाठ' : `Unit ${i + 1}`}</span>
+                    <span class="path-title">${esc(u.title)}</span>
+                    <span class="path-ne" lang="ne">${esc(u.titleNe)}</span>
+                  </div>
+                  <div class="path-status">
+                    ${isDone ? '<span style="color:var(--good);">100% ✓</span>' : isCurrent ? '<span style="color:var(--accent);">Active 🚀</span>' : '<span style="color:var(--muted);">Locked 🔒</span>'}
+                  </div>
+                </button>
+              `;
+            }).join('');
+          })()}
+        </div>
+      </section>
 
       <div class="home-grid">
         <div class="home-col-main">
@@ -1738,6 +1820,11 @@
         const workBtn = $('#dict-work-filter');
         if (workBtn) workBtn.classList.remove('active');
         updateDictionary();
+        return true;
+      }
+      case 'set-goal-track': {
+        const track = el.dataset.track || 'work';
+        setGoalTrack(track);
         return true;
       }
       case 'core-set-ch': {
