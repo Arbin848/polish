@@ -512,6 +512,7 @@
     const level = S.LEVELS[S.levelIndex(next.level)];
     const rp = S.ROLEPLAYS.find((r) => r.level === next.level && !S.progress.roleplays[r.id]) || S.ROLEPLAYS.find((r) => !S.progress.roleplays[r.id]);
     const story = S.STORIES.find((x) => x.level === next.level && S.progress.stories[x.id] == null);
+    const dp = getDailyPhrase();
     const hour = new Date().getHours();
     const hello = hour < 12
       ? ['Dzień dobry! Miłego dnia w pracy.', 'Good morning · Have a good day at work', 'शुभ प्रभात · काममा राम्रो दिन बितोस्!']
