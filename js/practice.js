@@ -201,19 +201,23 @@
 
     if (isAuto) {
       stopAutoPlay();
+      const textLen = (e.pl || '').length;
+      // Adaptive timing: give longer phrases extra time to digest
+      const frontDelay = Math.max(2200, Math.min(4200, 2000 + textLen * 45));
+      const backDelay = Math.max(2400, Math.min(4500, 2200 + textLen * 50));
       if (!s.flipped) {
         if (plFirst && S.speak) S.speak(e.pl);
         autoPlayTimer = setTimeout(() => {
           if (session === s && s.autoPlay && !s.flipped) {
             flip();
           }
-        }, 2600);
+        }, frontDelay);
       } else {
         autoPlayTimer = setTimeout(() => {
           if (session === s && s.autoPlay && s.flipped) {
             rate('good');
           }
-        }, 2800);
+        }, backDelay);
       }
     }
     // Pre-fetch audio for upcoming card in the background for 0ms delay
@@ -230,6 +234,16 @@
   // Review card: hear the word, then show what it was.
   function drawHearCard(e) {
     const s = session;
+    // Pre-fetch upcoming card's audio
+    const nextCard = s.cards[s.i + 1];
+    if (nextCard && S.audioFile) {
+      const nextSrc = S.audioFile(nextCard.pl);
+      if (nextSrc) {
+        const pre = new Audio();
+        pre.preload = 'auto';
+        pre.src = nextSrc;
+      }
+    }
     stage.innerHTML = `
       <div class="meta"><span>Card ${s.i + 1} of ${s.cards.length} · Listen · सुन्नुहोस्</span>${S.boxMeter(e)}</div>
       <button class="card flip-in" data-action="flip" ${s.flipped ? '' : 'data-autofocus'}>
